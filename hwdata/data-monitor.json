@@ -1,0 +1,92 @@
+[
+   {
+      "name":"Asus ROG Swift PG65UQ",
+      "price_usd":12019.67,
+      "resolution":"3840 x 2160",
+      "refresh_rate":"144 Hz"
+   },
+   {
+      "name":"MSI Optix G241",
+      "price_usd":189.99,
+      "resolution":"1920 x 1080",
+      "refresh_rate":"144 Hz"
+   },
+   {
+      "name":"AOC C24G1",
+      "price_usd":190.88,
+      "resolution":"1920 x 1080",
+      "refresh_rate":"144 Hz"
+   },
+   {
+      "name":"Asus VG248QG",
+      "price_usd":190.99,
+      "resolution":"1920 x 1080",
+      "refresh_rate":"165 Hz"
+   },
+   {
+      "name":"Asus TUF Gaming VG27AQ",
+      "price_usd":329.99,
+      "resolution":"2560 x 1440",
+      "refresh_rate":"165 Hz"
+   },
+   {
+      "name":"MSI Optix G24C4",
+      "price_usd":169.99,
+      "resolution":"1920 x 1080",
+      "refresh_rate":"144 Hz"
+   },
+   {
+      "name":"Asus ROG Swift PG259QN",
+      "price_usd":566.99,
+      "resolution":"1920 x 1080",
+      "refresh_rate":"360 Hz"
+   },
+   {
+      "name":"Samsung Odyssey G9",
+      "price_usd":1966.12,
+      "resolution":"5120 x 1440",
+      "refresh_rate":"240 Hz"
+   },
+   {
+      "name":"Acer SB220Q bi",
+      "price_usd":139.9,
+      "resolution":"1920 x 1080",
+      "refresh_rate":"75 Hz"
+   },
+   {
+      "name":"Samsung S22R350FHN",
+      "price_usd":99.99,
+      "resolution":"1920 x 1080",
+      "refresh_rate":"75 Hz"
+   },
+   {
+      "name":"MSI Optix MAG27CQ",
+      "price_usd":259.99,
+      "resolution":"2560 x 1440",
+      "refresh_rate":"144 Hz"
+   },
+   {
+      "name":"Asus TUF Gaming VG24VQ",
+      "price_usd":182.98,
+      "resolution":"1920 x 1080",
+      "refresh_rate":"144 Hz"
+   },
+   {
+      "name":"LG 27GN950-B",
+      "price_usd":849.99,
+      "resolution":"3840 x 2160",
+      "refresh_rate":"144 Hz"
+   },
+   {
+      "name":"Asus TUF Gaming VG279QM",
+      "price_usd":369.0,
+      "resolution":"1920 x 1080",
+      "refresh_rate":"280 Hz"
+   },
+   {
+      "name":"Samsung Odyssey G7",
+      "price_usd":699.99,
+      "resolution":"2560 x 1440",
+      "refresh_rate":"240 Hz"
+   }
+]

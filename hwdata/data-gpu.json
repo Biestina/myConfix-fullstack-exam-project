@@ -1,0 +1,138 @@
+[
+   {
+      "name":"EVGA XC GAMING",
+      "price_usd":899.99,
+      "chipset":"GeForce RTX 3060",
+      "tdp":"120 W",
+      "core_clock":"1320 MHz",
+      "boost_clock":"1882 MHz"
+   },
+   {
+      "name":"Asus DUAL EVO OC",
+      "price_usd":799.99,
+      "chipset":"GeForce RTX 2060",
+      "tdp":"60 W",
+      "core_clock":"1365 MHz",
+      "boost_clock":"1785 MHz"
+   },
+   {
+      "name":"NVIDIA Founders Edition",
+      "price_usd":null,
+      "chipset":"GeForce RTX 3070",
+      "tdp":"80 W",
+      "core_clock":"1500 MHz",
+      "boost_clock":"1730 MHz"
+   },
+   {
+      "name":"EVGA XC3 BLACK GAMING",
+      "price_usd":null,
+      "chipset":"GeForce RTX 3070",
+      "tdp":"150 W",
+      "core_clock":"1500 MHz",
+      "boost_clock":"1725 MHz"
+   },
+   {
+      "name":"Asus Phoenix",
+      "price_usd":319.99,
+      "chipset":"GeForce GTX 1050 Ti",
+      "tdp":"140 W",
+      "core_clock":"1290 MHz",
+      "boost_clock":"1392 MHz"
+   },
+   {
+      "name":"NVIDIA Founders Edition",
+      "price_usd":null,
+      "chipset":"GeForce RTX 3080",
+      "tdp":"100 W",
+      "core_clock":"1440 MHz",
+      "boost_clock":"1710 MHz"
+   },
+   {
+      "name":"NVIDIA Founders Edition",
+      "price_usd":null,
+      "chipset":"GeForce RTX 3060 Ti",
+      "tdp":"180 W",
+      "core_clock":"1410 MHz",
+      "boost_clock":"1670 MHz"
+   },
+   {
+      "name":"Asus TUF GAMING OC",
+      "price_usd":537.0,
+      "chipset":"GeForce GTX 1660 SUPER",
+      "tdp":"160 W",
+      "core_clock":"1530 MHz",
+      "boost_clock":"1845 MHz"
+   },
+   {
+      "name":"MSI GTX 1050 Ti 4GT OC",
+      "price_usd":309.98,
+      "chipset":"GeForce GTX 1050 Ti",
+      "tdp":"140 W",
+      "core_clock":"1341 MHz",
+      "boost_clock":"1455 MHz"
+   },
+   {
+      "name":"EVGA FTW3 ULTRA GAMING",
+      "price_usd":2629.0,
+      "chipset":"GeForce RTX 3090",
+      "tdp":"240 W",
+      "core_clock":"1400 MHz",
+      "boost_clock":"1800 MHz"
+   },
+   {
+      "name":"MSI GAMING X",
+      "price_usd":869.0,
+      "chipset":"GeForce RTX 3060",
+      "tdp":"120 W",
+      "core_clock":"1320 MHz",
+      "boost_clock":"1837 MHz"
+   },
+   {
+      "name":"EVGA FTW3 ULTRA GAMING",
+      "price_usd":1909.0,
+      "chipset":"GeForce RTX 3080",
+      "tdp":"100 W",
+      "core_clock":"1440 MHz",
+      "boost_clock":"1800 MHz"
+   },
+   {
+      "name":"Asus STRIX GAMING OC",
+      "price_usd":2999.99,
+      "chipset":"GeForce RTX 3090",
+      "tdp":"200 W",
+      "core_clock":"1400 MHz",
+      "boost_clock":"1890 MHz"
+   },
+   {
+      "name":"MSI GAMING X",
+      "price_usd":null,
+      "chipset":"GeForce GTX 1660 SUPER",
+      "tdp":"60 W",
+      "core_clock":"1530 MHz",
+      "boost_clock":"1830 MHz"
+   },
+   {
+      "name":"Asus TUF GAMING OC",
+      "price_usd":499.0,
+      "chipset":"GeForce GTX 1650 SUPER",
+      "tdp":"110 W",
+      "core_clock":"1530 MHz",
+      "boost_clock":"1800 MHz"
+   },
+   {
+      "name":"MSI GAMING X TRIO",
+      "price_usd":1169.67,
+      "chipset":"GeForce RTX 3070",
+      "tdp":"90 W",
+      "core_clock":"1500 MHz",
+      "boost_clock":"1830 MHz"
+   },
+   {
+      "name":"Asus Phoenix Fan OC",
+      "price_usd":144.88,
+      "chipset":"GeForce GT 1030",
+      "tdp":"70 W",
+      "core_clock":"1278 MHz",
+      "boost_clock":"1531 MHz"
+   }
+]

@@ -1,0 +1,122 @@
+[
+   {
+      "name":"Seagate Barracuda Compute",
+      "price_usd":55.49,
+      "capacity":"2 TB",
+      "type":"7200RPM",
+      "form_factor":"3.5\"",
+      "interface":"SATA 6 Gb/s"
+   },
+   {
+      "name":"Western Digital Blue SN550",
+      "price_usd":104.99,
+      "capacity":"1 TB",
+      "type":"SSD",
+      "form_factor":"M.2-2280",
+      "interface":"M.2 (M)"
+   },
+   {
+      "name":"Samsung 970 Evo Plus",
+      "price_usd":159.9,
+      "capacity":"1 TB",
+      "type":"SSD",
+      "form_factor":"M.2-2280",
+      "interface":"M.2 (M)"
+   },
+   {
+      "name":"Samsung 860 Evo",
+      "price_usd":141.07,
+      "capacity":"1 TB",
+      "type":"SSD",
+      "form_factor":"2.5\"",
+      "interface":"SATA 6 Gb/s"
+   },
+   {
+      "name":"Samsung 980 Pro",
+      "price_usd":199.99,
+      "capacity":"1 TB",
+      "type":"SSD",
+      "form_factor":"M.2-2280",
+      "interface":"M.2 (M)"
+   },
+   {
+      "name":"Samsung 970 Evo",
+      "price_usd":140.0,
+      "capacity":"500 GB",
+      "type":"SSD",
+      "form_factor":"M.2-2280",
+      "interface":"M.2 (M)"
+   },
+   {
+      "name":"Western Digital Blue",
+      "price_usd":58.99,
+      "capacity":"500 GB",
+      "type":"SSD",
+      "form_factor":"M.2-2280",
+      "interface":"M.2 (B+M)"
+   },
+   {
+      "name":"Samsung 970 EVO Plus",
+      "price_usd":310.08,
+      "capacity":"2 TB",
+      "type":"SSD",
+      "form_factor":"M.2-2280",
+      "interface":"M.2 (M)"
+   },
+   {
+      "name":"Western Digital Caviar Blue",
+      "price_usd":39.99,
+      "capacity":"1 TB",
+      "type":"7200RPM",
+      "form_factor":"3.5\"",
+      "interface":"SATA 6 Gb/s"
+   },
+   {
+      "name":"Samsung 980 Pro",
+      "price_usd":397.44,
+      "capacity":"2 TB",
+      "type":"SSD",
+      "form_factor":"M.2-2280",
+      "interface":"M.2 (M)"
+   },
+   {
+      "name":"Seagate BarraCuda",
+      "price_usd":44.99,
+      "capacity":"1 TB",
+      "type":"7200RPM",
+      "form_factor":"3.5\"",
+      "interface":"SATA 6 Gb/s"
+   },
+   {
+      "name":"Kingston A400",
+      "price_usd":34.99,
+      "capacity":"240 GB",
+      "type":"SSD",
+      "form_factor":"2.5\"",
+      "interface":"SATA 6 Gb/s"
+   },
+   {
+      "name":"Western Digital Blue SN550",
+      "price_usd":59.99,
+      "capacity":"500 GB",
+      "type":"SSD",
+      "form_factor":"M.2-2280",
+      "interface":"M.2 (M)"
+   },
+   {
+      "name":"Samsung 980",
+      "price_usd":119.99,
+      "capacity":"1 TB",
+      "type":"SSD",
+      "form_factor":"M.2-2280",
+      "interface":"M.2 (M)"
+   },
+   {
+      "name":"Intel SSDPEDMD020T401",
+      "price_usd":10860.53,
+      "capacity":"2 TB",
+      "type":"SSD",
+      "form_factor":"PCI-E",
+      "interface":"PCIe x4"
+   }
+]

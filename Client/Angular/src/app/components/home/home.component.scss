@@ -4,7 +4,7 @@
   background-repeat: no-repeat;
   background-position-x: center;
   background-position-y: center;
-  max-height: 45vh;
+  max-height: 60vh;
   max-width: 100%;
   height: 500px;
   // width: 96vw;
@@ -12,4 +12,11 @@
   margin: 0 auto;
   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.75);
 
+  div {
+
+    h1, h6 {
+      text-shadow: 1px 1px 3px #000000;
+    }
+    
+  }
 }
