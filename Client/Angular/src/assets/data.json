@@ -1,0 +1,1009 @@
+{
+   "hardwares": [
+      {
+         "name": "NZXT H510",
+         "category": "Case",
+         "price_usd": 66.98,
+         "type": "ATX Mid Tower",
+         "side_panel_window": "Tempered Glass",
+         "internal_3.5\"_bays": "2"
+      },
+      {
+         "name": "Phanteks Eclipse P300A Mesh",
+         "category": "Case",
+         "price_usd": 49.99,
+         "type": "ATX Mid Tower",
+         "side_panel_window": "Tempered Glass",
+         "internal_3.5\"_bays": "2"
+      },
+      {
+         "name": "Lian Li PC-O11 Dynamic",
+         "category": "Case",
+         "price_usd": 149.99,
+         "type": "ATX Full Tower",
+         "side_panel_window": "Tempered Glass",
+         "internal_3.5\"_bays": "2"
+      },
+      {
+         "name": "Corsair 4000D Airflow",
+         "category": "Case",
+         "price_usd": 84.99,
+         "type": "ATX Mid Tower",
+         "side_panel_window": "Tinted Tempered Glass",
+         "internal_3.5\"_bays": "2"
+      },
+      {
+         "name": "Phanteks Eclipse P400A Digital",
+         "category": "Case",
+         "price_usd": 89.99,
+         "type": "ATX Mid Tower",
+         "side_panel_window": "Tempered Glass",
+         "internal_3.5\"_bays": "2"
+      },
+      {
+         "name": "Corsair 275R Airflow",
+         "category": "Case",
+         "price_usd": 199.97,
+         "type": "ATX Mid Tower",
+         "side_panel_window": "Tempered Glass",
+         "internal_3.5\"_bays": "2"
+      },
+      {
+         "name": "Lian Li Lancool II Mesh",
+         "category": "Case",
+         "price_usd": 109.99,
+         "type": "ATX Mid Tower",
+         "side_panel_window": "Tempered Glass",
+         "internal_3.5\"_bays": "3"
+      },
+      {
+         "name": "Fractal Design Meshify C",
+         "category": "Case",
+         "price_usd": 97.89,
+         "type": "ATX Mid Tower",
+         "side_panel_window": "Tinted Tempered Glass",
+         "internal_3.5\"_bays": "2"
+      },
+      {
+         "name": "Corsair iCUE 4000X RGB",
+         "category": "Case",
+         "price_usd": 134.99,
+         "type": "ATX Mid Tower",
+         "side_panel_window": "Tempered Glass",
+         "internal_3.5\"_bays": "2"
+      },
+      {
+         "name": "NZXT H510 Elite",
+         "category": "Case",
+         "price_usd": 129.99,
+         "type": "ATX Mid Tower",
+         "side_panel_window": "Tempered Glass",
+         "internal_3.5\"_bays": "2"
+      },
+      {
+         "name": "Corsair iCUE 4000X RGB",
+         "category": "Case",
+         "price_usd": 128.99,
+         "type": "ATX Mid Tower",
+         "side_panel_window": "Tempered Glass",
+         "internal_3.5\"_bays": "2"
+      },
+      {
+         "name": "Cooler Master MasterBox Q300L",
+         "category": "Case",
+         "price_usd": 46.86,
+         "type": "MicroATX Mini Tower",
+         "side_panel_window": "Acrylic",
+         "internal_3.5\"_bays": "1"
+      },
+      {
+         "name": "AMD Ryzen 5 3600",
+         "category": "CPU",
+         "price_usd": 245.99,
+         "core_count": "6",
+         "core_clock": "3.6 GHz",
+         "boost_clock": "4.2 GHz",
+         "tdp": "65 W",
+         "integrated_graphics": null
+      },
+      {
+         "name": "AMD Ryzen 5 5600X",
+         "category": "CPU",
+         "price_usd": 299.0,
+         "core_count": "6",
+         "core_clock": "3.7 GHz",
+         "boost_clock": "4.6 GHz",
+         "tdp": "65 W",
+         "integrated_graphics": null
+      },
+      {
+         "name": "AMD Ryzen 7 3700X",
+         "category": "CPU",
+         "price_usd": 286.0,
+         "core_count": "8",
+         "core_clock": "3.6 GHz",
+         "boost_clock": "4.4 GHz",
+         "tdp": "65 W",
+         "integrated_graphics": null
+      },
+      {
+         "name": "AMD Ryzen 7 5800X",
+         "category": "CPU",
+         "price_usd": 399.99,
+         "core_count": "8",
+         "core_clock": "3.8 GHz",
+         "boost_clock": "4.7 GHz",
+         "tdp": "105 W",
+         "integrated_graphics": null
+      },
+      {
+         "name": "Intel Core i7-10700K",
+         "category": "CPU",
+         "price_usd": 319.99,
+         "core_count": "8",
+         "core_clock": "3.8 GHz",
+         "boost_clock": "5.1 GHz",
+         "tdp": "125 W",
+         "integrated_graphics": "Intel UHD Graphics 630"
+      },
+      {
+         "name": "AMD Ryzen 9 5950X",
+         "category": "CPU",
+         "price_usd": 799.0,
+         "core_count": "16",
+         "core_clock": "3.4 GHz",
+         "boost_clock": "4.9 GHz",
+         "tdp": "105 W",
+         "integrated_graphics": null
+      },
+      {
+         "name": "AMD Ryzen 9 5900X",
+         "category": "CPU",
+         "price_usd": 589.99,
+         "core_count": "12",
+         "core_clock": "3.7 GHz",
+         "boost_clock": "4.8 GHz",
+         "tdp": "105 W",
+         "integrated_graphics": null
+      },
+      {
+         "name": "Intel Core i5-10400F",
+         "category": "CPU",
+         "price_usd": 189.08,
+         "core_count": "6",
+         "core_clock": "2.9 GHz",
+         "boost_clock": "4.3 GHz",
+         "tdp": "65 W",
+         "integrated_graphics": null
+      },
+      {
+         "name": "AMD Ryzen 5 2600",
+         "category": "CPU",
+         "price_usd": 174.99,
+         "core_count": "6",
+         "core_clock": "3.4 GHz",
+         "boost_clock": "3.9 GHz",
+         "tdp": "65 W",
+         "integrated_graphics": null
+      },
+      {
+         "name": "Intel Core i5-10600K",
+         "category": "CPU",
+         "price_usd": 214.9,
+         "core_count": "6",
+         "core_clock": "4.1 GHz",
+         "boost_clock": "4.8 GHz",
+         "tdp": "125 W",
+         "integrated_graphics": "Intel UHD Graphics 630"
+      },
+      {
+         "name": "Intel Core i9-10900K",
+         "category": "CPU",
+         "price_usd": 499.99,
+         "core_count": "10",
+         "core_clock": "3.7 GHz",
+         "boost_clock": "5.3 GHz",
+         "tdp": "125 W",
+         "integrated_graphics": "Intel UHD Graphics 630"
+      },
+      {
+         "name": "AMD Ryzen 9 3900X",
+         "category": "CPU",
+         "price_usd": 429.99,
+         "core_count": "12",
+         "core_clock": "3.8 GHz",
+         "boost_clock": "4.6 GHz",
+         "tdp": "105 W",
+         "integrated_graphics": null
+      },
+      {
+         "name": "Intel Core i7-11700K",
+         "category": "CPU",
+         "price_usd": 399.99,
+         "core_count": "8",
+         "core_clock": "3.6 GHz",
+         "boost_clock": "5 GHz",
+         "tdp": "125 W",
+         "integrated_graphics": "Intel UHD Graphics 750"
+      },
+      {
+         "name": "AMD Ryzen 3 3200G",
+         "category": "CPU",
+         "price_usd": 207.98,
+         "core_count": "4",
+         "core_clock": "3.6 GHz",
+         "boost_clock": "4 GHz",
+         "tdp": "65 W",
+         "integrated_graphics": "Radeon Vega 8"
+      },
+      {
+         "name": "Intel Core i9-11900K",
+         "category": "CPU",
+         "price_usd": 544.99,
+         "core_count": "8",
+         "core_clock": "3.5 GHz",
+         "boost_clock": "5.3 GHz",
+         "tdp": "125 W",
+         "integrated_graphics": "Intel UHD Graphics 750"
+      },
+      {
+         "name": "EVGA XC GAMING",
+         "category": "GPU",
+         "price_usd": 899.99,
+         "chipset": "GeForce RTX 3060",
+         "tdp": "120 W",
+         "core_clock": "1320 MHz",
+         "boost_clock": "1882 MHz"
+      },
+      {
+         "name": "Asus DUAL EVO OC",
+         "category": "GPU",
+         "price_usd": 799.99,
+         "chipset": "GeForce RTX 2060",
+         "tdp": "60 W",
+         "core_clock": "1365 MHz",
+         "boost_clock": "1785 MHz"
+      },
+      {
+         "name": "NVIDIA Founders Edition",
+         "category": "GPU",
+         "price_usd": null,
+         "chipset": "GeForce RTX 3070",
+         "tdp": "80 W",
+         "core_clock": "1500 MHz",
+         "boost_clock": "1730 MHz"
+      },
+      {
+         "name": "EVGA XC3 BLACK GAMING",
+         "category": "GPU",
+         "price_usd": null,
+         "chipset": "GeForce RTX 3070",
+         "tdp": "150 W",
+         "core_clock": "1500 MHz",
+         "boost_clock": "1725 MHz"
+      },
+      {
+         "name": "Asus Phoenix",
+         "category": "GPU",
+         "price_usd": 319.99,
+         "chipset": "GeForce GTX 1050 Ti",
+         "tdp": "140 W",
+         "core_clock": "1290 MHz",
+         "boost_clock": "1392 MHz"
+      },
+      {
+         "name": "NVIDIA Founders Edition",
+         "category": "GPU",
+         "price_usd": null,
+         "chipset": "GeForce RTX 3080",
+         "tdp": "100 W",
+         "core_clock": "1440 MHz",
+         "boost_clock": "1710 MHz"
+      },
+      {
+         "name": "NVIDIA Founders Edition",
+         "category": "GPU",
+         "price_usd": null,
+         "chipset": "GeForce RTX 3060 Ti",
+         "tdp": "180 W",
+         "core_clock": "1410 MHz",
+         "boost_clock": "1670 MHz"
+      },
+      {
+         "name": "Asus TUF GAMING OC",
+         "category": "GPU",
+         "price_usd": 537.0,
+         "chipset": "GeForce GTX 1660 SUPER",
+         "tdp": "160 W",
+         "core_clock": "1530 MHz",
+         "boost_clock": "1845 MHz"
+      },
+      {
+         "name": "MSI GTX 1050 Ti 4GT OC",
+         "category": "GPU",
+         "price_usd": 309.98,
+         "chipset": "GeForce GTX 1050 Ti",
+         "tdp": "140 W",
+         "core_clock": "1341 MHz",
+         "boost_clock": "1455 MHz"
+      },
+      {
+         "name": "EVGA FTW3 ULTRA GAMING",
+         "category": "GPU",
+         "price_usd": 2629.0,
+         "chipset": "GeForce RTX 3090",
+         "tdp": "240 W",
+         "core_clock": "1400 MHz",
+         "boost_clock": "1800 MHz"
+      },
+      {
+         "name": "MSI GAMING X",
+         "category": "GPU",
+         "price_usd": 869.0,
+         "chipset": "GeForce RTX 3060",
+         "tdp": "120 W",
+         "core_clock": "1320 MHz",
+         "boost_clock": "1837 MHz"
+      },
+      {
+         "name": "EVGA FTW3 ULTRA GAMING",
+         "category": "GPU",
+         "price_usd": 1909.0,
+         "chipset": "GeForce RTX 3080",
+         "tdp": "100 W",
+         "core_clock": "1440 MHz",
+         "boost_clock": "1800 MHz"
+      },
+      {
+         "name": "Asus STRIX GAMING OC",
+         "category": "GPU",
+         "price_usd": 2999.99,
+         "chipset": "GeForce RTX 3090",
+         "tdp": "200 W",
+         "core_clock": "1400 MHz",
+         "boost_clock": "1890 MHz"
+      },
+      {
+         "name": "MSI GAMING X",
+         "category": "GPU",
+         "price_usd": null,
+         "chipset": "GeForce GTX 1660 SUPER",
+         "tdp": "60 W",
+         "core_clock": "1530 MHz",
+         "boost_clock": "1830 MHz"
+      },
+      {
+         "name": "Asus TUF GAMING OC",
+         "category": "GPU",
+         "price_usd": 499.0,
+         "chipset": "GeForce GTX 1650 SUPER",
+         "tdp": "110 W",
+         "core_clock": "1530 MHz",
+         "boost_clock": "1800 MHz"
+      },
+      {
+         "name": "MSI GAMING X TRIO",
+         "category": "GPU",
+         "price_usd": 1169.67,
+         "chipset": "GeForce RTX 3070",
+         "tdp": "90 W",
+         "core_clock": "1500 MHz",
+         "boost_clock": "1830 MHz"
+      },
+      {
+         "name": "Asus Phoenix Fan OC",
+         "category": "GPU",
+         "price_usd": 144.88,
+         "chipset": "GeForce GT 1030",
+         "tdp": "70 W",
+         "core_clock": "1278 MHz",
+         "boost_clock": "1531 MHz"
+      },
+      {
+         "name": "Asus TUF GAMING X570-PLUS (WI-FI)",
+         "category": "Motherboard",
+         "price_usd": 192.99,
+         "socket_/_cpu": "AM4",
+         "form_factor": "ATX",
+         "memory_max": "128 GB",
+         "memory_slots": "4"
+      },
+      {
+         "name": "MSI B450 TOMAHAWK MAX",
+         "category": "Motherboard",
+         "price_usd": 99.95,
+         "socket_/_cpu": "AM4",
+         "form_factor": "ATX",
+         "memory_max": "64 GB",
+         "memory_slots": "4"
+      },
+      {
+         "name": "Asus ROG STRIX B550-F GAMING (WI-FI)",
+         "category": "Motherboard",
+         "price_usd": 189.99,
+         "socket_/_cpu": "AM4",
+         "form_factor": "ATX",
+         "memory_max": "128 GB",
+         "memory_slots": "4"
+      },
+      {
+         "name": "MSI MAG B550 TOMAHAWK",
+         "category": "Motherboard",
+         "price_usd": 149.99,
+         "socket_/_cpu": "AM4",
+         "form_factor": "ATX",
+         "memory_max": "128 GB",
+         "memory_slots": "4"
+      },
+      {
+         "name": "ASRock B450M Pro4",
+         "category": "Motherboard",
+         "price_usd": 76.98,
+         "socket_/_cpu": "AM4",
+         "form_factor": "Micro ATX",
+         "memory_max": "64 GB",
+         "memory_slots": "4"
+      },
+      {
+         "name": "MSI Z490-A PRO",
+         "category": "Motherboard",
+         "price_usd": 179.99,
+         "socket_/_cpu": "LGA1200",
+         "form_factor": "ATX",
+         "memory_max": "128 GB",
+         "memory_slots": "4"
+      },
+      {
+         "name": "Asus ROG STRIX B550-A GAMING",
+         "category": "Motherboard",
+         "price_usd": 164.99,
+         "socket_/_cpu": "AM4",
+         "form_factor": "ATX",
+         "memory_max": "128 GB",
+         "memory_slots": "4"
+      },
+      {
+         "name": "MSI B550-A PRO",
+         "category": "Motherboard",
+         "price_usd": 144.99,
+         "socket_/_cpu": "AM4",
+         "form_factor": "ATX",
+         "memory_max": "128 GB",
+         "memory_slots": "4"
+      },
+      {
+         "name": "Asus ROG Strix X570-E Gaming",
+         "category": "Motherboard",
+         "price_usd": 329.99,
+         "socket_/_cpu": "AM4",
+         "form_factor": "ATX",
+         "memory_max": "128 GB",
+         "memory_slots": "4"
+      },
+      {
+         "name": "Gigabyte B450M DS3H V2",
+         "category": "Motherboard",
+         "price_usd": 64.98,
+         "socket_/_cpu": "AM4",
+         "form_factor": "Micro ATX",
+         "memory_max": "128 GB",
+         "memory_slots": "4"
+      },
+      {
+         "name": "MSI MPG Z490 GAMING PLUS",
+         "category": "Motherboard",
+         "price_usd": 189.99,
+         "socket_/_cpu": "LGA1200",
+         "form_factor": "ATX",
+         "memory_max": "128 GB",
+         "memory_slots": "4"
+      },
+      {
+         "name": "Asus ROG STRIX B450-F GAMING",
+         "category": "Motherboard",
+         "price_usd": 166.16,
+         "socket_/_cpu": "AM4",
+         "form_factor": "ATX",
+         "memory_max": "64 GB",
+         "memory_slots": "4"
+      },
+      {
+         "name": "MSI B550M PRO-VDH WIFI",
+         "category": "Motherboard",
+         "price_usd": 89.99,
+         "socket_/_cpu": "AM4",
+         "form_factor": "Micro ATX",
+         "memory_max": "128 GB",
+         "memory_slots": "4"
+      },
+      {
+         "name": "MSI MAG X570 TOMAHAWK WIFI",
+         "category": "Motherboard",
+         "price_usd": 257.99,
+         "socket_/_cpu": "AM4",
+         "form_factor": "ATX",
+         "memory_max": "128 GB",
+         "memory_slots": "4"
+      },
+      {
+         "name": "Asus ROG Crosshair VIII Dark Hero",
+         "category": "Motherboard",
+         "price_usd": 449.99,
+         "socket_/_cpu": "AM4",
+         "form_factor": "ATX",
+         "memory_max": "128 GB",
+         "memory_slots": "4"
+      },
+      {
+         "name": "Asus ROG Swift PG65UQ",
+         "category": "Monitor",
+         "price_usd": 12019.67,
+         "resolution": "3840 x 2160",
+         "refresh_rate": "144 Hz"
+      },
+      {
+         "name": "MSI Optix G241",
+         "category": "Monitor",
+         "price_usd": 189.99,
+         "resolution": "1920 x 1080",
+         "refresh_rate": "144 Hz"
+      },
+      {
+         "name": "AOC C24G1",
+         "category": "Monitor",
+         "price_usd": 190.88,
+         "resolution": "1920 x 1080",
+         "refresh_rate": "144 Hz"
+      },
+      {
+         "name": "Asus VG248QG",
+         "category": "Monitor",
+         "price_usd": 190.99,
+         "resolution": "1920 x 1080",
+         "refresh_rate": "165 Hz"
+      },
+      {
+         "name": "Asus TUF Gaming VG27AQ",
+         "category": "Monitor",
+         "price_usd": 329.99,
+         "resolution": "2560 x 1440",
+         "refresh_rate": "165 Hz"
+      },
+      {
+         "name": "MSI Optix G24C4",
+         "category": "Monitor",
+         "price_usd": 169.99,
+         "resolution": "1920 x 1080",
+         "refresh_rate": "144 Hz"
+      },
+      {
+         "name": "Asus ROG Swift PG259QN",
+         "category": "Monitor",
+         "price_usd": 566.99,
+         "resolution": "1920 x 1080",
+         "refresh_rate": "360 Hz"
+      },
+      {
+         "name": "Samsung Odyssey G9",
+         "category": "Monitor",
+         "price_usd": 1966.12,
+         "resolution": "5120 x 1440",
+         "refresh_rate": "240 Hz"
+      },
+      {
+         "name": "Acer SB220Q bi",
+         "category": "Monitor",
+         "price_usd": 139.9,
+         "resolution": "1920 x 1080",
+         "refresh_rate": "75 Hz"
+      },
+      {
+         "name": "Samsung S22R350FHN",
+         "category": "Monitor",
+         "price_usd": 99.99,
+         "resolution": "1920 x 1080",
+         "refresh_rate": "75 Hz"
+      },
+      {
+         "name": "MSI Optix MAG27CQ",
+         "category": "Monitor",
+         "price_usd": 259.99,
+         "resolution": "2560 x 1440",
+         "refresh_rate": "144 Hz"
+      },
+      {
+         "name": "Asus TUF Gaming VG24VQ",
+         "category": "Monitor",
+         "price_usd": 182.98,
+         "resolution": "1920 x 1080",
+         "refresh_rate": "144 Hz"
+      },
+      {
+         "name": "LG 27GN950-B",
+         "category": "Monitor",
+         "price_usd": 849.99,
+         "resolution": "3840 x 2160",
+         "refresh_rate": "144 Hz"
+      },
+      {
+         "name": "Asus TUF Gaming VG279QM",
+         "category": "Monitor",
+         "price_usd": 369.0,
+         "resolution": "1920 x 1080",
+         "refresh_rate": "280 Hz"
+      },
+      {
+         "name": "Samsung Odyssey G7",
+         "category": "Monitor",
+         "price_usd": 699.99,
+         "resolution": "2560 x 1440",
+         "refresh_rate": "240 Hz"
+      },
+      {
+         "name": "Corsair RM (2019)",
+         "category": "Power supply",
+         "price_usd": 124.99,
+         "form_factor": "ATX",
+         "efficiency_rating": "80+ Gold",
+         "wattage": "750 W",
+         "modular": "Full"
+      },
+      {
+         "name": "EVGA BQ",
+         "category": "Power supply",
+         "price_usd": 64.0,
+         "form_factor": "ATX",
+         "efficiency_rating": "80+ Bronze",
+         "wattage": "600 W",
+         "modular": "Semi"
+      },
+      {
+         "name": "Corsair RM (2019)",
+         "category": "Power supply",
+         "price_usd": 134.99,
+         "form_factor": "ATX",
+         "efficiency_rating": "80+ Gold",
+         "wattage": "850 W",
+         "modular": "Full"
+      },
+      {
+         "name": "EVGA SuperNOVA GA",
+         "category": "Power supply",
+         "price_usd": 84.99,
+         "form_factor": "ATX",
+         "efficiency_rating": "80+ Gold",
+         "wattage": "650 W",
+         "modular": "Full"
+      },
+      {
+         "name": "Corsair RM (2019)",
+         "category": "Power supply",
+         "price_usd": 89.99,
+         "form_factor": "ATX",
+         "efficiency_rating": "80+ Gold",
+         "wattage": "650 W",
+         "modular": "Full"
+      },
+      {
+         "name": "EVGA BR",
+         "category": "Power supply",
+         "price_usd": 39.99,
+         "form_factor": "ATX",
+         "efficiency_rating": "80+ Bronze",
+         "wattage": "500 W",
+         "modular": false
+      },
+      {
+         "name": "EVGA SuperNOVA GA",
+         "category": "Power supply",
+         "price_usd": 115.95,
+         "form_factor": "ATX",
+         "efficiency_rating": "80+ Gold",
+         "wattage": "750 W",
+         "modular": "Full"
+      },
+      {
+         "name": "Corsair SF",
+         "category": "Power supply",
+         "price_usd": 178.12,
+         "form_factor": "SFX",
+         "efficiency_rating": "80+ Platinum",
+         "wattage": "750 W",
+         "modular": "Full"
+      },
+      {
+         "name": "Corsair AXi",
+         "category": "Power supply",
+         "price_usd": 935.9,
+         "form_factor": "ATX",
+         "efficiency_rating": "80+ Titanium",
+         "wattage": "1600 W",
+         "modular": "Full"
+      },
+      {
+         "name": "EVGA BQ",
+         "category": "Power supply",
+         "price_usd": 34.99,
+         "form_factor": "ATX",
+         "efficiency_rating": "80+ Bronze",
+         "wattage": "500 W",
+         "modular": "Semi"
+      },
+      {
+         "name": "Corsair HX Platinum",
+         "category": "Power supply",
+         "price_usd": 348.99,
+         "form_factor": "ATX",
+         "efficiency_rating": "80+ Platinum",
+         "wattage": "1000 W",
+         "modular": "Full"
+      },
+      {
+         "name": "Corsair RMx (2018)",
+         "category": "Power supply",
+         "price_usd": 144.99,
+         "form_factor": "ATX",
+         "efficiency_rating": "80+ Gold",
+         "wattage": "850 W",
+         "modular": "Full"
+      },
+      {
+         "name": "Corsair CXM",
+         "category": "Power supply",
+         "price_usd": 84.99,
+         "form_factor": "ATX",
+         "efficiency_rating": "80+ Bronze",
+         "wattage": "650 W",
+         "modular": "Semi"
+      },
+      {
+         "name": "Gigabyte P GM",
+         "category": "Power supply",
+         "price_usd": 87.99,
+         "form_factor": "ATX",
+         "efficiency_rating": "80+ Gold",
+         "wattage": "750 W",
+         "modular": "Full"
+      },
+      {
+         "name": "Corsair Vengeance LPX 16 GB",
+         "category": "RAM",
+         "price_usd": 88.99,
+         "speed": "DDR4-3200",
+         "modules": "2 x 8GB"
+      },
+      {
+         "name": "Corsair Vengeance RGB Pro 16 GB",
+         "category": "RAM",
+         "price_usd": 103.99,
+         "speed": "DDR4-3200",
+         "modules": "2 x 8GB"
+      },
+      {
+         "name": "Crucial Ballistix 16 GB",
+         "category": "RAM",
+         "price_usd": 87.99,
+         "speed": "DDR4-3200",
+         "modules": "2 x 8GB"
+      },
+      {
+         "name": "G.Skill Trident Z RGB 16 GB",
+         "category": "RAM",
+         "price_usd": 114.99,
+         "speed": "DDR4-3600",
+         "modules": "2 x 8GB"
+      },
+      {
+         "name": "Corsair Vengeance RGB Pro 32 GB",
+         "category": "RAM",
+         "price_usd": null,
+         "speed": "DDR4-3200",
+         "modules": "2 x 16GB"
+      },
+      {
+         "name": "Crucial Ballistix 16 GB",
+         "category": "RAM",
+         "price_usd": 86.99,
+         "speed": "DDR4-3600",
+         "modules": "2 x 8GB"
+      },
+      {
+         "name": "Corsair Vengeance RGB Pro 16 GB",
+         "category": "RAM",
+         "price_usd": 104.99,
+         "speed": "DDR4-3200",
+         "modules": "2 x 8GB"
+      },
+      {
+         "name": "G.Skill Ripjaws V Series 32 GB",
+         "category": "RAM",
+         "price_usd": 154.99,
+         "speed": "DDR4-3200",
+         "modules": "2 x 16GB"
+      },
+      {
+         "name": "G.Skill Trident Z Neo 32 GB",
+         "category": "RAM",
+         "price_usd": 227.99,
+         "speed": "DDR4-3600",
+         "modules": "2 x 16GB"
+      },
+      {
+         "name": "Team T-FORCE VULCAN Z 16 GB",
+         "category": "RAM",
+         "price_usd": 79.98,
+         "speed": "DDR4-3200",
+         "modules": "2 x 8GB"
+      },
+      {
+         "name": "Corsair Vengeance RGB Pro 32 GB",
+         "category": "RAM",
+         "price_usd": 212.24,
+         "speed": "DDR4-3600",
+         "modules": "2 x 16GB"
+      },
+      {
+         "name": "G.Skill Ripjaws V 16 GB",
+         "category": "RAM",
+         "price_usd": 97.99,
+         "speed": "DDR4-3600",
+         "modules": "2 x 8GB"
+      },
+      {
+         "name": "Corsair Vengeance LPX 128 GB",
+         "category": "RAM",
+         "price_usd": 3832.0,
+         "speed": "DDR4-3800",
+         "modules": "8 x 16GB"
+      },
+      {
+         "name": "Corsair Vengeance LPX 16 GB",
+         "category": "RAM",
+         "price_usd": 89.99,
+         "speed": "DDR4-3600",
+         "modules": "2 x 8GB"
+      },
+      {
+         "name": "Corsair Vengeance LPX 16 GB",
+         "category": "RAM",
+         "price_usd": 189.99,
+         "speed": "DDR4-2400",
+         "modules": "2 x 8GB"
+      },
+      {
+         "name": "Seagate Barracuda Compute",
+         "category": "Storage",
+         "price_usd": 55.49,
+         "capacity": "2 TB",
+         "type": "7200RPM",
+         "form_factor": "3.5\"",
+         "interface": "SATA 6 Gb/s"
+      },
+      {
+         "name": "Western Digital Blue SN550",
+         "category": "Storage",
+         "price_usd": 104.99,
+         "capacity": "1 TB",
+         "type": "SSD",
+         "form_factor": "M.2-2280",
+         "interface": "M.2 (M)"
+      },
+      {
+         "name": "Samsung 970 Evo Plus",
+         "category": "Storage",
+         "price_usd": 159.9,
+         "capacity": "1 TB",
+         "type": "SSD",
+         "form_factor": "M.2-2280",
+         "interface": "M.2 (M)"
+      },
+      {
+         "name": "Samsung 860 Evo",
+         "category": "Storage",
+         "price_usd": 141.07,
+         "capacity": "1 TB",
+         "type": "SSD",
+         "form_factor": "2.5\"",
+         "interface": "SATA 6 Gb/s"
+      },
+      {
+         "name": "Samsung 980 Pro",
+         "category": "Storage",
+         "price_usd": 199.99,
+         "capacity": "1 TB",
+         "type": "SSD",
+         "form_factor": "M.2-2280",
+         "interface": "M.2 (M)"
+      },
+      {
+         "name": "Samsung 970 Evo",
+         "category": "Storage",
+         "price_usd": 140.0,
+         "capacity": "500 GB",
+         "type": "SSD",
+         "form_factor": "M.2-2280",
+         "interface": "M.2 (M)"
+      },
+      {
+         "name": "Western Digital Blue",
+         "category": "Storage",
+         "price_usd": 58.99,
+         "capacity": "500 GB",
+         "type": "SSD",
+         "form_factor": "M.2-2280",
+         "interface": "M.2 (B+M)"
+      },
+      {
+         "name": "Samsung 970 EVO Plus",
+         "category": "Storage",
+         "price_usd": 310.08,
+         "capacity": "2 TB",
+         "type": "SSD",
+         "form_factor": "M.2-2280",
+         "interface": "M.2 (M)"
+      },
+      {
+         "name": "Western Digital Caviar Blue",
+         "category": "Storage",
+         "price_usd": 39.99,
+         "capacity": "1 TB",
+         "type": "7200RPM",
+         "form_factor": "3.5\"",
+         "interface": "SATA 6 Gb/s"
+      },
+      {
+         "name": "Samsung 980 Pro",
+         "category": "Storage",
+         "price_usd": 397.44,
+         "capacity": "2 TB",
+         "type": "SSD",
+         "form_factor": "M.2-2280",
+         "interface": "M.2 (M)"
+      },
+      {
+         "name": "Seagate BarraCuda",
+         "category": "Storage",
+         "price_usd": 44.99,
+         "capacity": "1 TB",
+         "type": "7200RPM",
+         "form_factor": "3.5\"",
+         "interface": "SATA 6 Gb/s"
+      },
+      {
+         "name": "Kingston A400",
+         "category": "Storage",
+         "price_usd": 34.99,
+         "capacity": "240 GB",
+         "type": "SSD",
+         "form_factor": "2.5\"",
+         "interface": "SATA 6 Gb/s"
+      },
+      {
+         "name": "Western Digital Blue SN550",
+         "category": "Storage",
+         "price_usd": 59.99,
+         "capacity": "500 GB",
+         "type": "SSD",
+         "form_factor": "M.2-2280",
+         "interface": "M.2 (M)"
+      },
+      {
+         "name": "Samsung 980",
+         "category": "Storage",
+         "price_usd": 119.99,
+         "capacity": "1 TB",
+         "type": "SSD",
+         "form_factor": "M.2-2280",
+         "interface": "M.2 (M)"
+      },
+      {
+         "name": "Intel SSDPEDMD020T401",
+         "category": "Storage",
+         "price_usd": 10860.53,
+         "capacity": "2 TB",
+         "type": "SSD",
+         "form_factor": "PCI-E",
+         "interface": "PCIe x4"
+      }
+   ]
+}

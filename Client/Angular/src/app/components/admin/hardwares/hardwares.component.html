@@ -14,10 +14,10 @@
     </thead>
 
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>RAM</td>
+      <tr #eachHardware *ngFor="let hardware of hardwares.hardwares; index as i">
+        <th scope="row">{{i+1}}.</th>
+        <td>{{hardware.name}}</td>
+        <td>{{hardware.category}}</td>
         <td>
           <button class="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#infoModal">
             More
@@ -45,27 +45,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <table class="table table-dark table-striped">
-          <thead>
-            <tr>
-              <!-- <th scope="col">#</th> -->
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <!-- <th scope="row">1</th> -->
-              <td>Mark</td>
-              <td>Otto</td>
-            </tr>
-            <tr>
-              <!-- <th scope="row">2</th> -->
-              <td>Jacob</td>
-              <td>Thornton</td>
-            </tr>
-          </tbody>
-        </table>
+        
+        <app-hw-details></app-hw-details>
+          
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
