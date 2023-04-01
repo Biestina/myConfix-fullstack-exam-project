@@ -1,17 +1,18 @@
-<table class="table table-dark table-striped">
-  <!-- <thead>
+<table *ngIf="hardware" class="table table-dark table-striped">
+  <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
+              <!-- <th scope="col">#</th> -->
+              <th *ngFor="let key of keys" scope="col">{{ key | titlecase }}</th>
             </tr>
-          </thead> -->
+          </thead>
   <tbody>
     <!-- <tr *ngFor="let prop of hardwares"> -->
-    <tr>
+    <tr *ngFor="let row of rows">
       <!-- <th scope="row">#</th> -->
-      <td>n</td>
-      <td>t</td>
+      <td *ngFor="let value of values">{{ row[value] }}</td>
+      <!-- <td>{{hardware?.name}}</td>
+      <td *ngIf="hardware.price_usd">{{hardware?.price_usd}}</td>
+      <td *ngIf="hardware.type">{{hardware?.type}}</td> -->
     </tr>
 
   </tbody>

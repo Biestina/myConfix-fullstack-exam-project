@@ -19,7 +19,7 @@
         <td>{{hardware.name}}</td>
         <td>{{hardware.category}}</td>
         <td>
-          <button class="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#infoModal">
+          <button (click)="showMoreInfo(hardware.name)" class="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#infoModal">
             More
           </button>
         </td>
@@ -46,7 +46,9 @@
       </div>
       <div class="modal-body">
         
-        <app-hw-details></app-hw-details>
+        <ng-container *ngIf="selectedHardware">
+          <app-hw-details [hardware]="selectedHardware"></app-hw-details>
+        </ng-container>
           
 
       </div>

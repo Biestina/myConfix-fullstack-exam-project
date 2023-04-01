@@ -6,7 +6,7 @@
          "price_usd": 66.98,
          "type": "ATX Mid Tower",
          "side_panel_window": "Tempered Glass",
-         "internal_3.5\"_bays": "2"
+         "internal_3_5_bays": "2"
       },
       {
          "name": "Phanteks Eclipse P300A Mesh",
@@ -14,7 +14,7 @@
          "price_usd": 49.99,
          "type": "ATX Mid Tower",
          "side_panel_window": "Tempered Glass",
-         "internal_3.5\"_bays": "2"
+         "internal_3_5_bays": "2"
       },
       {
          "name": "Lian Li PC-O11 Dynamic",
@@ -22,7 +22,7 @@
          "price_usd": 149.99,
          "type": "ATX Full Tower",
          "side_panel_window": "Tempered Glass",
-         "internal_3.5\"_bays": "2"
+         "internal_3_5_bays": "2"
       },
       {
          "name": "Corsair 4000D Airflow",
@@ -30,7 +30,7 @@
          "price_usd": 84.99,
          "type": "ATX Mid Tower",
          "side_panel_window": "Tinted Tempered Glass",
-         "internal_3.5\"_bays": "2"
+         "internal_3_5_bays": "2"
       },
       {
          "name": "Phanteks Eclipse P400A Digital",
@@ -38,7 +38,7 @@
          "price_usd": 89.99,
          "type": "ATX Mid Tower",
          "side_panel_window": "Tempered Glass",
-         "internal_3.5\"_bays": "2"
+         "internal_3_5_bays": "2"
       },
       {
          "name": "Corsair 275R Airflow",
@@ -46,7 +46,7 @@
          "price_usd": 199.97,
          "type": "ATX Mid Tower",
          "side_panel_window": "Tempered Glass",
-         "internal_3.5\"_bays": "2"
+         "internal_3_5_bays": "2"
       },
       {
          "name": "Lian Li Lancool II Mesh",
@@ -54,7 +54,7 @@
          "price_usd": 109.99,
          "type": "ATX Mid Tower",
          "side_panel_window": "Tempered Glass",
-         "internal_3.5\"_bays": "3"
+         "internal_3_5_bays": "3"
       },
       {
          "name": "Fractal Design Meshify C",
@@ -62,7 +62,7 @@
          "price_usd": 97.89,
          "type": "ATX Mid Tower",
          "side_panel_window": "Tinted Tempered Glass",
-         "internal_3.5\"_bays": "2"
+         "internal_3_5_bays": "2"
       },
       {
          "name": "Corsair iCUE 4000X RGB",
@@ -70,7 +70,7 @@
          "price_usd": 134.99,
          "type": "ATX Mid Tower",
          "side_panel_window": "Tempered Glass",
-         "internal_3.5\"_bays": "2"
+         "internal_3_5_bays": "2"
       },
       {
          "name": "NZXT H510 Elite",
@@ -78,7 +78,7 @@
          "price_usd": 129.99,
          "type": "ATX Mid Tower",
          "side_panel_window": "Tempered Glass",
-         "internal_3.5\"_bays": "2"
+         "internal_3_5_bays": "2"
       },
       {
          "name": "Corsair iCUE 4000X RGB",
@@ -86,7 +86,7 @@
          "price_usd": 128.99,
          "type": "ATX Mid Tower",
          "side_panel_window": "Tempered Glass",
-         "internal_3.5\"_bays": "2"
+         "internal_3_5_bays": "2"
       },
       {
          "name": "Cooler Master MasterBox Q300L",
@@ -94,7 +94,7 @@
          "price_usd": 46.86,
          "type": "MicroATX Mini Tower",
          "side_panel_window": "Acrylic",
-         "internal_3.5\"_bays": "1"
+         "internal_3_5_bays": "1"
       },
       {
          "name": "AMD Ryzen 5 3600",
@@ -403,7 +403,7 @@
          "name": "Asus TUF GAMING X570-PLUS (WI-FI)",
          "category": "Motherboard",
          "price_usd": 192.99,
-         "socket_/_cpu": "AM4",
+         "cpu_socket": "AM4",
          "form_factor": "ATX",
          "memory_max": "128 GB",
          "memory_slots": "4"
@@ -412,7 +412,7 @@
          "name": "MSI B450 TOMAHAWK MAX",
          "category": "Motherboard",
          "price_usd": 99.95,
-         "socket_/_cpu": "AM4",
+         "cpu_socket": "AM4",
          "form_factor": "ATX",
          "memory_max": "64 GB",
          "memory_slots": "4"
@@ -421,7 +421,7 @@
          "name": "Asus ROG STRIX B550-F GAMING (WI-FI)",
          "category": "Motherboard",
          "price_usd": 189.99,
-         "socket_/_cpu": "AM4",
+         "cpu_socket": "AM4",
          "form_factor": "ATX",
          "memory_max": "128 GB",
          "memory_slots": "4"
@@ -430,7 +430,7 @@
          "name": "MSI MAG B550 TOMAHAWK",
          "category": "Motherboard",
          "price_usd": 149.99,
-         "socket_/_cpu": "AM4",
+         "cpu_socket": "AM4",
          "form_factor": "ATX",
          "memory_max": "128 GB",
          "memory_slots": "4"
@@ -439,7 +439,7 @@
          "name": "ASRock B450M Pro4",
          "category": "Motherboard",
          "price_usd": 76.98,
-         "socket_/_cpu": "AM4",
+         "cpu_socket": "AM4",
          "form_factor": "Micro ATX",
          "memory_max": "64 GB",
          "memory_slots": "4"
@@ -448,7 +448,7 @@
          "name": "MSI Z490-A PRO",
          "category": "Motherboard",
          "price_usd": 179.99,
-         "socket_/_cpu": "LGA1200",
+         "cpu_socket": "LGA1200",
          "form_factor": "ATX",
          "memory_max": "128 GB",
          "memory_slots": "4"
@@ -457,7 +457,7 @@
          "name": "Asus ROG STRIX B550-A GAMING",
          "category": "Motherboard",
          "price_usd": 164.99,
-         "socket_/_cpu": "AM4",
+         "cpu_socket": "AM4",
          "form_factor": "ATX",
          "memory_max": "128 GB",
          "memory_slots": "4"
@@ -466,7 +466,7 @@
          "name": "MSI B550-A PRO",
          "category": "Motherboard",
          "price_usd": 144.99,
-         "socket_/_cpu": "AM4",
+         "cpu_socket": "AM4",
          "form_factor": "ATX",
          "memory_max": "128 GB",
          "memory_slots": "4"
@@ -475,7 +475,7 @@
          "name": "Asus ROG Strix X570-E Gaming",
          "category": "Motherboard",
          "price_usd": 329.99,
-         "socket_/_cpu": "AM4",
+         "cpu_socket": "AM4",
          "form_factor": "ATX",
          "memory_max": "128 GB",
          "memory_slots": "4"
@@ -484,7 +484,7 @@
          "name": "Gigabyte B450M DS3H V2",
          "category": "Motherboard",
          "price_usd": 64.98,
-         "socket_/_cpu": "AM4",
+         "cpu_socket": "AM4",
          "form_factor": "Micro ATX",
          "memory_max": "128 GB",
          "memory_slots": "4"
@@ -493,7 +493,7 @@
          "name": "MSI MPG Z490 GAMING PLUS",
          "category": "Motherboard",
          "price_usd": 189.99,
-         "socket_/_cpu": "LGA1200",
+         "cpu_socket": "LGA1200",
          "form_factor": "ATX",
          "memory_max": "128 GB",
          "memory_slots": "4"
@@ -502,7 +502,7 @@
          "name": "Asus ROG STRIX B450-F GAMING",
          "category": "Motherboard",
          "price_usd": 166.16,
-         "socket_/_cpu": "AM4",
+         "cpu_socket": "AM4",
          "form_factor": "ATX",
          "memory_max": "64 GB",
          "memory_slots": "4"
@@ -511,7 +511,7 @@
          "name": "MSI B550M PRO-VDH WIFI",
          "category": "Motherboard",
          "price_usd": 89.99,
-         "socket_/_cpu": "AM4",
+         "cpu_socket": "AM4",
          "form_factor": "Micro ATX",
          "memory_max": "128 GB",
          "memory_slots": "4"
@@ -520,7 +520,7 @@
          "name": "MSI MAG X570 TOMAHAWK WIFI",
          "category": "Motherboard",
          "price_usd": 257.99,
-         "socket_/_cpu": "AM4",
+         "cpu_socket": "AM4",
          "form_factor": "ATX",
          "memory_max": "128 GB",
          "memory_slots": "4"
@@ -529,7 +529,7 @@
          "name": "Asus ROG Crosshair VIII Dark Hero",
          "category": "Motherboard",
          "price_usd": 449.99,
-         "socket_/_cpu": "AM4",
+         "cpu_socket": "AM4",
          "form_factor": "ATX",
          "memory_max": "128 GB",
          "memory_slots": "4"
