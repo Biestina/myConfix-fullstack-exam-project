@@ -1,5 +1,4 @@
-{
-   "hardwares": [
+ [
       {
          "name": "NZXT H510",
          "category": "Case",
@@ -1006,4 +1005,3 @@
          "interface": "PCIe x4"
       }
    ]
-}

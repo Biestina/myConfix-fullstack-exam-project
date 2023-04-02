@@ -7,19 +7,20 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
-        <th scope="col">Type</th>
+        <th scope="col">Category</th>
         <th scope="col">More info</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
 
     <tbody>
-      <tr #eachHardware *ngFor="let hardware of hardwares.hardwares; index as i">
+      <tr #eachHardware *ngFor="let hardware of hardwares; index as i">
         <th scope="row">{{i+1}}.</th>
         <td>{{hardware.name}}</td>
         <td>{{hardware.category}}</td>
         <td>
-          <button (click)="showMoreInfo(hardware.name)" class="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#infoModal">
+          <button (click)="showMoreInfo(hardware.name)" class="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#infoModal" data-backdrop="false"
+          >
             More
           </button>
         </td>
@@ -37,25 +38,36 @@
 
 
 <!-- * modal -->
-<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-sm">
-    <div class="modal-content ">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="infoModalLabel">Hardware details</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        
-        <ng-container *ngIf="selectedHardware">
-          <app-hw-details [hardware]="selectedHardware"></app-hw-details>
-        </ng-container>
-          
+<!-- <ng-container #infoModal *ngIf="selectedHardware">
+  <app-hw-details [hardware]="selectedHardware"></app-hw-details>
+</ng-container> -->
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+<!-- <ng-container #infoModal *ngIf="selectedHardware"> -->
+    <app-hw-details  [hardware]="selectedHardware" ></app-hw-details>
+<!-- </ng-container> -->
+
+  <!-- <app-hw-details *ngIf="selectedHardware" [hardware]="selectedHardware" [data]="data"></app-hw-details> -->
+  <!-- <ng-template *ngIf="selectedHardware">
+    <app-hw-details *ngIf="modalOpen$ | async"  [hardware]="selectedHardware"></app-hw-details>
+  </ng-template> -->
+
+
+<!-- <ng-container #infoModal *ngIf="selectedHardware">
+  <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content ">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="infoModalLabel">{{selectedHwName}}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <app-hw-details [hardware]="selectedHardware"></app-hw-details>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</ng-container> -->

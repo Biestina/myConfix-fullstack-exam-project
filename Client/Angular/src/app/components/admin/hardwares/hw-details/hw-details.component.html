@@ -1,19 +1,78 @@
+<!-- <div class="modal-body">
 <table *ngIf="hardware" class="table table-dark table-striped">
-  <thead>
-            <tr>
-              <!-- <th scope="col">#</th> -->
-              <th *ngFor="let key of keys" scope="col">{{ key | titlecase }}</th>
-            </tr>
-          </thead>
-  <tbody>
-    <!-- <tr *ngFor="let prop of hardwares"> -->
-    <tr *ngFor="let row of rows">
-      <!-- <th scope="row">#</th> -->
-      <td *ngFor="let value of values">{{ row[value] }}</td>
-      <!-- <td>{{hardware?.name}}</td>
-      <td *ngIf="hardware.price_usd">{{hardware?.price_usd}}</td>
-      <td *ngIf="hardware.type">{{hardware?.type}}</td> -->
-    </tr>
 
+  <thead>
+  </thead>
+  
+  <tbody>
+    <tr *ngFor="let key of keys; index as i">
+      <th>{{keys[i] | titlecase}}</th>
+      <td>{{values[i]}}</td>
   </tbody>
 </table>
+</div> -->
+
+
+<!-- <ng-container #infoModal *ngIf="hardware"> -->
+<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="infoModalLabel">{{hardware?.name}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <table *ngIf="hardware" class="table table-dark table-striped">
+
+          <thead>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let key of keys; index as i">
+              <th>{{keys[i] | titlecase}}</th>
+              <td>{{values[i]}}</td>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </ng-container> -->
+<!-- *********** -->
+
+<!-- <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="infoModalLabel">{{hardware.name}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <table *ngIf="hardware" class="table table-dark table-striped">
+
+          <thead>
+          </thead>
+          
+          <tbody>
+            <tr *ngFor="let key of keys; index as i">
+              <th>{{keys[i] | titlecase}}</th>
+              <td>{{values[i]}}</td>
+          </tbody>
+        </table>
+          
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
