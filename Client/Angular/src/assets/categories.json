@@ -1,0 +1,28 @@
+[
+  {
+    "Case": {
+      "name": "Case"
+    },
+    "CPU": {
+      "name": "CPU"
+    },
+    "GPU": {
+      "name": "GPU"
+    },
+    "Motherboard": {
+      "name": "Motherboard"
+    },
+    "Monitor": {
+      "name": "Monitor"
+    },
+    "PSU": {
+      "name": "PSU"
+    },
+    "RAM": {
+      "name": "RAM"
+    },
+    "Storage": {
+      "name": "Storage"
+    }
+  }
+]

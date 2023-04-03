@@ -1,34 +1,36 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HwDetailsComponent } from './hw-details/hw-details.component';
-import { HardwareModel } from '../../../models/hardware.model'
+import { HardwareModel } from '../../../models/hardware.model';
 import { Observable, Subscription } from 'rxjs';
+import { HardwareService } from 'src/app/services/hardware.service';
 
 @Component({
   selector: 'app-hardwares',
   templateUrl: './hardwares.component.html',
-  styleUrls: ['./hardwares.component.scss']
+  styleUrls: ['./hardwares.component.scss'],
 })
 export class HardwaresComponent implements OnInit, OnDestroy {
-
   hardwares!: HardwareModel[];
   selectedHwName?: string;
-  subscription?: Subscription;
+  subscription!: Subscription;
   // @ViewChild(HwDetailsComponent) hwDetailsComponent!: HwDetailsComponent;
   // @ViewChild('infoModal', { static: false }) infoModal!: ElementRef;
 
-  showMoreInfo(hwName: string){
+  showMoreInfo(hwName: string) {
     this.selectedHwName = hwName;
     // this.hwDetailsComponent.show();
     // this.hwDetailsComponent.ngOnInit
     // this.hwDetailsComponent['show']();
-  };
+  }
 
   get selectedHardware(): HardwareModel | void {
-    if(this.hardwares){
-      return this.hardwares.find((hw: HardwareModel) => hw.name === this.selectedHwName)
+    if (this.hardwares) {
+      return this.hardwares.find(
+        (hw: HardwareModel) => hw.name === this.selectedHwName
+      );
     }
-  };
+  }
 
   // destroyChild(){
   //   if(this.hwDetailsComponent){
@@ -36,25 +38,24 @@ export class HardwaresComponent implements OnInit, OnDestroy {
   //   }
   // }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private hwService: HardwareService) {}
 
   ngOnInit(): void {
-    // console.log('oninit');
-    const url: string = '../../../../assets/data.json';
-    const getHardwares: Observable<Object> = this.http.get(url);
-    this.subscription = getHardwares.subscribe(res => {
-        // console.log(Object.keys(res));   // indexek
-        // console.log(Object.values(res));
-        this.hardwares = Object.values(res);
-      // console.log(this.eachHardware.nativeElement.innerHTML);
-      // console.log(this.eachHardware.nativeElement.value);
-    })
-  };
+    // const url: string = '../../../../assets/data.json';
+    // const getHardwares: Observable<Object> = this.http.get(url);
+    // this.subscription = getHardwares.subscribe(res => {
+    //     this.hardwares = Object.values(res);
+    // })
+    this.subscription = this.hwService.getHardwares().subscribe((res) => {
+      // this.hardwares = Object.values(res);
+      this.hardwares = res;
+    });
+  }
+
 
   ngOnDestroy(): void {
-    if(this.subscription){
+    if (this.subscription) {
       this.subscription.unsubscribe();
-      console.log('destroyed');
     }
   }
 }

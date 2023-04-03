@@ -7,4 +7,5 @@ export interface ConfigModel {
     powerSupply: string;
     ram: string;
     storage: string;
+    id?: string;
 }

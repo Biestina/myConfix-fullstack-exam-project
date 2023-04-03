@@ -640,7 +640,7 @@
       },
       {
          "name": "Corsair RM (2019)",
-         "category": "Power supply",
+         "category": "PSU",
          "price_usd": 124.99,
          "form_factor": "ATX",
          "efficiency_rating": "80+ Gold",
@@ -649,7 +649,7 @@
       },
       {
          "name": "EVGA BQ",
-         "category": "Power supply",
+         "category": "PSU",
          "price_usd": 64.0,
          "form_factor": "ATX",
          "efficiency_rating": "80+ Bronze",
@@ -658,7 +658,7 @@
       },
       {
          "name": "Corsair RM (2019)",
-         "category": "Power supply",
+         "category": "PSU",
          "price_usd": 134.99,
          "form_factor": "ATX",
          "efficiency_rating": "80+ Gold",
@@ -667,7 +667,7 @@
       },
       {
          "name": "EVGA SuperNOVA GA",
-         "category": "Power supply",
+         "category": "PSU",
          "price_usd": 84.99,
          "form_factor": "ATX",
          "efficiency_rating": "80+ Gold",
@@ -676,7 +676,7 @@
       },
       {
          "name": "Corsair RM (2019)",
-         "category": "Power supply",
+         "category": "PSU",
          "price_usd": 89.99,
          "form_factor": "ATX",
          "efficiency_rating": "80+ Gold",
@@ -685,7 +685,7 @@
       },
       {
          "name": "EVGA BR",
-         "category": "Power supply",
+         "category": "PSU",
          "price_usd": 39.99,
          "form_factor": "ATX",
          "efficiency_rating": "80+ Bronze",
@@ -694,7 +694,7 @@
       },
       {
          "name": "EVGA SuperNOVA GA",
-         "category": "Power supply",
+         "category": "PSU",
          "price_usd": 115.95,
          "form_factor": "ATX",
          "efficiency_rating": "80+ Gold",
@@ -703,7 +703,7 @@
       },
       {
          "name": "Corsair SF",
-         "category": "Power supply",
+         "category": "PSU",
          "price_usd": 178.12,
          "form_factor": "SFX",
          "efficiency_rating": "80+ Platinum",
@@ -712,7 +712,7 @@
       },
       {
          "name": "Corsair AXi",
-         "category": "Power supply",
+         "category": "PSU",
          "price_usd": 935.9,
          "form_factor": "ATX",
          "efficiency_rating": "80+ Titanium",
@@ -721,7 +721,7 @@
       },
       {
          "name": "EVGA BQ",
-         "category": "Power supply",
+         "category": "PSU",
          "price_usd": 34.99,
          "form_factor": "ATX",
          "efficiency_rating": "80+ Bronze",
@@ -730,7 +730,7 @@
       },
       {
          "name": "Corsair HX Platinum",
-         "category": "Power supply",
+         "category": "PSU",
          "price_usd": 348.99,
          "form_factor": "ATX",
          "efficiency_rating": "80+ Platinum",
@@ -739,7 +739,7 @@
       },
       {
          "name": "Corsair RMx (2018)",
-         "category": "Power supply",
+         "category": "PSU",
          "price_usd": 144.99,
          "form_factor": "ATX",
          "efficiency_rating": "80+ Gold",
@@ -748,7 +748,7 @@
       },
       {
          "name": "Corsair CXM",
-         "category": "Power supply",
+         "category": "PSU",
          "price_usd": 84.99,
          "form_factor": "ATX",
          "efficiency_rating": "80+ Bronze",
@@ -757,7 +757,7 @@
       },
       {
          "name": "Gigabyte P GM",
-         "category": "Power supply",
+         "category": "PSU",
          "price_usd": 87.99,
          "form_factor": "ATX",
          "efficiency_rating": "80+ Gold",
