@@ -7,6 +7,8 @@ import { HardwareModel } from '../models/hardware.model';
   providedIn: 'root'
 })
 export class HardwareService {
+
+  //TODO hwSubject
   
   url: string = '../../../../assets/hardwares.json';
   hardwares!: HardwareModel[];

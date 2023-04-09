@@ -1,11 +1,11 @@
 export interface ConfigModel {
-    case: string;
-    cpu: string;
+    case?: string;
+    cpu?: string;
     gpu?: string;
-    motherboard: string;
+    motherboard?: string;
     monitor?: string;
-    powerSupply: string;
-    ram: string;
-    storage: string;
+    psu?: string;
+    ram?: string;
+    storage?: string;
     id?: string;
 }

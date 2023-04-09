@@ -12,6 +12,9 @@ import { BuilderComponent } from './components/builder/builder.component';
 import { HardwaresComponent } from './components/admin/hardwares/hardwares.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HwDetailsComponent } from './components/admin/hardwares/hw-details/hw-details.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MyconfigsComponent } from './components/myconfigs/myconfigs.component';
+import { ConfigDetailsComponent } from './components/myconfigs/config-details/config-details.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +26,10 @@ import { HwDetailsComponent } from './components/admin/hardwares/hw-details/hw-d
     HardwaresComponent,
     NavbarComponent,
     HwDetailsComponent,
+    MyconfigsComponent,
+    ConfigDetailsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

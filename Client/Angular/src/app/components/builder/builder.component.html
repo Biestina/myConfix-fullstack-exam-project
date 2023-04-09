@@ -1,45 +1,64 @@
-<h2 class="text-center text-yellow mb-5">PC Builder</h2>
+<h2 class="text-center text-yellow mb-3">PC Builder</h2>
 
-<button (click)="create()" class="btn btn-outline-info d-block mx-auto my-2">Build a new PC</button>
 
-<div class="form-wrapper d-flex container justify-content-center align-items-center">
-  <form class="p-5 text-yellow opacity-75">
+<div class="container d-grid">
+  <div class="row">
+    <div class="col">
 
-    <div class="mb-3 form-group-row" *ngFor="let category of categories; index as i">
-      <label class="col-form-label me-2" >
-        {{category}}
-        <select class="form-control-sm form-select" [name]='category' [value]='category'>
-          <!-- <option selected disabled hidden></option> -->
-          <option [disabled]="true" [selected]="true" [hidden]="true">Select a {{category}}</option>
-          
-          <ng-container *ngFor="let hardware of hardwares; index as j">
-            <option *ngIf="hardware.category === categories[i]" [value]="hardware.name">
-              {{hardware.name}}
-            </option>
-          </ng-container>
-          
-        </select>
-      </label>
-      <button class="btn btn-success">+</button>
+      <!-- <div class="form-wrapper d-grid container justify-content-center align-items-center bg-dark w-25 bg-opacity-50"> -->
+      <div class="p-4 form-wrapper  justify-content-center align-items-center">
+        <form *ngIf="configForm" [formGroup]="configForm" (ngSubmit)="create()" class=" text-yellow opacity-75">
+
+          <div class="mb-2 form-group-row" *ngFor="let category of categories; index as i">
+
+            <label [for]="category.toLowerCase()" class="col-form-label me-2">
+              {{category}}
+              <select class="form-control-sm form-select" [id]="category.toLowerCase()" [formControlName]="category.toLowerCase()" [name]="category" [value]="category"
+                (change)="onChange($event, category.toLowerCase())">
+                <option [disabled]="true" [selected]="true" [hidden]="true" [defaultSelected]="true">
+                  Select a {{category}}
+                </option>
+
+                <ng-container *ngFor="let hardware of hardwares; index as j">
+                  <option *ngIf="hardware.category === categories[i]" [value]="hardware.name">
+                    {{hardware.name}}
+                  </option>
+                </ng-container>
+
+              </select>
+            </label>
+            <!-- <button class="btn btn-success">+</button> -->
+          </div>
+          <!-- <label>
+            Memória:
+            <select [(ngModel)]="selectedMemory">
+              <option *ngFor="let memory of memories" [value]="memory.id">{{ memory.name }}</option>
+            </select>
+          </label> -->
+
+
+          <!-- <button type="button" (click)="addToConfig()">Add to Configuration</button> -->
+
+          <button class="btn btn-outline-info d-block mx-auto">Build a new PC</button>
+        </form>
+      </div>
 
     </div>
 
-<!-- <label>
-        Memória:
-      <select [(ngModel)]="selectedMemory">
-        <option *ngFor="let memory of memories" [value]="memory.id">{{ memory.name }}</option>
-      </select>
-    </label> -->
 
-    
-    <!-- <button type="button" (click)="addToConfig()">Add to Configuration</button> -->
-  </form>
+
+    <div class="p-5 col text-yellow">
+      <h3 *ngIf="ckeys" class="pb-5">Added to Configuration:</h3>
+      <div *ngFor="let c of ckeys; index as i">
+        <span class="fw-bold">{{c}}: </span>
+        <span>
+          {{ cvalues[i] }}
+        </span>
+      </div>
+    </div>
+
+
+  </div>
+
+
 </div>
-
-
-
-  <br>
-  <h3>Added to Configuration:</h3>
-  <ul>
-    <!-- <li *ngFor="let item of addedItems">{{ item.name }}</li> -->
-  </ul>

@@ -13,29 +13,37 @@ export class ConfigService {
   catUrl: string = '../../../../assets/categories.json';
   url: string = 'http://localhost:3000/configs';
   configs?: ConfigModel[];
+  config!: ConfigModel;
   categories!: Category[];
 
   constructor(private http: HttpClient) { }
   
-  create(newConfig: ConfigModel): Observable<any>{
+  create(newConfig: ConfigModel): Observable<ConfigModel> {
     return this.http.post(this.url, newConfig);
   };
 
-  findAll(): Observable<ConfigModel[]>{
+  findAll(): Observable<ConfigModel[]> {
     return this.http.get(this.url).pipe(
       map(configs => this.configs = Object.values(configs)),
-      tap(configs => console.log(this.configs))
+      // tap(configs => console.log(this.configs))
     );
   };
 
-  findById(){};
-
-  update(config: ConfigModel): Observable<ConfigModel>{
-    return this.http.put<ConfigModel>(`${this.url}`, config)
+  findById(id: any): Observable<ConfigModel> {
+    return this.http.get(`${this.url}/${id}`).pipe(
+      map(config => this.config = config),
+      // tap(config => console.log(this.config))
+    )
   };
 
-  delete(id: number | string){
-    return this.http.delete(`${this.url}/id`)
+  // update(id: any): Observable<ConfigModel> {
+  update(config: ConfigModel): Observable<ConfigModel> {
+    // return this.http.put<ConfigModel>(`${this.url}/${id}`, id)
+    return this.http.put<ConfigModel>(`${this.url}/${this.config.id}`, config)
+  };
+
+  delete(id: number | string): Observable<any> {
+    return this.http.delete(`${this.url}/${id}`)
   };
 
 

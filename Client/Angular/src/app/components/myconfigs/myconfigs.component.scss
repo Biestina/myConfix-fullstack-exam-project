@@ -1,0 +1,18 @@
+.card {
+
+  &-header {
+    position: relative;
+    padding: 0;
+    margin: auto -0.8em;
+    
+    a {
+      position: absolute;
+    }
+  }
+
+  ul {
+    li {
+      list-style-type: none;
+    }
+  }
+}
