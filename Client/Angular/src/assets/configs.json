@@ -24,7 +24,7 @@
     },
     {
       "case": "Corsair 4000D Airflow",
-      "cpu": "",
+      "cpu": "AMD Ryzen 5 3600",
       "gpu": "Asus Phoenix",
       "motherboard": "",
       "monitor": "",
@@ -32,6 +32,17 @@
       "ram": "Corsair Vengeance LPX 16 GB",
       "storage": "Samsung 980 Pro",
       "id": 14
+    },
+    {
+      "case": "Lian Li Lancool II Mesh",
+      "cpu": "AMD Ryzen 5 3600",
+      "gpu": "NVIDIA Founders Edition",
+      "motherboard": "Asus TUF GAMING X570-PLUS (WI-FI)",
+      "monitor": "Asus VG248QG",
+      "psu": "EVGA BQ",
+      "ram": "G.Skill Ripjaws V 16 GB",
+      "storage": "Intel SSDPEDMD020T401",
+      "id": 15
     }
   ]
 }

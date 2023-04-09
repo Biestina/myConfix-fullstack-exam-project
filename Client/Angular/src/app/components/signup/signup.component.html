@@ -1,25 +1,29 @@
+<h3 class="text-yellow text-center">Sign up</h3>
+
 <div class="form-wrapper d-flex container justify-content-center align-items-center">
 
-  <form class="p-5 text-yellow opacity-75">
+  <form *ngIf="signupForm" [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="p-5 text-yellow opacity-75">
 
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div *ngIf="email" class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" formControlName="email">
+      <div *ngIf="email.invalid && email.touched" class="text-danger fw-bold">A valid email is required.</div>
+    </div>
+    <div *ngIf="password" class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" formControlName="password">
+      <div *ngIf="password.invalid && password.touched" class="text-danger fw-bold">A valid password is required.</div>
     </div>
 
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
-    </div>
 
 
-
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">I accept the rules</label>
+    <div *ngIf="rules" class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="rules" formControlName="rules">
+      <label class="form-check-label" for="rules">I accept the rules</label>
+      <div *ngIf="(email?.valid && password?.valid && rules.invalid) || rules.invalid && rules.touched" class="text-warning fw-bold">You must accept the rules.</div>
     </div>
     
-    <button type="submit" class="btn btn-secondary">
+    <button [disabled]="signupForm.invalid" type="submit" class="btn btn-outline-warning">
       Sign Up
     </button>
 

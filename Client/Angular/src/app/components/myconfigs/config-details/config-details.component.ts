@@ -61,21 +61,24 @@ export class ConfigDetailsComponent implements OnInit {
     });
   }
 
+  //TODO update() debug (néha csak refresh után változik )
   update(config: ConfigModel) {
     this.configService.update(config).subscribe({
       next: 
         this.currentConfig = this.detailsForm.value,
         // config = this.detailsForm.value
       
-    })
-    console.log(`Config NR${this.id} updated`);
-    this.router.navigate(['myconfigs'])
+      })
+      console.log(`Config NR${this.id} updated`);
+      this.router.navigate(['myconfigs'])
     
   };
 
   delete(id: any){
-    this.configService.delete(id).subscribe();
-    console.log(`Config NR${id} deleted`);
-    this.router.navigate(['myconfigs'])
+    if(confirm('Are you sure you want to delete this config?')){
+      this.configService.delete(id).subscribe();
+      console.log(`Config NR${id} deleted`);
+      this.router.navigate(['myconfigs'])
+    }
   }
 }
