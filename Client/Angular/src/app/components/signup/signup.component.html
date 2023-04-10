@@ -1,8 +1,8 @@
-<h3 class="text-yellow text-center">Sign up</h3>
 
 <div class="form-wrapper d-flex container justify-content-center align-items-center">
-
+  
   <form *ngIf="signupForm" [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="p-5 text-yellow opacity-75">
+    <h3 class="text-yellow text-center mb-5">Sign up</h3>
 
     <div *ngIf="email" class="mb-3">
       <label for="email" class="form-label">Email address</label>
