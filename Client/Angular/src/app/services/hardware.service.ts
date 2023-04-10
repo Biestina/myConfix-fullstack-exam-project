@@ -10,7 +10,8 @@ export class HardwareService {
 
   //TODO hwSubject
   
-  url: string = '../../../../assets/hardwares.json';
+  // url: string = '../../../../assets/hardwares.json';
+  url: string = 'http://localhost:3000/hardwares';
   hardwares!: HardwareModel[];
   // subscription?: Subscription
 
