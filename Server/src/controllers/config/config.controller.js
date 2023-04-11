@@ -73,17 +73,12 @@ exports.findById = async (req, res, next) => {
 
 //* update
 exports.update = async (req, res, next) => {
-  logger.info(`A new ${req.method} request has been sent at ${new Date().toUTCString()}, path: ${req.url}`);
+  logger.debug(`A new ${req.method} request has been sent at ${new Date().toUTCString()}, path: ${req.url}`);
   const configId = req.params.id;
-  // const newData = req.body;
-  const userToUpdate = {
-    firstName: req.body['first_name'],
-    lastName: req.body['last_name'],
-    email: req.body['email'],
-  };
+  const newData = req.body;
 
   try {
-    const config = await configService.update(configId, userToUpdate);
+    const config = await configService.update(configId, newData);
     res.json(config);
   } catch (error) {
     logger.error(error);

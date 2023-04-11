@@ -7,6 +7,8 @@
     "start": "node Server/src/index.js",
     "start:nodemon": "nodemon Server/src/index.js",
     "test": "jest",
+    "test-config": "jest config.controller.test.js",
+    "test-hardware": "jest hardware.controller.test.js",
     "deploy": "cd Client && ng build && cd Server && docker-compose up"
   },
   "keywords": [
