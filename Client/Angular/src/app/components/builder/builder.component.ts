@@ -33,7 +33,7 @@ export class BuilderComponent implements OnInit {
 
   ngOnInit(): void {
     this.configForm = new FormGroup({
-      case: new FormControl(''),
+      case: new FormControl(),
       cpu: new FormControl(''),
       gpu: new FormControl(''),
       motherboard: new FormControl(''),
@@ -46,7 +46,7 @@ export class BuilderComponent implements OnInit {
     this.categories = this.categoryService.categories;
     
     // this.subscription = this.hwService.getHardwares().subscribe((res) => {
-    this.hwService.getHardwares().subscribe((res) => {
+    this.hwService.findAll().subscribe((res) => {
       this.hardwares = Object.values(res);
       // console.log(this.hardwares);
     });

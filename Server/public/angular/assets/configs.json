@@ -1,0 +1,48 @@
+{
+  "configs": [
+    {
+      "case": "Fractal Design Meshify C",
+      "cpu": "",
+      "gpu": "MSI GTX 1050 Ti 4GT OC",
+      "motherboard": "",
+      "monitor": "",
+      "psu": "Corsair CXM",
+      "ram": "Corsair Vengeance LPX 16 GB",
+      "storage": "Samsung 980",
+      "id": 12
+    },
+    {
+      "case": "Phanteks Eclipse P300A Mesh",
+      "cpu": "AMD Ryzen 5 5600X",
+      "gpu": "NVIDIA Founders Edition",
+      "motherboard": "ASRock B450M Pro4",
+      "monitor": "AOC C24G1",
+      "psu": "Corsair AXi",
+      "ram": "Corsair Vengeance LPX 16 GB",
+      "storage": "Intel SSDPEDMD020T401",
+      "id": 13
+    },
+    {
+      "case": "Corsair 4000D Airflow",
+      "cpu": "AMD Ryzen 5 3600",
+      "gpu": "Asus Phoenix",
+      "motherboard": "",
+      "monitor": "",
+      "psu": "Corsair HX Platinum",
+      "ram": "Corsair Vengeance LPX 16 GB",
+      "storage": "Samsung 980 Pro",
+      "id": 14
+    },
+    {
+      "case": "Lian Li Lancool II Mesh",
+      "cpu": "AMD Ryzen 5 3600",
+      "gpu": "NVIDIA Founders Edition",
+      "motherboard": "Asus TUF GAMING X570-PLUS (WI-FI)",
+      "monitor": "Asus VG248QG",
+      "psu": "EVGA BQ",
+      "ram": "G.Skill Ripjaws V 16 GB",
+      "storage": "Intel SSDPEDMD020T401",
+      "id": 15
+    }
+  ]
+}

@@ -3,6 +3,7 @@ import { ConfigModel } from '../models/config.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map, tap } from 'rxjs';
 import { Category } from '../models/hardware.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,11 @@ import { Category } from '../models/hardware.model';
 export class ConfigService {
 
   // url: string = '../../../../assets/configs.json';
+  // url: string = 'http://localhost:3000/configs';
+  BASE_URL = environment.apiUrl;
+  url: string = this.BASE_URL += "configs";
+
   catUrl: string = '../../../../assets/categories.json';
-  url: string = 'http://localhost:3000/configs';
   configs?: ConfigModel[];
   config!: ConfigModel;
   categories!: Category[];

@@ -46,12 +46,14 @@ export class HardwaresComponent implements OnInit, OnDestroy {
     // this.subscription = getHardwares.subscribe(res => {
     //     this.hardwares = Object.values(res);
     // })
-    this.subscription = this.hwService.getHardwares().subscribe((res) => {
-      // this.hardwares = Object.values(res);
-      this.hardwares = res;
+    this.subscription = this.hwService.findAll().subscribe({
+      next: (res) => {
+        this.hardwares = res;
+        // console.log(this.hardwares);
+      },
+      error: err => console.log(err)
     });
   }
-
 
   ngOnDestroy(): void {
     if (this.subscription) {

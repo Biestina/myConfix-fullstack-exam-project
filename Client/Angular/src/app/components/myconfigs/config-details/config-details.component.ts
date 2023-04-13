@@ -43,7 +43,7 @@ export class ConfigDetailsComponent implements OnInit {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.currentConfig = this.detailsForm.value;
     this.categories = this.categoryService.categories;
-    this.hwService.getHardwares().subscribe((res) => {
+    this.hwService.findAll().subscribe((res) => {
       this.hardwares = res;
     });
 

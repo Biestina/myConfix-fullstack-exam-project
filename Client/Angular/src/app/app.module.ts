@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -15,6 +15,7 @@ import { HwDetailsComponent } from './components/admin/hardwares/hw-details/hw-d
 import { ReactiveFormsModule } from '@angular/forms';
 import { MyconfigsComponent } from './components/myconfigs/myconfigs.component';
 import { ConfigDetailsComponent } from './components/myconfigs/config-details/config-details.component';
+import { AuthenticationInterceptor } from 'src/interceptors/authentication.interceptor';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { ConfigDetailsComponent } from './components/myconfigs/config-details/co
     ConfigDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
