@@ -13,7 +13,7 @@ import { HardwareService } from 'src/app/services/hardware.service';
   styleUrls: ['./config-details.component.scss'],
 })
 export class ConfigDetailsComponent implements OnInit {
-  id!: any;
+  _id!: any;
   currentConfig!: ConfigModel;
 
   detailsForm!: FormGroup;
@@ -40,7 +40,7 @@ export class ConfigDetailsComponent implements OnInit {
       storage: new FormControl(''),
     });
 
-    this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    this._id = this.activatedRoute.snapshot.paramMap.get('_id');
     this.currentConfig = this.detailsForm.value;
     this.categories = this.categoryService.categories;
     this.hwService.findAll().subscribe((res) => {
@@ -48,10 +48,10 @@ export class ConfigDetailsComponent implements OnInit {
     });
 
     this.activatedRoute.paramMap.subscribe((params) => {
-      let readParam = params.get('id');
+      let readParam = params.get('_id');
       if (readParam) {
-        this.id = readParam;
-        this.configService.findById(this.id).subscribe({
+        this._id = readParam;
+        this.configService.findById(this._id).subscribe({
           next: (config: ConfigModel) => {
             this.currentConfig = config;
             this.detailsForm.patchValue(this.currentConfig);
@@ -69,7 +69,7 @@ export class ConfigDetailsComponent implements OnInit {
         // config = this.detailsForm.value
       
       })
-      console.log(`Config NR${this.id} updated`);
+      console.log(`Config NR${this._id} updated`);
       this.router.navigate(['myconfigs'])
     
   };

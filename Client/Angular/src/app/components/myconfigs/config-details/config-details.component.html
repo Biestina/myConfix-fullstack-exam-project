@@ -1,5 +1,5 @@
 <div class="container w-50 justify-content-center align-items-center">
-  <h2>Update config NR{{currentConfig.id}}</h2>
+  <h2>Update config NR{{currentConfig._id}}</h2>
 
   <div class="p-4 form-wrapper ">
     <form *ngIf="detailsForm" [formGroup]="detailsForm" (ngSubmit)="update(detailsForm.value)" class=" text-yellow opacity-75">
@@ -28,7 +28,7 @@
     
     <button class="btn btn-outline-info">Update</button>
     <!-- <button (click)="update(currentConfig)" class="btn btn-outline-info">Update</button> -->
-    <button (click)="delete(currentConfig.id)" class="btn btn-outline-danger ms-2">Delete</button>
+    <button (click)="delete(currentConfig._id)" class="btn btn-outline-danger ms-2">Delete</button>
   </form>
 </div>
 

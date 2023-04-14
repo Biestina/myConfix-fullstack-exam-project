@@ -13,6 +13,7 @@ export class ConfigService {
   // url: string = '../../../../assets/configs.json';
   // url: string = 'http://localhost:3000/configs';
   BASE_URL = environment.apiUrl;
+  // url: string = this.BASE_URL += "configs";
   url: string = this.BASE_URL += "configs";
 
   catUrl: string = '../../../../assets/categories.json';
@@ -43,7 +44,7 @@ export class ConfigService {
   // update(id: any): Observable<ConfigModel> {
   update(config: ConfigModel): Observable<ConfigModel> {
     // return this.http.put<ConfigModel>(`${this.url}/${id}`, id)
-    return this.http.put<ConfigModel>(`${this.url}/${this.config.id}`, config)
+    return this.http.put<ConfigModel>(`${this.url}/${this.config._id}`, config)
   };
 
   delete(id: number | string): Observable<any> {

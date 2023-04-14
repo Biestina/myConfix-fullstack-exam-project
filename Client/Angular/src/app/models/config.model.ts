@@ -7,5 +7,5 @@ export interface ConfigModel {
     psu?: string;
     ram?: string;
     storage?: string;
-    id?: string;
+    _id?: string;
 }

@@ -13,6 +13,7 @@ export class MyconfigsComponent implements OnInit {
 
   configs!: ConfigModel[];
   categories?: Category[] | string[];
+
   
   constructor(private configService: ConfigService, private categoryService: CategoryService) { }
 
@@ -26,3 +27,12 @@ export class MyconfigsComponent implements OnInit {
 
   }
 }
+
+
+
+
+// https://source.unsplash.com/random/800x800/?computer
+
+
+// https://source.unsplash.com/random/800x600/?desktop computer motherboard {{ [i] }}
+// https://source.unsplash.com/random/800x600/?gaming+computer {{ [i] }}
