@@ -32,12 +32,6 @@ export class HardwaresComponent implements OnInit, OnDestroy {
     }
   }
 
-  // destroyChild(){
-  //   if(this.hwDetailsComponent){
-  //     // this.hwDetailsComponent.ngOnDestroy();
-  //   }
-  // }
-
   constructor(private http: HttpClient, private hwService: HardwareService) {}
 
   ngOnInit(): void {
@@ -49,7 +43,6 @@ export class HardwaresComponent implements OnInit, OnDestroy {
     this.subscription = this.hwService.findAll().subscribe({
       next: (res) => {
         this.hardwares = res;
-        // console.log(this.hardwares);
       },
       error: err => console.log(err)
     });

@@ -15,8 +15,7 @@ export interface userLogModel {
 })
 export class AuthService {
 
-  // BASE_URL = environment.apiUrl;
-  BASE_URL = 'localhost:4200';
+  BASE_URL = environment.apiUrl;
 
   private _userObject = new BehaviorSubject<UserModel | null>(null);
   
@@ -52,5 +51,15 @@ export class AuthService {
 
   get userObject(): BehaviorSubject<UserModel | null>{
     return this._userObject;
-  }
+  };
+
+  me(): Observable<{user: UserModel}>{
+    return this.http.get<{user: UserModel}>(`${this.BASE_URL}me`).pipe(
+      tap(user => {
+        console.log(user);
+        console.log('userObject?');
+        this._userObject.next(user.user);
+      })
+    )
+  };
 }

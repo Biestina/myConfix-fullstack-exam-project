@@ -14,7 +14,7 @@ export class ConfigService {
   // url: string = 'http://localhost:3000/configs';
   BASE_URL = environment.apiUrl;
   // url: string = this.BASE_URL += "configs";
-  url: string = this.BASE_URL += "configs";
+  url: string = this.BASE_URL += "myconfigs";
 
   catUrl: string = '../../../../assets/categories.json';
   configs?: ConfigModel[];

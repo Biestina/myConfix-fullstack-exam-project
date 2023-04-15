@@ -18,15 +18,13 @@ const routes: Routes = [
   { 
     path: 'myconfigs', 
     component: MyconfigsComponent,
-    // children: [
-    //   {
-    //     path: ':id',
-    //     component: ConfigDetailsComponent
-    //   }
-    // ]
-    // ,canActivate: [AuthGuard]
-   },
-  { path: 'myconfigs/:id', component: ConfigDetailsComponent },
+    canActivate: [AuthGuard]
+  },
+  { 
+    path: 'myconfigs/:id', 
+    component: ConfigDetailsComponent,
+    canActivate: [AuthGuard]
+  },
   { path: '**', component: HomeComponent }
 ];
 

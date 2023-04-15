@@ -9,6 +9,6 @@ const ConfigSchema = mongoose.Schema({
   psu: String,
   ram: String,
   storage: String
-}, { timestamps: true });
+}, { timestamps: true }, {versionKey: false});
 
 module.exports = mongoose.model('Config', ConfigSchema);

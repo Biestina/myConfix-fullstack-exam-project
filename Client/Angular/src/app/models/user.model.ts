@@ -4,12 +4,11 @@ import { HardwareModel } from "./hardware.model";
 
 
 export interface UserModel {
+  _id?: string;
   email: string;
+  password?: string;
   role: string;
-  user_id: string;
-  // password: string;
-  name?: string;
-  id?: string;
+  username?: string;
   hardwares?: HardwareModel[];
   configs?: ConfigModel[];
 }

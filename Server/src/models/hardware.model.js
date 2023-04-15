@@ -75,6 +75,6 @@ const HardwareSchema = mongoose.Schema({
 
   capacity: String,
   interface: String,
-})
+}, { timestamps: true }, {versionKey: false})
 
 module.exports = mongoose.model('Hardware', HardwareSchema);
