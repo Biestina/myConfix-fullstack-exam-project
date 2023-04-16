@@ -21,7 +21,7 @@ exports.create = async (req, res, next) => {
     psu: req.body['psu'],
     ram: req.body['ram'],
     storage: req.body['storage'],
-    related_user: req.body['related_user'],
+    // related_user: req.body['related_user'],
   };
 
   try {

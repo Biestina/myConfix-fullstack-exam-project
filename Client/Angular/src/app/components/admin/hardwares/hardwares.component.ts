@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { HwDetailsComponent } from './hw-details/hw-details.component';
 import { HardwareModel } from '../../../models/hardware.model';
 import { Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { HardwareHttpService } from 'src/app/services/http/hardware-http.service';
 
 @Component({
@@ -28,8 +29,9 @@ export class HardwaresComponent implements OnInit, OnDestroy {
     if (this.hardwares) {
       return this.hardwares.find(
         (hw: HardwareModel) => hw.name === this.selectedHwName
-      );
-    }
+        );
+      }
+
   }
 
   constructor(private http: HttpClient, private hwService: HardwareHttpService) {}
@@ -40,12 +42,17 @@ export class HardwaresComponent implements OnInit, OnDestroy {
     // this.subscription = getHardwares.subscribe(res => {
     //     this.hardwares = Object.values(res);
     // })
+
+    //* async nélkül
     this.subscription = this.hwService.findAll().subscribe({
       next: (res) => {
         this.hardwares = res;
       },
       error: err => console.log(err)
     });
+
+    //async off xd
+    // this.hardwares = this.hwService.findAll();
   }
 
   ngOnDestroy(): void {

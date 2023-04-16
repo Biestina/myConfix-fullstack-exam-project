@@ -12,7 +12,7 @@ import { ConfigHttpService } from 'src/app/services/http/config-http.service';
 })
 export class MyconfigsComponent implements OnInit {
 
-  configs!: ConfigModel[];
+  configs!: any;
   categories?: Category[] | string[];
 
   
@@ -26,13 +26,17 @@ export class MyconfigsComponent implements OnInit {
     // this.configService.findAll().subscribe((res) => {
     //   this.configs = Object.values(res);
     // });     basehttp nélkül
-    this.configService.findAll().subscribe({
-      next: res => {
-        this.configs = Object.values(res);
-        console.log(res);
-      },
-      error: err => console.error(err)
-    });
+
+    //* async pipe nélkül
+    // this.configService.findAll().subscribe({
+    //   next: res => {
+    //     this.configs = Object.values(res);
+    //     console.log(res);
+    //   },
+    //   error: err => console.error(err)
+    // });
+
+    this.configs = this.configService.findAll();
 
     this.categories = this.categoryService.categories;
 

@@ -61,7 +61,7 @@ class AppRoutingModule {
 }
 AppRoutingModule.ɵfac = function AppRoutingModule_Factory(t) { return new (t || AppRoutingModule)(); };
 AppRoutingModule.ɵmod = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_9__["ɵɵdefineNgModule"]({ type: AppRoutingModule });
-AppRoutingModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_9__["ɵɵdefineInjector"]({ imports: [_angular_router__WEBPACK_IMPORTED_MODULE_10__.RouterModule.forRoot(routes), _angular_router__WEBPACK_IMPORTED_MODULE_10__.RouterModule] });
+AppRoutingModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_9__["ɵɵdefineInjector"]({ imports: [_angular_router__WEBPACK_IMPORTED_MODULE_10__.RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }), _angular_router__WEBPACK_IMPORTED_MODULE_10__.RouterModule] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_9__["ɵɵsetNgModuleScope"](AppRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_10__.RouterModule], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_10__.RouterModule] }); })();
 
 
@@ -186,8 +186,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function HardwaresComponent_tr_15_Template(rf, ctx) { if (rf & 1) {
+
+function HardwaresComponent_tr_15_Template(rf, ctx) {
+  if (rf & 1) {
     const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵgetCurrentView"]();
+
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "tr", null, 6)(2, "th", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
@@ -198,10 +201,17 @@ function HardwaresComponent_tr_15_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](7);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](8, "td")(9, "button", 8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function HardwaresComponent_tr_15_Template_button_click_9_listener() { const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r5); const hardware_r1 = restoredCtx.$implicit; const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵresetView"](ctx_r4.showMoreInfo(hardware_r1.name)); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function HardwaresComponent_tr_15_Template_button_click_9_listener() {
+      const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r5);
+      const hardware_r1 = restoredCtx.$implicit;
+      const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
+      return _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵresetView"](ctx_r4.showMoreInfo(hardware_r1.name));
+    });
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](10, " More ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
-} if (rf & 2) {
+  }
+
+  if (rf & 2) {
     const hardware_r1 = ctx.$implicit;
     const i_r2 = ctx.index;
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
@@ -210,72 +220,96 @@ function HardwaresComponent_tr_15_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](hardware_r1.name);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](hardware_r1.category);
-} }
-class HardwaresComponent {
-    constructor(http, hwService) {
-        this.http = http;
-        this.hwService = hwService;
-    }
-    // @ViewChild(HwDetailsComponent) hwDetailsComponent!: HwDetailsComponent;
-    // @ViewChild('infoModal', { static: false }) infoModal!: ElementRef;
-    showMoreInfo(hwName) {
-        this.selectedHwName = hwName;
-        // this.hwDetailsComponent.show();
-        // this.hwDetailsComponent.ngOnInit
-        // this.hwDetailsComponent['show']();
-    }
-    get selectedHardware() {
-        if (this.hardwares) {
-            return this.hardwares.find((hw) => hw.name === this.selectedHwName);
-        }
-    }
-    ngOnInit() {
-        // const url: string = '../../../../assets/data.json';
-        // const getHardwares: Observable<Object> = this.http.get(url);
-        // this.subscription = getHardwares.subscribe(res => {
-        //     this.hardwares = Object.values(res);
-        // })
-        this.subscription = this.hwService.findAll().subscribe({
-            next: (res) => {
-                this.hardwares = res;
-            },
-            error: err => console.log(err)
-        });
-    }
-    ngOnDestroy() {
-        if (this.subscription) {
-            this.subscription.unsubscribe();
-        }
-    }
+  }
 }
-HardwaresComponent.ɵfac = function HardwaresComponent_Factory(t) { return new (t || HardwaresComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__.HttpClient), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](src_app_services_http_hardware_http_service__WEBPACK_IMPORTED_MODULE_0__.HardwareHttpService)); };
-HardwaresComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: HardwaresComponent, selectors: [["app-hardwares"]], decls: 17, vars: 2, consts: [[1, "text-center", "text-yellow", "my-5"], [1, "d-flex", "container", "justify-content-center", "align-items-center"], [1, "table", "table-dark", "table-striped", "table-hover"], ["scope", "col"], [4, "ngFor", "ngForOf"], [3, "hardware"], ["eachHardware", ""], ["scope", "row"], ["type", "button", "data-bs-toggle", "modal", "data-bs-target", "#infoModal", "data-backdrop", "false", 1, "btn", "btn-info", 3, "click"]], template: function HardwaresComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "h2", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1, "Hardwares");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "div", 1)(3, "table", 2)(4, "thead")(5, "tr")(6, "th", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](7, "#");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](8, "th", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](9, "Name");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](10, "th", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](11, "Category");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](12, "th", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](13, "More info");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](14, "tbody");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](15, HardwaresComponent_tr_15_Template, 11, 3, "tr", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](16, "app-hw-details", 5);
-    } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](15);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", ctx.hardwares);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("hardware", ctx.selectedHardware);
-    } }, dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_4__.NgForOf, _hw_details_hw_details_component__WEBPACK_IMPORTED_MODULE_1__.HwDetailsComponent], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJoYXJkd2FyZXMuY29tcG9uZW50LnNjc3MifQ== */"] });
 
+class HardwaresComponent {
+  constructor(http, hwService) {
+    this.http = http;
+    this.hwService = hwService;
+  } // @ViewChild(HwDetailsComponent) hwDetailsComponent!: HwDetailsComponent;
+  // @ViewChild('infoModal', { static: false }) infoModal!: ElementRef;
+
+
+  showMoreInfo(hwName) {
+    this.selectedHwName = hwName; // this.hwDetailsComponent.show();
+    // this.hwDetailsComponent.ngOnInit
+    // this.hwDetailsComponent['show']();
+  }
+
+  get selectedHardware() {
+    if (this.hardwares) {
+      return this.hardwares.find(hw => hw.name === this.selectedHwName);
+    }
+  }
+
+  ngOnInit() {
+    // const url: string = '../../../../assets/data.json';
+    // const getHardwares: Observable<Object> = this.http.get(url);
+    // this.subscription = getHardwares.subscribe(res => {
+    //     this.hardwares = Object.values(res);
+    // })
+    //* async nélkül
+    this.subscription = this.hwService.findAll().subscribe({
+      next: res => {
+        this.hardwares = res;
+      },
+      error: err => console.log(err)
+    }); //async off xd
+    // this.hardwares = this.hwService.findAll();
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
+}
+
+HardwaresComponent.ɵfac = function HardwaresComponent_Factory(t) {
+  return new (t || HardwaresComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__.HttpClient), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](src_app_services_http_hardware_http_service__WEBPACK_IMPORTED_MODULE_0__.HardwareHttpService));
+};
+
+HardwaresComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({
+  type: HardwaresComponent,
+  selectors: [["app-hardwares"]],
+  decls: 17,
+  vars: 2,
+  consts: [[1, "text-center", "text-yellow", "my-5"], [1, "d-flex", "container", "justify-content-center", "align-items-center"], [1, "table", "table-dark", "table-striped", "table-hover"], ["scope", "col"], [4, "ngFor", "ngForOf"], [3, "hardware"], ["eachHardware", ""], ["scope", "row"], ["type", "button", "data-bs-toggle", "modal", "data-bs-target", "#infoModal", "data-backdrop", "false", 1, "btn", "btn-info", 3, "click"]],
+  template: function HardwaresComponent_Template(rf, ctx) {
+    if (rf & 1) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "h2", 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1, "Hardwares");
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "div", 1)(3, "table", 2)(4, "thead")(5, "tr")(6, "th", 3);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](7, "#");
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](8, "th", 3);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](9, "Name");
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](10, "th", 3);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](11, "Category");
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](12, "th", 3);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](13, "More info");
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](14, "tbody");
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](15, HardwaresComponent_tr_15_Template, 11, 3, "tr", 4);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](16, "app-hw-details", 5);
+    }
+
+    if (rf & 2) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](15);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", ctx.hardwares);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("hardware", ctx.selectedHardware);
+    }
+  },
+  dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_4__.NgForOf, _hw_details_hw_details_component__WEBPACK_IMPORTED_MODULE_1__.HwDetailsComponent],
+  styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJoYXJkd2FyZXMuY29tcG9uZW50LnNjc3MifQ== */"]
+});
 
 /***/ }),
 
@@ -656,7 +690,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
 /* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/services/auth.service */ 7556);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var src_app_services_http_user_http_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/services/http/user-http.service */ 903);
+/* harmony import */ var src_app_services_http_user_http_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/services/http/user-http.service */ 1903);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 4666);
 
 
@@ -980,8 +1014,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const _c0 = function (a0) { return [a0]; };
-function MyconfigsComponent_div_0_div_2_Template(rf, ctx) { if (rf & 1) {
+
+const _c0 = function (a0) {
+  return [a0];
+};
+
+function MyconfigsComponent_div_0_div_2_Template(rf, ctx) {
+  if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 4)(1, "div", 5);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "img", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](3, "a", 7);
@@ -1016,7 +1055,9 @@ function MyconfigsComponent_div_0_div_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](25, "li", 17);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](26);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()()();
-} if (rf & 2) {
+  }
+
+  if (rf & 2) {
     const config_r2 = ctx.$implicit;
     const i_r3 = ctx.index;
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
@@ -1041,44 +1082,71 @@ function MyconfigsComponent_div_0_div_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](config_r2.ram);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](config_r2.storage);
-} }
-function MyconfigsComponent_div_0_Template(rf, ctx) { if (rf & 1) {
+  }
+}
+
+function MyconfigsComponent_div_0_Template(rf, ctx) {
+  if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 1)(1, "div", 2);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](2, MyconfigsComponent_div_0_div_2_Template, 27, 15, "div", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵpipe"](3, "async");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
-} if (rf & 2) {
+  }
+
+  if (rf & 2) {
     const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", ctx_r0.configs);
-} }
-class MyconfigsComponent {
-    constructor(
-    // private configService: ConfigService, 
-    configService, categoryService) {
-        this.configService = configService;
-        this.categoryService = categoryService;
-    }
-    ngOnInit() {
-        // this.configService.findAll().subscribe((res) => {
-        //   this.configs = Object.values(res);
-        // });     basehttp nélkül
-        this.configService.findAll().subscribe({
-            next: res => {
-                this.configs = Object.values(res);
-                console.log(res);
-            },
-            error: err => console.error(err)
-        });
-        this.categories = this.categoryService.categories;
-    }
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵpipeBind1"](3, 1, ctx_r0.configs));
+  }
 }
-MyconfigsComponent.ɵfac = function MyconfigsComponent_Factory(t) { return new (t || MyconfigsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](src_app_services_http_config_http_service__WEBPACK_IMPORTED_MODULE_0__.ConfigHttpService), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](src_app_services_category_service__WEBPACK_IMPORTED_MODULE_1__.CategoryService)); };
-MyconfigsComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: MyconfigsComponent, selectors: [["app-myconfigs"]], decls: 1, vars: 1, consts: [["class", "container", 4, "ngIf"], [1, "container"], [1, "row", "row-cols-md-3", "row-cols-lg-4", "grid", "gap-3", "justify-content-evenly"], ["class", "card shadow", 4, "ngFor", "ngForOf"], [1, "card", "shadow"], [1, "card-header"], ["alt", "computer", 1, "card-img-top", 3, "src"], [1, "btn", "btn-warning", "shadow", 3, "routerLink"], [1, "card-body", "mx-auto"], [1, "mx-0", "px-0"], ["title", "Case"], ["title", "CPU"], ["title", "GPU"], ["title", "Motherboard"], ["title", "Monitor"], ["title", "PSU"], ["title", "RAM"], ["title", "Storage"]], template: function MyconfigsComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](0, MyconfigsComponent_div_0_Template, 3, 1, "div", 0);
-    } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx.configs);
-    } }, dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_3__.NgForOf, _angular_common__WEBPACK_IMPORTED_MODULE_3__.NgIf, _angular_router__WEBPACK_IMPORTED_MODULE_4__.RouterLinkWithHref], styles: [".card-header[_ngcontent-%COMP%] {\n  position: relative;\n  padding: 0;\n  margin: auto -0.8em;\n}\n.card-header[_ngcontent-%COMP%]   a[_ngcontent-%COMP%] {\n  position: absolute;\n}\n.card[_ngcontent-%COMP%]   ul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%] {\n  list-style-type: none;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm15Y29uZmlncy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFRTtFQUNFLGtCQUFBO0VBQ0EsVUFBQTtFQUNBLG1CQUFBO0FBREo7QUFHSTtFQUNFLGtCQUFBO0FBRE47QUFNSTtFQUNFLHFCQUFBO0FBSk4iLCJmaWxlIjoibXljb25maWdzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNhcmQge1xyXG5cclxuICAmLWhlYWRlciB7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG4gICAgbWFyZ2luOiBhdXRvIC0wLjhlbTtcclxuICAgIFxyXG4gICAgYSB7XHJcbiAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIH1cclxuICB9XHJcblxyXG4gIHVsIHtcclxuICAgIGxpIHtcclxuICAgICAgbGlzdC1zdHlsZS10eXBlOiBub25lO1xyXG4gICAgfVxyXG4gIH1cclxufSJdfQ== */"] });
 
+class MyconfigsComponent {
+  constructor( // private configService: ConfigService, 
+  configService, categoryService) {
+    this.configService = configService;
+    this.categoryService = categoryService;
+  }
+
+  ngOnInit() {
+    // this.configService.findAll().subscribe((res) => {
+    //   this.configs = Object.values(res);
+    // });     basehttp nélkül
+    //* async pipe nélkül
+    // this.configService.findAll().subscribe({
+    //   next: res => {
+    //     this.configs = Object.values(res);
+    //     console.log(res);
+    //   },
+    //   error: err => console.error(err)
+    // });
+    this.configs = this.configService.findAll();
+    this.categories = this.categoryService.categories;
+  }
+
+}
+
+MyconfigsComponent.ɵfac = function MyconfigsComponent_Factory(t) {
+  return new (t || MyconfigsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](src_app_services_http_config_http_service__WEBPACK_IMPORTED_MODULE_0__.ConfigHttpService), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](src_app_services_category_service__WEBPACK_IMPORTED_MODULE_1__.CategoryService));
+};
+
+MyconfigsComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({
+  type: MyconfigsComponent,
+  selectors: [["app-myconfigs"]],
+  decls: 1,
+  vars: 1,
+  consts: [["class", "container", 4, "ngIf"], [1, "container"], [1, "row", "row-cols-md-3", "row-cols-lg-4", "grid", "gap-3", "justify-content-evenly"], ["class", "card shadow", 4, "ngFor", "ngForOf"], [1, "card", "shadow"], [1, "card-header"], ["alt", "computer", 1, "card-img-top", 3, "src"], [1, "btn", "btn-warning", "shadow", 3, "routerLink"], [1, "card-body", "mx-auto"], [1, "mx-0", "px-0"], ["title", "Case"], ["title", "CPU"], ["title", "GPU"], ["title", "Motherboard"], ["title", "Monitor"], ["title", "PSU"], ["title", "RAM"], ["title", "Storage"]],
+  template: function MyconfigsComponent_Template(rf, ctx) {
+    if (rf & 1) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](0, MyconfigsComponent_div_0_Template, 4, 3, "div", 0);
+    }
+
+    if (rf & 2) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx.configs);
+    }
+  },
+  dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_3__.NgForOf, _angular_common__WEBPACK_IMPORTED_MODULE_3__.NgIf, _angular_router__WEBPACK_IMPORTED_MODULE_4__.RouterLinkWithHref, _angular_common__WEBPACK_IMPORTED_MODULE_3__.AsyncPipe],
+  styles: [".card-header[_ngcontent-%COMP%] {\n  position: relative;\n  padding: 0;\n  margin: auto -0.8em;\n}\n.card-header[_ngcontent-%COMP%]   a[_ngcontent-%COMP%] {\n  position: absolute;\n}\n.card[_ngcontent-%COMP%]   ul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%] {\n  list-style-type: none;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm15Y29uZmlncy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFRTtFQUNFLGtCQUFBO0VBQ0EsVUFBQTtFQUNBLG1CQUFBO0FBREo7QUFHSTtFQUNFLGtCQUFBO0FBRE47QUFNSTtFQUNFLHFCQUFBO0FBSk4iLCJmaWxlIjoibXljb25maWdzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNhcmQge1xyXG5cclxuICAmLWhlYWRlciB7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG4gICAgbWFyZ2luOiBhdXRvIC0wLjhlbTtcclxuICAgIFxyXG4gICAgYSB7XHJcbiAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIH1cclxuICB9XHJcblxyXG4gIHVsIHtcclxuICAgIGxpIHtcclxuICAgICAgbGlzdC1zdHlsZS10eXBlOiBub25lO1xyXG4gICAgfVxyXG4gIH1cclxufSJdfQ== */"]
+});
 
 /***/ }),
 
@@ -1199,7 +1267,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ 2508);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var src_app_services_http_user_http_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/services/http/user-http.service */ 903);
+/* harmony import */ var src_app_services_http_user_http_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/services/http/user-http.service */ 1903);
 /* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/services/auth.service */ 7556);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 4666);
 
@@ -1362,7 +1430,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 2560);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ 8987);
-/* harmony import */ var src_app_services_http_user_http_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/services/http/user-http.service */ 903);
+/* harmony import */ var src_app_services_http_user_http_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/services/http/user-http.service */ 1903);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ 4666);
 
 
@@ -1717,7 +1785,7 @@ HardwareHttpService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODUL
 
 /***/ }),
 
-/***/ 903:
+/***/ 1903:
 /*!****************************************************!*\
   !*** ./src/app/services/http/user-http.service.ts ***!
   \****************************************************/
