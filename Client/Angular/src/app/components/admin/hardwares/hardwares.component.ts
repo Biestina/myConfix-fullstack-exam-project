@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { HwDetailsComponent } from './hw-details/hw-details.component';
 import { HardwareModel } from '../../../models/hardware.model';
 import { Observable, Subscription } from 'rxjs';
-import { HardwareService } from 'src/app/services/hardware.service';
+import { HardwareHttpService } from 'src/app/services/http/hardware-http.service';
 
 @Component({
   selector: 'app-hardwares',
@@ -32,7 +32,7 @@ export class HardwaresComponent implements OnInit, OnDestroy {
     }
   }
 
-  constructor(private http: HttpClient, private hwService: HardwareService) {}
+  constructor(private http: HttpClient, private hwService: HardwareHttpService) {}
 
   ngOnInit(): void {
     // const url: string = '../../../../assets/data.json';

@@ -21,6 +21,7 @@ exports.create = async (req, res, next) => {
     psu: req.body['psu'],
     ram: req.body['ram'],
     storage: req.body['storage'],
+    related_user: req.body['related_user'],
   };
 
   try {
@@ -42,7 +43,7 @@ exports.findAll = async (req, res, next) => {
     res.json(configList);
   } catch (error) {
     logger.error(error);
-    return next(new createError.InternalServerError('Database error (find configs)'));
+    return next(new createError.InternalServerError('Database error (cannot find configs)'));
   };
 };
 
@@ -64,7 +65,7 @@ exports.findById = async (req, res, next) => {
       return next(new createError.BadRequest(`Invalid ObjectID: ${configId}`));
     } else {
       logger.error(Object.entries(error))
-      return next(new createError.InternalServerError('Database error (find one config)'))
+      return next(new createError.InternalServerError('Database error (cannot find one config)'))
 
     }
   };
@@ -95,6 +96,6 @@ exports.delete = async (req, res, next) => {
     res.send(`Deleted config with id ${configId}`);
   } catch (error) {
     logger.error(error);
-    return next(new createError.InternalServerError('Database error (delete config)'));
+    return next(new createError.InternalServerError('Database error (cannot delete config)'));
   };
 };

@@ -5,7 +5,8 @@ import { ConfigModel } from 'src/app/models/config.model';
 import { Category, HardwareModel } from 'src/app/models/hardware.model';
 import { CategoryService } from 'src/app/services/category.service';
 import { ConfigService } from 'src/app/services/config.service';
-import { HardwareService } from 'src/app/services/hardware.service';
+import { ConfigHttpService } from 'src/app/services/http/config-http.service';
+import { HardwareHttpService } from 'src/app/services/http/hardware-http.service';
 
 @Component({
   selector: 'app-config-details',
@@ -24,8 +25,10 @@ export class ConfigDetailsComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private categoryService: CategoryService,
-    private hwService: HardwareService,
-    private configService: ConfigService
+    // private hwService: HardwareService,
+    private hwService: HardwareHttpService,
+    // private configService: ConfigService
+    private configService: ConfigHttpService
   ) {}
 
   ngOnInit(): void {
@@ -40,7 +43,7 @@ export class ConfigDetailsComponent implements OnInit {
       storage: new FormControl(''),
     });
 
-    this._id = this.activatedRoute.snapshot.paramMap.get('_id');
+    this._id = this.activatedRoute.snapshot.paramMap.get('id');
     this.currentConfig = this.detailsForm.value;
     this.categories = this.categoryService.categories;
     this.hwService.findAll().subscribe((res) => {
@@ -48,7 +51,7 @@ export class ConfigDetailsComponent implements OnInit {
     });
 
     this.activatedRoute.paramMap.subscribe((params) => {
-      let readParam = params.get('_id');
+      let readParam = params.get('id');
       if (readParam) {
         this._id = readParam;
         this.configService.findById(this._id).subscribe({
@@ -62,22 +65,27 @@ export class ConfigDetailsComponent implements OnInit {
   }
 
   //TODO update() debug (néha csak refresh után változik )
-  update(config: ConfigModel) {
-    this.configService.update(config).subscribe({
-      next: 
-        this.currentConfig = this.detailsForm.value,
-        // config = this.detailsForm.value
-      
+  // update(id: any, config: ConfigModel) {
+  //   this.configService.update(id, config).subscribe({
+  //     next: 
+  //       this.currentConfig = this.detailsForm.value
+  //     })
+  //     console.log(`Config ID ${this._id} updated`);
+  //     this.router.navigate(['myconfigs'])
+  // };        ez működik, csak typeerror: partialObserver.next is not a function
+  update(id: any, config: ConfigModel) {
+    this.configService.update(id, config).subscribe(() => {
+      // next: 
+        this.currentConfig = this.detailsForm.value
       })
-      console.log(`Config NR${this._id} updated`);
+      console.log(`Config ID ${this._id} updated`);
       this.router.navigate(['myconfigs'])
-    
   };
 
   delete(id: any){
     if(confirm('Are you sure you want to delete this config?')){
       this.configService.delete(id).subscribe();
-      console.log(`Config NR${id} deleted`);
+      console.log(`Config ID ${id} deleted`);
       this.router.navigate(['myconfigs'])
     }
   }

@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MyconfigsComponent } from './components/myconfigs/myconfigs.component';
 import { ConfigDetailsComponent } from './components/myconfigs/config-details/config-details.component';
 import { AuthenticationInterceptor } from 'src/interceptors/authentication.interceptor';
+import { UsersComponent } from './components/users/users.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AuthenticationInterceptor } from 'src/interceptors/authentication.inter
     HwDetailsComponent,
     MyconfigsComponent,
     ConfigDetailsComponent,
+    UsersComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],
   providers: [

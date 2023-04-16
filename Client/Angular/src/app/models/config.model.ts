@@ -8,4 +8,5 @@ export interface ConfigModel {
     ram?: string;
     storage?: string;
     _id?: string;
+    related_user?: any
 }

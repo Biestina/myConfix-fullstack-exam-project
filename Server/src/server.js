@@ -37,6 +37,7 @@ app.post('/me', authHandler.me);
 app.use('/myconfigs', authenticateJWT, require('./controllers/config/config.routes'));
 // app.use('/configs', require('./controllers/config/config.routes'));
 app.use('/hardwares', require('./controllers/hardware/hardware.routes'));
+app.use('/users', require('./controllers/user/user.routes'));
 
 app.use('/', express.static(angularAppPath));
 app.all('*', (req, res) => {

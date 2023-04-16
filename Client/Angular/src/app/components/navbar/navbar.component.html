@@ -22,13 +22,17 @@
           <a class="nav-link text-yellow" routerLink="/myconfigs">My configs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" *ngIf="user && user.email" >{{user.email}}</a>
+          <a class="nav-link text-yellow" routerLink="/users">Users</a>
         </li>
       </ul>
-      
-      <div *ngIf="!user" class="float-start nav-item">
-        <a class="nav-link text-yellow" routerLink="/login">Login</a>
-      </div>
+    </div>
+    
+    <div *ngIf="!user" class="nav-item float-end">
+      <a class="nav-link text-yellow" routerLink="/login">Login</a>
+    </div>
+    <div *ngIf="user">
+      <a class="nav-link d-inline" *ngIf="user && user.email">{{user.email}}</a>
+      <a class="nav-link text-yellow" routerLink="/">Logout</a>
     </div>
 
 

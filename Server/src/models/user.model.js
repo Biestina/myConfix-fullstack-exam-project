@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const idValidator = require('mongoose-id-validator');
 
 const UserSchema = mongoose.Schema({
   // username: String,
@@ -11,4 +12,5 @@ const UserSchema = mongoose.Schema({
   }]
 }, { timestamps: true }, {versionKey: false});
 
+UserSchema.plugin(idValidator);
 module.exports = mongoose.model('User', UserSchema);

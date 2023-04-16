@@ -1,8 +1,8 @@
 <div class="container w-50 justify-content-center align-items-center">
-  <h2>Update config NR{{currentConfig._id}}</h2>
+  <h2>Update config {{currentConfig._id}}</h2>
 
   <div class="p-4 form-wrapper ">
-    <form *ngIf="detailsForm" [formGroup]="detailsForm" (ngSubmit)="update(detailsForm.value)" class=" text-yellow opacity-75">
+    <form *ngIf="detailsForm" [formGroup]="detailsForm" (ngSubmit)="update(currentConfig._id, detailsForm.value)" class=" text-yellow opacity-75">
       
       <div class="mb-2 form-group-row" *ngFor="let category of categories; index as i">
         

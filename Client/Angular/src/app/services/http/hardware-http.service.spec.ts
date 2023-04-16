@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HardwareService } from './hardware.service';
+import { HardwareHttpService } from './hardware-http.service';
 
-describe('HardwareService', () => {
-  let service: HardwareService;
+describe('HardwareHttpService', () => {
+  let service: HardwareHttpService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(HardwareService);
+    service = TestBed.inject(HardwareHttpService);
   });
 
   it('should be created', () => {
