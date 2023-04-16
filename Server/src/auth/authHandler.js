@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const logger = require('../config/logger');
 // logger
 // http errors
 
@@ -105,14 +106,20 @@ exports.logout = (req, res, next) => {
 };
 
 exports.me = (req, res, next) => {
-  const authorization = req.headers.authorization;
-  const token = authorization.split(' ')[1];
-
-  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET_KEY, (err, user) => {
-    if (!err) {
-      res.json({ user })
-    }
-  })
+  if(req.headers.authorization){
+  // const authorization = req.headers.authorization;
+    // const token = authorization.split(' ')[1];
+    const token = req.headers.authorization.split(' ')[1];
+    console.log(token);
+    
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET_KEY, (err, user) => {
+      if (!err) {
+        res.json({ user })
+      }
+    })
+  } else {
+    logger.error('Auth of headers not found')
+  }
 }
 
 // {"email": "t@ester.com", "password": "user_pw"}

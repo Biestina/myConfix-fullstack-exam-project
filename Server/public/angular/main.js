@@ -1198,23 +1198,31 @@ class NavbarComponent {
         this.authService = authService;
     }
     ngOnInit() {
-        this.sub = this.authService.userObject.subscribe((user) => {
+        // this.sub = this.authService.userObject.subscribe((user)=> {
+        //   this.user = user;
+        //   console.log(user);
+        // });
+        // if(this.user){
+        //   this.getMe();
+        // }
+        // if(this.user){
+        this.getMe();
+        // }
+        this.authService.userObject.subscribe((user) => {
             this.user = user;
-            console.log(user);
         });
-        if (this.user) {
-            this.getMe();
-        }
     }
     ;
     ngOnDestroy() {
-        // if(this.sub){
-        //   this.sub.unsubscribe();
-        // }
+        if (this.sub) {
+            this.sub.unsubscribe();
+        }
+        // this.authService.me().subscribe()
     }
     getMe() {
         if (localStorage.getItem('accessToken')) {
-            this.authService.me().subscribe();
+            this.sub = this.authService.me().subscribe();
+            // this.authService.me().subscribe()
         }
     }
 }
@@ -1828,8 +1836,8 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    apiUrl: 'http://localhost:3000/'
-    // apiUrl: '/'
+    // apiUrl: 'http://localhost:3000/'
+    apiUrl: '/api/'
 };
 /*
  * For easier debugging in development mode, you can import the following file
@@ -1875,7 +1883,9 @@ class AuthenticationInterceptor {
                 headers: req.headers.set('Authorization', `Bearer ${token}`)
             });
         }
-        return next.handle(request).pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_1__.catchError)(err => {
+        return next.handle(request).pipe(
+        // switchMap(data => {}),
+        (0,rxjs__WEBPACK_IMPORTED_MODULE_1__.catchError)(err => {
             console.log(err.status, 'ERROR');
             if (err.status === 401) {
                 return (0,rxjs__WEBPACK_IMPORTED_MODULE_2__.throwError)(() => new Error('Bejelentkezés szükséges'));
@@ -1883,6 +1893,9 @@ class AuthenticationInterceptor {
             else if (err.status === 403) {
                 return (0,rxjs__WEBPACK_IMPORTED_MODULE_2__.throwError)(() => new Error('Lejárt a munkamenet'));
                 //   return this.handle403Error(request, next)
+            }
+            else if (err.status === 200) {
+                return (0,rxjs__WEBPACK_IMPORTED_MODULE_2__.throwError)(() => { });
             }
             else {
                 return (0,rxjs__WEBPACK_IMPORTED_MODULE_2__.throwError)(() => new Error('Oops something happened'));

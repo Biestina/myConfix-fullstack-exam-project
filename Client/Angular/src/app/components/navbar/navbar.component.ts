@@ -16,24 +16,33 @@ export class NavbarComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService) { }
   
   ngOnInit(): void {
-    this.sub = this.authService.userObject.subscribe((user)=> {
-      this.user = user;
-      console.log(user);
-    });
-    if(this.user){
-      this.getMe();
-    }
+    // this.sub = this.authService.userObject.subscribe((user)=> {
+    //   this.user = user;
+    //   console.log(user);
+    // });
+    // if(this.user){
+    //   this.getMe();
+    // }
+
+    // if(this.user){
+        this.getMe();
+      // }
+    this.authService.userObject.subscribe((user)=> {
+      this.user = user
+    })
   };
 
   ngOnDestroy(): void {
-    // if(this.sub){
-    //   this.sub.unsubscribe();
-    // }
+    if(this.sub){
+      this.sub.unsubscribe();
+    }
+    // this.authService.me().subscribe()
   }
 
   getMe(){
     if(localStorage.getItem('accessToken')){
-      this.authService.me().subscribe()
+      this.sub = this.authService.me().subscribe()
+      // this.authService.me().subscribe()
     }
   }
 

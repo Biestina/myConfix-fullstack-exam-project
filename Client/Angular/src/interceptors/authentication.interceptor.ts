@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from './../app/services/auth.service';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { catchError, Observable, switchMap, throwError } from "rxjs";
+import { HttpResponse } from '@angular/common/http';
 
 @Injectable()
 export class AuthenticationInterceptor implements HttpInterceptor {
@@ -21,6 +22,7 @@ export class AuthenticationInterceptor implements HttpInterceptor {
       })
     }
     return next.handle(request).pipe(
+      // switchMap(data => {}),
       catchError(err => {
         console.log(err.status, 'ERROR');
       if(err.status === 401){
@@ -28,7 +30,11 @@ export class AuthenticationInterceptor implements HttpInterceptor {
       } else if(err.status === 403){
         return throwError(()=> new Error('Lejárt a munkamenet'))
       //   return this.handle403Error(request, next)
-      } else {
+      } 
+      else if(err.status === 200) {
+        return throwError(()=> {})
+      } 
+      else {
         return throwError(()=> new Error('Oops something happened'))
       }
     }));
