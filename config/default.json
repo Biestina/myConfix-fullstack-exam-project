@@ -1,0 +1,14 @@
+{
+  "port": 3000,
+  "log_level_file": "debug",
+  "log_level_console": "info",
+  "cors": {
+    "origin": "http://localhost:4200", 
+    "methods": ["GET", "POST", "PUT", "OPTIONS"]
+  },
+  "database": {
+    "user": "invisibelle",
+    "password": "OUnEsrbVctZiiMBj",
+    "host": "vizsgaremek.1rhjmdv.mongodb.net/myconfix?retryWrites=true&w=majority"
+  }
+}

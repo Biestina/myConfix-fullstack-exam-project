@@ -1,23 +1,34 @@
 openapi: 3.0.0
-info:
-  version: 1.0.0
-  title: Sample Blog API
-  description: A sample blog API to illustrate REST API concepts
 servers:
-  - url: http://localhost:3000
+  - url: http://localhost:3000/api
+info:
+  version: 1.0.1
+  title: myConfix API
+  description: Reference documentation for the myConfix API project.
 paths:
-  /person:
+  /hardwares:
     get:
-      description: Returns a list of persons
+      tags:
+        - Hardwares
+      description: Returns all registered hardwares
       responses:
         '200':
-          description: List of persons returned successfully
+          description: List of all hardwares returned successfully
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Person'
+                  # $ref: '#/components/schemas/Hardware'
+                  oneOf:
+                    - $ref: '#/components/schemas/Case'
+                    - $ref: '#/components/schemas/Cpu'
+                    - $ref: '#/components/schemas/Gpu'
+                    - $ref: '#/components/schemas/Monitor'
+                    - $ref: '#/components/schemas/Motherboard'
+                    - $ref: '#/components/schemas/Ram'
+                    - $ref: '#/components/schemas/Psu'
+                    - $ref: '#/components/schemas/Storage'
         '500':
           description: Internal server error
           content:
@@ -25,22 +36,44 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      description: Creates a new person
+      tags:
+        - Hardwares
+      description: Creates a new hardware
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Person'
+              # $ref: '#/components/schemas/Hardware'
+                anyOf:
+                  - $ref: '#/components/schemas/Case'
+                  - $ref: '#/components/schemas/Cpu'
+                  - $ref: '#/components/schemas/Gpu'
+                  - $ref: '#/components/schemas/Monitor'
+                  - $ref: '#/components/schemas/Motherboard'
+                  - $ref: '#/components/schemas/Ram'
+                  - $ref: '#/components/schemas/Psu'
+                  - $ref: '#/components/schemas/Storage'
+      security:
+        - bearerAuth: []
       responses:
         '201':
-          description: Person has been created successfully
+          description: Successfully created a new hardware
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Person'
+                # $ref: '#/components/schemas/Hardware'
+                anyOf:
+                  - $ref: '#/components/schemas/Case'
+                  - $ref: '#/components/schemas/Cpu'
+                  - $ref: '#/components/schemas/Gpu'
+                  - $ref: '#/components/schemas/Monitor'
+                  - $ref: '#/components/schemas/Motherboard'
+                  - $ref: '#/components/schemas/Ram'
+                  - $ref: '#/components/schemas/Psu'
+                  - $ref: '#/components/schemas/Storage'
         '400':
-          description: Invalid request
+          description: Invalid request when the post data is invalid
           content:
             application/json:
               schema:
@@ -51,24 +84,253 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /person/{person_id}:
+  
+  /hardwares/{_id}:
     get:
-      description: Returns the person with the given ID
+      description: Get a hardware by ID
+      # security:
+      #   - bearerAuth: []
+      tags:
+        - Hardwares
       parameters:
-        - name: person_id
-          in: path
+        - in: path
+          name: _id
           required: true
-          schema:
+          schema: 
             type: string
       responses:
         '200':
-          description: Person data returned successfully
+          description: Returns a specific hardware
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Person'
+                # type: object
+                # $ref: '#/components/schemas/Hardware'
+                anyOf:
+                  - $ref: '#/components/schemas/Case'
+                  - $ref: '#/components/schemas/Cpu'
+                  - $ref: '#/components/schemas/Gpu'
+                  - $ref: '#/components/schemas/Monitor'
+                  - $ref: '#/components/schemas/Motherboard'
+                  - $ref: '#/components/schemas/Ram'
+                  - $ref: '#/components/schemas/Psu'
+                  - $ref: '#/components/schemas/Storage'
         '404':
-          description: Person with the give ID was not found
+          description: Hardware with given ID is not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      # x-swagger-router-controller: Hardwares
+    put:
+      description: Updates a hardware
+      security:
+        - bearerAuth: []
+      tags:
+        - Hardwares
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema: 
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              # $ref: '#/components/schemas/Hardware'
+              anyOf:
+                  - $ref: '#/components/schemas/Case'
+                  - $ref: '#/components/schemas/Cpu'
+                  - $ref: '#/components/schemas/Gpu'
+                  - $ref: '#/components/schemas/Monitor'
+                  - $ref: '#/components/schemas/Motherboard'
+                  - $ref: '#/components/schemas/Ram'
+                  - $ref: '#/components/schemas/Psu'
+                  - $ref: '#/components/schemas/Storage'
+      responses:
+        '200':
+          description: Hardware has been updated successfully
+          content:
+            application/json:
+              schema:
+                # $ref: '#/components/schemas/Hardware'
+                anyOf:
+                  - $ref: '#/components/schemas/Case'
+                  - $ref: '#/components/schemas/Cpu'
+                  - $ref: '#/components/schemas/Gpu'
+                  - $ref: '#/components/schemas/Monitor'
+                  - $ref: '#/components/schemas/Motherboard'
+                  - $ref: '#/components/schemas/Ram'
+                  - $ref: '#/components/schemas/Psu'
+                  - $ref: '#/components/schemas/Storage'
+        '400':
+          description: Invalid request when the post data is invalid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      # x-swagger-router-controller: Hardwares
+    delete:
+      description: Deletes a hardware
+      security:
+        - bearerAuth: []
+      tags:
+        - Hardwares
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: Hardware has been deleted successfully
+          content:
+            application/json:
+              schema:
+                # type: object
+                # example: {}
+                type: string
+                example: Deleted hardware with id 643ed51963caf2e1312a5d8c
+        '404':
+          description: Hardware with given ID is not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      # x-swagger-router-controller: Hardwares
+  /configs:
+    get:
+      tags:
+        - Configs
+      description: Returns all registered configurations
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: List of all configurations returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Config'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+        - Configs
+      description: Creates a new configuration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Config'
+      security:
+        - bearerAuth: []
+      responses:
+        '201':
+          description: Successfully created a new configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Config'
+        '400':
+          description: Invalid request when the post data is invalid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /configs/{_id}:
+    get:
+      description: Get a configuration by ID
+      security:
+        - bearerAuth: []
+      tags:
+        - Configs
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: Returns a specific configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Config'
+        '404':
+          description: Config with given ID is not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      description: Updates a configuration
+      security:
+        - bearerAuth: []
+      tags:
+        - Configs
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema: 
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Config'
+      responses:
+        '200':
+          description: Config has been updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Config'
+        '400':
+          description: Invalid request when the post data is invalid
           content:
             application/json:
               schema:
@@ -80,65 +342,429 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
-      description: Deletes a person
+      description: Deletes a configuration
       security:
         - bearerAuth: []
+      tags:
+        - Configs
       parameters:
-        - name: person_id
-          in: path
+        - in: path
+          name: _id
           required: true
-          schema:
+          schema: 
             type: string
       responses:
         '200':
-          description: 'Person has been deleted'
+          description: Config has been deleted successfully
           content:
             application/json:
               schema:
                 type: object
                 example: {}
+        '404':
+          description: Config with given ID is not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /users:
+    get:
+      description: Returns a list of users
+      security:
+        - bearerAuth: []
+      tags:
+        - Users
+      responses:
+        '200':
+          description: List of users returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      description: Creates a new user
+      security:
+        - bearerAuth: []
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: User has been created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid request when the post data is invalid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /users/{_id}:
+    get:
+      description: Get a user
+      security:
+        - bearerAuth: []
+      tags:
+        - Users
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: Returns a user
+          content:
+            application/json:
+              schema:
+                # type: object
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User with this ID is not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      description: Updates a user
+      security:
+        - bearerAuth: []
+      tags:
+        - Users
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema: 
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: User has been updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid request when the post data is invalid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      description: Deletes a user
+      security:
+        - bearerAuth: []
+      tags:
+        - Users
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: User has been deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {}
+        '404':
+          description: User with this ID is not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
 components:
   securitySchemes:
-    bearerAuth:
+    bearerAuth:            
       type: http
       scheme: bearer
       bearerFormat: JWT
   schemas:
-    Person:
+    # Hardware:
+    #   type: object
+    #   required:
+    #     - name
+    #     - category
+    #     - price
+    #   properties:
+    #     name:
+    #       type: string
+    #     category:
+    #       type: string
+    #     price:
+    #       type: number
+    Config:
+      type: object
+      required: 
+        - related_user
+        - case
+        - cpu
+        - gpu
+        - monitor
+        - motherboard
+        - ram
+        - psu
+        - storage
+      properties:
+        related_user:
+          # type: string
+          $ref: '#/components/schemas/User'
+        case:
+          $ref: '#/components/schemas/Case'
+        cpu:
+          $ref: '#/components/schemas/Cpu'
+        gpu:
+          $ref: '#/components/schemas/Gpu'
+        monitor:
+          $ref: '#/components/schemas/Monitor'
+        motherboard:
+          $ref: '#/components/schemas/Motherboard'
+        ram:
+          $ref: '#/components/schemas/Ram'
+        psu:
+          $ref: '#/components/schemas/Psu'
+        storage:
+          $ref: '#/components/schemas/Storage'
+          
+    Case:
       type: object
       required:
-        - first_name
-        - last_name
+        - name
+        - category
+        - price_usd
+      properties:
+        name: 
+          type: string
+        category: 
+          type: string
+        price_usd: 
+          type: number
+        type: 
+          type: string
+        side_panel_window: 
+          type: string
+        internal_3_5_bays: 
+          type: string
+    Cpu:
+      type: object
+      required:
+        - name
+        - category
+        - price_usd
+      properties:
+        name: 
+          type: string
+        category: 
+          type: string
+        price_usd: 
+          type: number
+        core_clock: 
+          type: string
+        boost_clock: 
+          type: string
+        tdp: 
+          type: string
+        integrated_graphics: 
+          nullable: true
+          type: string
+    Gpu:
+      type: object
+      required:
+        - name
+        - category
+        - price_usd
+      properties:
+        name: 
+          type: string
+        category: 
+          type: string
+        price_usd: 
+          type: number
+        core_clock: 
+          type: string
+        boost_clock: 
+          type: string
+        tdp: 
+          type: string
+        chipset: 
+          type: string
+    Monitor:
+      type: object
+      required:
+        - name
+        - category
+        - price_usd
+      properties:
+        name: 
+          type: string
+        category: 
+          type: string
+        price_usd: 
+          type: number
+        resolution: 
+          type: string
+        refresh_rate: 
+          type: string
+    Motherboard:
+      type: object
+      required:
+        - name
+        - category
+        - price_usd
+      properties:
+        name: 
+          type: string
+        category: 
+          type: string
+        price_usd: 
+          type: number
+        cpu_socket: 
+          type: string
+        form_factor: 
+          type: string
+        memory_max: 
+          type: string
+        memory_slots: 
+          type: string
+    Psu:
+      type: object
+      required:
+        - name
+        - category
+        - price_usd
+      properties:
+        name: 
+          type: string
+        category: 
+          type: string
+        price_usd: 
+          type: number
+        form_factor: 
+          type: string
+        efficency_rating: 
+          type: string
+        wattage: 
+          type: string
+        modular: 
+          type: string
+    Ram:
+      type: object
+      required:
+        - name
+        - category
+        - price_usd
+      properties:
+        name: 
+          type: string
+        category: 
+          type: string
+        price_usd: 
+          type: number
+        Speed: 
+          type: string
+        Modules: 
+          type: string
+    Storage:
+      type: object
+      required:
+        - name
+        - category
+        - price_usd
+      properties:
+        name: 
+          type: string
+        category: 
+          type: string
+        price_usd: 
+          type: number
+        capacity: 
+          type: string
+        type: 
+          type: string
+        form_factor: 
+          type: string
+        interface: 
+          type: string
+          
+    User:
+      type: object
+      required: 
         - email
       properties:
-        first_name:
-          type: string
-        last_name:
+        username:
           type: string
         email:
           type: string
-        # randomobjdatas:
-          # type: object
-          # $ref: #/components/schemas/Randomobjdatas
-    # Randomobjdatas:
-      # type: object
-      # required:
-        # - aliases
-        # - publisher
-      # properties:
-        # alterEgos:
-          # type: string
-        # aliases:
-          # type: [string]
-        # publisher:
-          # type: string
+          format: email
+        password:
+          type: string
+        role:
+          type: number
+        accessToken:
+          type: string
     Error:
       type: object
       required:
         - message
-        - has_error
+        - hasError
       properties:
         message:
           type: string
-        has_error:
+        hasError:
           type: boolean
