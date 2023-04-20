@@ -119,6 +119,7 @@ describe('ConfigController tests', () => {
   });
 
 
+
   test("update() with valid request body", async () => {
     const request = mockRequest({
       params: {
@@ -134,10 +135,27 @@ describe('ConfigController tests', () => {
     await configController.update(request, response, nextFunction);
 
     expect(configService.update).toBeCalledWith(1, saveObj);
-    // expect(response.body).toBeCalledWith(saveObj);
-    // expect(nextFunction).not.toBeCalled();
-    // expect(response.json).toBeCalledTimes(1);
-    // expect(response.status).toBeCalledWith(201)
+    expect(response.json).toBeCalledWith(saveObj);
+    expect(nextFunction).not.toBeCalled();
+    expect(response.json).toBeCalledTimes(1);
+    expect(response.status).toBeCalledWith(201)
+  });
+
+  test("update() with invalid request body", async () => {
+    const request = mockRequest({
+      params: {
+        id: 1
+      },
+      body: {
+        "case": "new case"
+      }
+    });
+
+    await configController.update(request, response, nextFunction);
+
+    expect(configService.update).not.toBeCalled();
+    expect(response.json).not.toBeCalled();
+    expect(nextFunction).toBeCalledWith(new createError.BadRequest("Invalid config ID"));
   });
 
   //TODO refact
@@ -158,4 +176,22 @@ describe('ConfigController tests', () => {
     // expect(nextFunction).not.toBeCalled();
   })
 
+    test("delete() with invalid request body", async () => {
+      const INVALID_CONFIG_ID = 4;
+
+      const request = mockRequest({
+        params: {
+          id: INVALID_CONFIG_ID
+        }
+      });
+
+      await configController.delete(request, response, nextFunction);
+
+      expect(configService.delete).not.toBeCalled();
+      expect(response.json).not.toBeCalled();
+      expect(nextFunction).toBeCalledWith(new createError.BadRequest("Invalid config ID"));
+    
+    })
+
+      
 });

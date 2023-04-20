@@ -1,19 +1,3 @@
-<!-- <div class="modal-body">
-<table *ngIf="hardware" class="table table-dark table-striped">
-
-  <thead>
-  </thead>
-  
-  <tbody>
-    <tr *ngFor="let key of keys; index as i">
-      <th>{{keys[i] | titlecase}}</th>
-      <td>{{values[i]}}</td>
-  </tbody>
-</table>
-</div> -->
-
-
-<!-- <ng-container #infoModal *ngIf="hardware"> -->
 <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-md">
     <div class="modal-content ">
@@ -24,10 +8,6 @@
 
       <div class="modal-body">
         <table *ngIf="hardware" class="table table-dark table-striped">
-
-          <thead>
-          </thead>
-
           <tbody>
             <tr *ngFor="let key of keys; index as i">
               <th>{{keys[i] | titlecase}}</th>
@@ -38,41 +18,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
       </div>
     </div>
   </div>
 </div>
-<!-- </ng-container> -->
-<!-- *********** -->
-
-<!-- <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-sm">
-    <div class="modal-content ">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="infoModalLabel">{{hardware.name}}</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        
-        <table *ngIf="hardware" class="table table-dark table-striped">
-
-          <thead>
-          </thead>
-          
-          <tbody>
-            <tr *ngFor="let key of keys; index as i">
-              <th>{{keys[i] | titlecase}}</th>
-              <td>{{values[i]}}</td>
-          </tbody>
-        </table>
-          
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div> -->

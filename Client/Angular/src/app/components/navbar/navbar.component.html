@@ -32,7 +32,7 @@
     </div>
     <div *ngIf="user">
       <a class="nav-link d-inline" *ngIf="user && user.email">{{user.email}}</a>
-      <a class="nav-link text-yellow" routerLink="/">Logout</a>
+      <a class="nav-link text-yellow" *ngIf="user" (click)="logout()" routerLink="/">Logout</a>
     </div>
 
 

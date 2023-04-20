@@ -47,7 +47,6 @@ exports.findById = async (req, res, next) => {
   try {
     const hardware = await hardwareService.findById(hardwareId);
     logger.info(hardware);
-    // hardware ? hardware : {};
     if (!hardware) return next(new createError.NotFound(`Hardware with id ${hardwareId} not found!`))
     res.json(hardware);
   } catch (error) {

@@ -63,7 +63,6 @@ exports.refresh = (req, res, next) => {
     return res.sendStatus(403);
   }
 
-  // DB-ben ellenőrizni a tokent
   const foundToken = refreshDB.includes(refreshToken);
   if (foundToken) {
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET_KEY, (err, payLoad) => {
@@ -73,7 +72,6 @@ exports.refresh = (req, res, next) => {
 
       const accessToken = jwt.sign({
         email: payLoad.email,
-        // password: payLoad.password,
         _id: payLoad._id,
         role: payLoad.role
       }, process.env.ACCESS_TOKEN_SECRET_KEY,

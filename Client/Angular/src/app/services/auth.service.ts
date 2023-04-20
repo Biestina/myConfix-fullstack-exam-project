@@ -3,10 +3,11 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { UserModel } from '../models/user.model';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Router } from 'express';
 
 export interface userLogModel {
   accessToken: string;
-  refreshToken: string;
+  refreshToken?: string;
   user: UserModel
 }
 
@@ -29,23 +30,30 @@ export class AuthService {
           localStorage.setItem('refreshToken', loginData.refreshToken);
         }
         this._userObject.next(loginData.user)
-        // this._userObject.next(null)
       })
     )
   };
 
-  //TODO refresh + refreshtoken?
-  // refresh(): Observable<{accessToken: string}> {
-  //   const refreshToken = localStorage.getItem('refreshToken')
-  // ...
-  // }
+  refresh(): Observable<{accessToken: string}>{
+
+    const refreshToken = localStorage.getItem('refreshToken');
+    return this.http.post<{accessToken: string}>(`${this.BASE_URL}refresh`, {refreshToken}).pipe(
+      tap(data => {
+        if(data && data.accessToken){
+          localStorage.setItem('accessToken', data.accessToken)
+        };
+      }));
+  };
 
   logout(){
-    //TODO ha lesz refreshtoken
-    // const refreshToken = localStorage.getItem('refreshToken');
-    // localStorage.removeItem('refreshToken');
+    const refreshToken = localStorage.getItem('refreshToken');
+    localStorage.removeItem('refreshToken');
     localStorage.removeItem('accessToken');
-    // this.http.post(`${this.BASE_URL}logout`, {refreshToken})
+    return this.http.post(`${this.BASE_URL}logout`, {refreshToken}).pipe(
+      tap(() => {
+        this._userObject.next(null);
+      })
+    )
   }
 
 
@@ -57,7 +65,6 @@ export class AuthService {
     return this.http.get<{user: UserModel}>(`${this.BASE_URL}me`).pipe(
       tap(user => {
         console.log(user);
-        console.log('userObject?');
         this._userObject.next(user.user);
       })
     )

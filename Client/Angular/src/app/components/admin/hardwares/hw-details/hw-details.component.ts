@@ -9,7 +9,6 @@ import { HardwareModel } from '../../../../models/hardware.model'
 export class HwDetailsComponent implements OnInit, OnChanges {
 
   @Input() hardware?: HardwareModel | void;
-  // @Input() data: any;
   keys!: string[];
   values!: string[];
   
@@ -24,11 +23,9 @@ export class HwDetailsComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if(this.hardware){
-
       this.keys = Object.keys(this.hardware);
       this.values = Object.values(this.hardware);
     }
-    // console.log(this.hardware);
   };
 
 }

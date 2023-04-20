@@ -4,13 +4,10 @@
 <div class="container d-grid">
   <div class="row">
     <div class="col">
-
-      <!-- <div class="form-wrapper d-grid container justify-content-center align-items-center bg-dark w-25 bg-opacity-50"> -->
       <div class="p-4 form-wrapper  justify-content-center align-items-center">
+
         <form *ngIf="configForm" [formGroup]="configForm" (ngSubmit)="create()" class=" text-yellow opacity-75">
-
           <div class="mb-2 form-group-row" *ngFor="let category of categories; index as i">
-
             <label [for]="category.toLowerCase()" class="col-form-label me-2">
               {{category}}
               <select class="form-control-sm form-select" [id]="category.toLowerCase()" [formControlName]="category.toLowerCase()" [name]="category" [value]="category"
@@ -18,34 +15,20 @@
                 <option [disabled]="true" [selected]="true" [hidden]="true" [defaultSelected]="true">
                   Select a {{category}}
                 </option>
-
                 <ng-container *ngFor="let hardware of hardwares; index as j">
                   <option *ngIf="hardware.category === categories[i]" [value]="hardware.name">
                     {{hardware.name}}
                   </option>
                 </ng-container>
-
               </select>
             </label>
-            <!-- <button class="btn btn-success">+</button> -->
           </div>
-          <!-- <label>
-            Memória:
-            <select [(ngModel)]="selectedMemory">
-              <option *ngFor="let memory of memories" [value]="memory.id">{{ memory.name }}</option>
-            </select>
-          </label> -->
-
-
           <!-- <button type="button" (click)="addToConfig()">Add to Configuration</button> -->
-
           <button class="btn btn-outline-info d-block mx-auto">Build a new PC</button>
         </form>
+
       </div>
-
     </div>
-
-
 
     <div class="p-5 col text-yellow">
       <h3 *ngIf="ckeys" class="pb-5">Added to Configuration:</h3>
@@ -57,8 +40,5 @@
       </div>
     </div>
 
-
   </div>
-
-
 </div>

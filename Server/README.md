@@ -2,29 +2,30 @@
 # 📎 Asztali számítógép-összeállító alkalmazás
 
 Az myConfix egy asztali PC konfigurátor, amivel saját igényeinknek megfelelően állíthatjuk össze leendő számítógépünket. 
-Felhasználóként regisztrációt követően egyedi számítógép-konfigurációkat állíthatunk össze a rendelkezésre álló hardverlista alapján. A kész összeállításokat elmenthetjük a fiókjukba, illetve megtekinthetjük, szerkeszthetjük és törölhetjük is.
+Felhasználóként regisztrációt követően egyedi számítógép-konfigurációkat állíthatunk össze a rendelkezésre álló hardverlista alapján. A kész összeállításokat elmenthetjük a fiókjukba, illetve megtekinthetjük, szerkeszthetjük és törölhetjük is őket.
 <!-- A többi hasonló konfigurátorral szemben itt regisztráció után be tudjuk állítani a meglévő hardvereinket, és a fennmaradó komponenseket ez alapján szűrve kapjuk meg, valamint egy súgóban megjelennek a hardverhez kapcsolódó legtipikusabb kompatibilitási hibalehetőségek.  -->
 <!-- Admin jogosultsággal hozzáférünk az hardver adatbázis elemeihez, tudunk új elemeket hozzáadni, és szükség esetén szerkeszteni, vagy törölni tudjuk őket. -->
 
 
-#
+
 <!-- ___
 --- -->
-
-#  📎 Technikai háttér
+📎
+# 📎 Technikai háttér
 
 
 #### **Kliens**: Angular 
 #### **Stílus, reszponzivitás**: SCSS, Bootstrap
 #### **Szerver**: Express.js, Node.js API
 #### **Adatbázis**: MongoDB, NoSQL
+#### **Autorizáció**: JSONWebToken
 #### **Tesztkörnyezet**: JEST
 #### **Dokumentáció**: Swagger
 #### **Konténerizáció**: Docker
 
 <!-- ---
 --- -->
-#
+📎
 # 📎 Entitások
 
 ## **User**
@@ -43,68 +44,74 @@ Az alkalmazás 8-féle hardvertípust különböztet meg kategória alapján.
 (Gépház, Processzor, Videókártya, Alaplap, Monitor, Memória, Tápegység, Háttértár).
 Ezek alapján tudunk egyedi konfigurációt beállítani.
 
-#
-# 📎 User story lista, feladatok
+<!-- # -->
+📎
+#  User story lista, feladatok
 
 A felhasználó regisztrál és belép az alkalmazásba
 
 - Regisztrációs képernyő megvalósítása
-- API regisztrációs végpont implementálása (POST /register)
+- **POST /users** regisztrációs végpont implementálása
 - Login képernyő megvalósítása
-- API login végpont implementálása (POST /login)
+- **POST /login** végpont implementálása 
 - JWT autentikáció implementáció, kliens oldali hozzáférés szabályozása autentikáció alapján
 
-A felhasználó jegyet vásárol
+A felhasználó összeállít egy PC konfigurációt
 
-- Jegy kiválasztása képernyő implementálása
-- GET /tickets végpont implementálása a megvásárolható jegyek lekérdezéséhez
-- Jegy checkout képernyő implementálása
-- POST /tickets végpont implementálása a vásárlás véglegesítéséhez
+- Builder képernyő implementálása
+- **GET /hardwares** végpont implementálása az összeállításhoz szükséges alkatrészek lekérdezéséhez
+- **POST /configs** végpont implementálása a konfiguráció véglegesítéséhez
 
-A felhasználó megtekinti a megvásárolt jegyeit
+A felhasználó megtekinti a mentett összeállításait
 
-- Aktuális jegyek képernyő implementálása
-- GET /users/tickets végpont implementálása (felhasználó jegyeinek lekérdezése)
-#
+- Aktuális konfigurációk képernyő implementálása
+- **GET /users/configs** végpont implementálása (felhasználó összeállításainak lekérdezése)
+
+📎
 # 📎 Képernyők
 
-## Regisztráció
+## Sign up
 
-A felhasználó létrehozhatja a felhasználói fiókját, e-mail, jelszó, név, életkor és lakcím megadásával.
+A felhasználó létrehozhatja a felhasználói fiókját, e-mail, jelszó, és felhasználónév megadásával.
 
 ## Login
 
 A felhasználó bejelentkezhet e-mail cím és jelszó megadásával.
 
-## Aktuális jegyek
+## Hardwares
 
-A felhasználó táblázatos formában látja, miből mennyi jeggyel rendelkezik, és látja, hogy az adott jegyekkel milyen járművekre szállhat fel. A vásárlás gomb megnyomásával a **Jegyvásárlás – jegy kiválasztása** képernyőre jutunk. Csak belépés után érhető el.
+A felhasználó táblázatos formában látja az adatbázisban szereplő hardvereket. A kiválasztott hardverhez tartozó "More info" gomb megnyomásával egy felugró ablakban láthatóak a hardver további tulajdonságai.
 
-## Jegyvásárlás – jegy kiválasztása
+## Builder - Konfigurátor űrlap
 
-A felhasználó egy listából kiválaszthatja, milyen jegyet szeretne vásárolni. Többet is vásárolhat egy típusból egyszerre, és több típust is vásárolhat. Az oldalon látható a kiválasztott jegyek összege, illetve az, hogy melyik jegy milyen járműre érvényes. A tovább gombra kattintva a **Jegyvásárlás – checkout** képernyőre jutunk. Csak belépés után érhető el.
+A képernyő bal oldalán látható az összeállító űrlap. Minden alkatrész-kategóriához tartozik egy legördülő menü, amiben a felhasználó az ahhoz tartozó komponensek közül kiválaszthatja, melyiket szeretné beépíteni a konfigurációjába. Kategóriánként egy hardver választható. A képernyő jobb oldalán listázásra kerülnek a kiválasztott hardverek, de még nem mentődik el a lista. A "Save config" gombra kattintva elmentjük az összeállítást, majd a **My Configs** képernyőre jutunk. (Csak belépés után érhető el.)
 
-## Jegyvásárlás – checkout
+## My Configs - Aktuális konfigurációk listája
 
-A felhasználó lát egy összesítést a megvásárolandó jegyekről, illetve azok áráról. A kész gomb megnyomásakor lesz végleges a vásárlás, a felhasználó visszajut az **Aktuális jegyek** képernyőre. Csak belépés után érhető el.
-#
+A bejelentkezett felhasználó látja kész összeállításait kártyák formájában. A kiválasztott összeállítás kártya-elemén található "Update" gomb megnyomásakor az alkalmazás átnavigál a konkrét konfiguráció szerkesztési felületére, ahol lehetősége van szerkeszteni, illetve törölni azt. Az "Update" véglegesítése után a felhasználó visszajut a **My Configs** képernyőre.
+
+
+📎
 # 📎 API végpontok
 
 | HTTP kérés | API végpont         |    Leírás            |
 | :-------- | :----------- | :------------------------- |
 | `GET` | /hardwares | Hardverek lekérdezése
-| `POST` | /hardwares | Új hardver létrehozása
-| `GET` | /hardwares/id | Adott hardver lekérdezése
-| `PUT` | /hardwares/id | Hardver adatok szerkesztése
-| `DELETE` | /hardwares/id | Hardver törlése
+| `**POST` | /hardwares | Új hardver létrehozása
+| `**PUT` | /hardwares/:id | Hardver adatok szerkesztése
+| `**DELETE` | /hardwares/:id | Hardver törlése
 | `GET` | /configs | Konfigurációk lekérdezése
 | `POST` | /configs | Konfiguráció létrehozása
-| `GET` | /configs/id | Adott konfiguráció lekérdezése
-| `PUT` | /configs/id | Konfiguráció szerkesztése
-| `DELETE` | /configs/id | Konfiguráció törlése
+| `GET` | /configs/:id | Adott konfiguráció lekérdezése
+| `PUT` | /configs/:id | Konfiguráció szerkesztése
+| `DELETE` | /configs/:id | Konfiguráció törlése
 | `GET` | /users | Felhasználók lekérdezése
+| `**GET` | /users/:id | Adott felhasználó lekérdezése
 | `POST` | /users | Felhasználói regisztráció
-  Login........
+| `POST` | /login | Felhasználói bejelentkezés
+| `POST` | /refresh | Munkamenet frissítése
+| `POST` | /logout | Felhasználói kijelentkezés
+| `GET` | /me | Felhasználó azonosítása
 
 <!-- Hardverek
 GET/hardwares

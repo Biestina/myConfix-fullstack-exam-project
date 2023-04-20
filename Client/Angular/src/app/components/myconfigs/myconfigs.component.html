@@ -1,8 +1,6 @@
 <div *ngIf="configs" class="container">
   <div class="row row-cols-md-3 row-cols-lg-4 grid gap-3 justify-content-evenly ">
-    <!-- <div  class="col"> -->
 
-      <!-- <ng-tempate></ng-tempate> -->
       <div *ngFor="let config of configs | async; index as i" class="card shadow">
         <div class="card-header">
           <img src="https://source.unsplash.com/random/800x600/?gaming+computer {{ [i] }}" class="card-img-top" alt="computer">
@@ -22,8 +20,6 @@
               </ul>
         </div>
       </div>
-    <!-- </div> -->
 
-    
   </div>
 </div>

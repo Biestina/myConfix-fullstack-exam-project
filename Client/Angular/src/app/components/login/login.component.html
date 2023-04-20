@@ -1,4 +1,3 @@
-
 <div class="form-wrapper d-flex container justify-content-center align-items-center">
   
   <form *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()"
@@ -16,10 +15,6 @@
       <input type="password" class="form-control" id="password" formControlName="password">
       <div *ngIf="password.invalid && password.touched" class="text-danger fw-bold">A valid password is required.</div>
     </div>
-    <!-- <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div> -->
     
     <button [disabled]="loginForm.invalid" type="submit" class="btn btn-outline-warning">
       Login

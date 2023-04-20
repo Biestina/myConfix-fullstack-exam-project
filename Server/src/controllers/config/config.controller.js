@@ -23,9 +23,11 @@ exports.create = async (req, res, next) => {
     storage: req.body['storage'],
     // related_user: req.body['related_user'],
   };
+  const body = req.body;
 
   try {
-    const savedConfig = await configService.create(newConfig);
+    // const savedConfig = await configService.create(newConfig);
+    const savedConfig = await configService.create(body);
     logger.info(`New configuration saved`);
     res.status(201).json(savedConfig);
   } catch (error) {

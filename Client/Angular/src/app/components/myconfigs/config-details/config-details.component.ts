@@ -25,9 +25,7 @@ export class ConfigDetailsComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private categoryService: CategoryService,
-    // private hwService: HardwareService,
     private hwService: HardwareHttpService,
-    // private configService: ConfigService
     private configService: ConfigHttpService
   ) {}
 
@@ -65,17 +63,8 @@ export class ConfigDetailsComponent implements OnInit {
   }
 
   //TODO update() debug (néha csak refresh után változik )
-  // update(id: any, config: ConfigModel) {
-  //   this.configService.update(id, config).subscribe({
-  //     next: 
-  //       this.currentConfig = this.detailsForm.value
-  //     })
-  //     console.log(`Config ID ${this._id} updated`);
-  //     this.router.navigate(['myconfigs'])
-  // };        ez működik, csak typeerror: partialObserver.next is not a function
   update(id: any, config: ConfigModel) {
     this.configService.update(id, config).subscribe(() => {
-      // next: 
         this.currentConfig = this.detailsForm.value
       })
       console.log(`Config ID ${this._id} updated`);
@@ -85,7 +74,7 @@ export class ConfigDetailsComponent implements OnInit {
   delete(id: any){
     if(confirm('Are you sure you want to delete this config?')){
       this.configService.delete(id).subscribe();
-      console.log(`Config ID ${id} deleted`);
+      console.log(`Config ID ${id} has been deleted`);
       this.router.navigate(['myconfigs'])
     }
   }

@@ -1,49 +1,57 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription, tap } from 'rxjs';
 import { UserModel } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent implements OnInit, OnDestroy {
-
+export class NavbarComponent implements OnInit, OnDestroy, OnChanges {
   user!: UserModel | null;
-  sub!: Subscription
-  
-  constructor(private authService: AuthService) { }
-  
-  ngOnInit(): void {
-    // this.sub = this.authService.userObject.subscribe((user)=> {
-    //   this.user = user;
-    //   console.log(user);
-    // });
-    // if(this.user){
-    //   this.getMe();
-    // }
+  sub!: Subscription;
+  sub2!: Subscription;
 
-    // if(this.user){
-        this.getMe();
-      // }
-    this.authService.userObject.subscribe((user)=> {
-      this.user = user
-    })
-  };
+  constructor(private authService: AuthService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.getMe();
+    this.sub2 = this.authService.userObject.subscribe((user) => {
+      this.user = user;
+    });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.getMe();
+    this.sub2 = this.authService.userObject.subscribe((user) => {
+      this.user = user;
+    });
+  }
 
   ngOnDestroy(): void {
-    if(this.sub){
+    if (this.sub) {
       this.sub.unsubscribe();
     }
-    // this.authService.me().subscribe()
-  }
-
-  getMe(){
-    if(localStorage.getItem('accessToken')){
-      this.sub = this.authService.me().subscribe()
-      // this.authService.me().subscribe()
+    if (this.sub2) {
+      this.sub2.unsubscribe();
     }
   }
 
+  getMe() {
+    if (localStorage.getItem('accessToken')) {
+      this.sub = this.authService.me().subscribe();
+    }
+  }
+
+  logout() {
+    this.authService.logout().subscribe({
+      next: () => {
+        this.user = null;
+        console.log('logged out');
+        this.router.navigate(['']);
+      },
+    });
+  }
 }

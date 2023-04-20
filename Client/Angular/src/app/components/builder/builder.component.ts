@@ -85,11 +85,13 @@ export class BuilderComponent implements OnInit, OnDestroy {
   //     error: (err) => console.log(err)
   //   })
   // };
+  //TODO debug
   create() {
-    const configLog = {
-      ...this.configForm.value
+    const configLog = this.configForm.value;
+    // const configLog = {
+      // ...this.configForm.value
       // related_user: this.user?._id,       //*létrejön a konfig, de hiba(gondolom az id bekavar)
-    };
+    // };
     // this.configService.create(this.newConfig).subscribe({
     this.configService.create(configLog).subscribe(
       // next:
@@ -118,4 +120,7 @@ export class BuilderComponent implements OnInit, OnDestroy {
   // filtered(category: string): HardwareModel[] {
   //     return this.hardwares.filter(hw => hw.category === category.toLowerCase)
   // }
+
+
+
 }
