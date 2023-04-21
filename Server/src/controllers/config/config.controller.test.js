@@ -54,8 +54,30 @@ describe('ConfigController tests', () => {
     jest.clearAllMocks();
   });
 
+  test('findAll() with valid data', () => {
+    const request = mockRequest();
 
+    return configController.findAll(request, response, nextFunction)
+      .then(() => {
+        expect(configService.findAll).toBeCalled();
+        expect(configService.findAll).toBeCalledTimes(1);
+        expect(response.json).toBeCalledWith(mockData);
+      });
+  });
 
+  test('findAll() with invalid data', () => {
+    const request = mockRequest();
+
+    configService.findAll.mockImplementationOnce(() => Promise.reject('Database error (find configs)'));
+    return configController.findAll(request, response, nextFunction)
+      .then(() => {
+        expect(configService.findAll).toBeCalledWith();
+        expect(configService.findAll).toBeCalledTimes(1);
+        expect(nextFunction).toBeCalledWith(createError(500, 'Database error (find configs)'));
+      });
+  });
+
+  
   test('findById() with valid ID', () => {
     const VALID_CONFIG_ID = 2;
 

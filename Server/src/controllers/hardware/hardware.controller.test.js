@@ -13,24 +13,14 @@ describe('HardwareController tests', () => {
   beforeEach(() => {
     mockData = [{
       "id": 1,
-      "category": "Cpu",
       "name": "AMD Ryzen 5 3600",
-      "price": 199.99,
-      "description": "AMD Ryzen 5 3600",
-      "image": "https://www.amd.com/system/files/2019-11/ryzen-5-3600-3d-render-rgb-1920x1080.png",
-      "quantity": 10,
-      "rating": 4.5,
-      "numReviews": 12,
+      "category": "Cpu",
+      "price_usd": 199.99,
     }, {
       "id": 2,
       "name": "Corsair 4000D Airflow",
       "category": "Case",
-      "price": 99.99,
-      "description": "Corsair 4000D Airflow",
-      "image": "https://www.corsair.com/medias/sys_master/images/images/hc5/hc5/9111119625982/CC-9011179-WW-4000D-Airflow-01.png",
-      "quantity": 10,
-      "rating": 4.5,
-      "numReviews": 12,
+      "price_usd": 99.99,
     }];
 
     validSavedHardware = {
@@ -38,11 +28,6 @@ describe('HardwareController tests', () => {
       name: "MeshCool",
       category: "Case",
       price: 99.99,
-      description: "Corsair 4000D Airflow",
-      image: "https://www.corsair.com/medias/sys_master/images/images/hc5/hc5/9111119625982/CC-9011179-WW-4000D-Airflow-01.png",
-      quantity: 10,
-      rating: 4.5,
-      numReviews: 12,
     };
 
     hardwareService.__setMockData(mockData);
@@ -54,8 +39,29 @@ describe('HardwareController tests', () => {
     jest.clearAllMocks();
   });
 
-  test('findById() with valid ID', () => {
+  test('findAll() with valid data', () => {
+    const request = mockRequest();
 
+    return hardwareController.findAll(request, response, nextFunction)
+      .then(() => {
+        expect(hardwareService.findAll).toBeCalled();
+        expect(response.json).toBeCalledWith(mockData);
+      });
+  });
+
+  test('findAll() with invalid data', () => {
+    const request = mockRequest();
+
+    hardwareService.findAll.mockImplementationOnce(() => Promise.reject('Database error (find hardwares)'));
+
+    return hardwareController.findAll(request, response, nextFunction)
+      .then(() => {
+        expect(nextFunction).toBeCalledWith(createError(500, 'Database error (find hardwares)'));
+      });
+  });
+
+
+  test('findById() with valid ID', () => {
     const VALID_HARDWARE_ID = 2;
     const request = mockRequest({
       params: {
@@ -63,11 +69,8 @@ describe('HardwareController tests', () => {
       }
     });
 
-
     return hardwareController.findById(request, response, nextFunction)
       .then(() => {
-
-
         expect(hardwareService.findById).toBeCalledWith(VALID_HARDWARE_ID);
         expect(response.json).toBeCalledWith(
           mockData.find(p => p.id === VALID_HARDWARE_ID)
@@ -77,7 +80,6 @@ describe('HardwareController tests', () => {
 
 
   test('findById() with invalid ID', () => {
-
     const INVALID_HARDWARE_ID = 4;
     const request = mockRequest({
       params: {
@@ -85,58 +87,47 @@ describe('HardwareController tests', () => {
       }
     });
 
-
     return hardwareController.findById(request, response, nextFunction)
       .then(() => {
-
-
         expect(hardwareService.findById).toBeCalledWith(INVALID_HARDWARE_ID);
         expect(nextFunction).toBeCalledWith(
-          createError(404, 'Hardware not found')
+          createError(404, `Hardware with id ${INVALID_HARDWARE_ID} not found!`)
         );
       });
   });
 
   test('create() with valid data', () => {
-
     const request = mockRequest({
       body: validSavedHardware
     });
 
-
     return hardwareController.create(request, response, nextFunction)
       .then(() => {
-
 
         expect(hardwareService.create).toBeCalledWith(validSavedHardware);
         expect(response.status).toBeCalledWith(201);
         expect(response.json).toBeCalledWith({
-          message: 'Hardware created successfully!',
-          createdHardware: validSavedHardware
+          // createdHardware: 
+          validSavedHardware
         });
       });
   });
 
   test('create() with invalid data', () => {
-
     const request = mockRequest({
       body: {}
     });
 
-
     return hardwareController.create(request, response, nextFunction)
       .then(() => {
-
-
         expect(hardwareService.create).not.toBeCalled();
         expect(nextFunction).toBeCalledWith(
-          createError(400, 'Hardware validation failed: name: Path `name` is required.')
+          createError(500, 'Hardware could not be saved')
         );
       });
   });
 
-  test('updateById() with valid data', () => {
-
+  test('update() with valid data', () => {
     const VALID_HARDWARE_ID = 2;
     const request = mockRequest({
       params: {
@@ -145,20 +136,18 @@ describe('HardwareController tests', () => {
       body: validSavedHardware
     });
 
-
-    return hardwareController.updateById(request, response, nextFunction)
+    return hardwareController.update(request, response, nextFunction)
       .then(() => {
 
-        expect(hardwareService.updateById).toBeCalledWith(VALID_HARDWARE_ID, validSavedHardware);
+        expect(hardwareService.update).toBeCalledWith(VALID_HARDWARE_ID, validSavedHardware);
         expect(response.json).toBeCalledWith({
-          message: 'Hardware updated successfully!',
-          updatedHardware: validSavedHardware
+          // updatedHardware: 
+          validSavedHardware
         });
       });
   });
 
-  test('updateById() with invalid data', () => {
-
+  test('update() with invalid data', () => {
     const INVALID_HARDWARE_ID = 4;
     const request = mockRequest({
       params: {
@@ -167,20 +156,16 @@ describe('HardwareController tests', () => {
       body: {}
     });
 
-
-    return hardwareController.updateById(request, response, nextFunction)
+    return hardwareController.update(request, response, nextFunction)
       .then(() => {
-
-
-        expect(hardwareService.updateById).not.toBeCalled();
+        expect(hardwareService.update).not.toBeCalled();
         expect(nextFunction).toBeCalledWith(
-          createError(404, 'Hardware not found')
+          createError.InternalServerError('Could not update')
         );
       });
   });
 
-  test('removeById() with valid ID', () => {
-
+  test('delete() with valid ID', () => {
     const VALID_HARDWARE_ID = 2;
     const request = mockRequest({
       params: {
@@ -188,20 +173,19 @@ describe('HardwareController tests', () => {
       }
     });
 
-
-    return hardwareController.removeById(request, response, nextFunction)
+    return hardwareController.delete(request, response, nextFunction)
       .then(() => {
-
-
-        expect(hardwareService.removeById).toBeCalledWith(VALID_HARDWARE_ID);
-        expect(response.json).toBeCalledWith({
-          message: 'Hardware deleted successfully'
-        });
+        expect(hardwareService.delete).toBeCalledWith(VALID_HARDWARE_ID);
+        // expect(response.json).toBeCalledWith(
+        //   `Deleted hardware with id ${VALID_HARDWARE_ID}`
+        // );
+        // expect(response.status).toBeCalledWith(204);
+        expect(response.end).toBeCalledWith(`Deleted hardware with id ${VALID_HARDWARE_ID}`);
+        expect(response.json).not.toBeCalled();
       });
   });
 
-  test('removeById() with invalid ID', () => {
-
+  test('delete() with invalid ID', () => {
     const INVALID_HARDWARE_ID = 4;
     const request = mockRequest({
       params: {
@@ -209,14 +193,11 @@ describe('HardwareController tests', () => {
       }
     });
 
-
-    return hardwareController.removeById(request, response, nextFunction)
+    return hardwareController.delete(request, response, nextFunction)
       .then(() => {
-
-
-        expect(hardwareService.removeById).toBeCalledWith(INVALID_HARDWARE_ID);
+        expect(hardwareService.delete).toBeCalledWith(INVALID_HARDWARE_ID);
         expect(nextFunction).toBeCalledWith(
-          createError(404, 'Hardware not found')
+          createError.InternalServerError('Database error (delete hardware)')
         );
       });
   });
