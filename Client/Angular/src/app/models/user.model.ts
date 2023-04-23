@@ -6,9 +6,8 @@ import { HardwareModel } from "./hardware.model";
 export interface UserModel {
   _id?: string;
   email: string;
-  password?: string;
-  role: string;
-  username?: string;
-  hardwares?: HardwareModel[];
-  configs?: ConfigModel[];
+  password: string;
+  role?: string;
+  // username?: string;
+  configs: string[];
 }

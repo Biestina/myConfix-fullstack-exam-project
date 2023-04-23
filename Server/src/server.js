@@ -30,7 +30,8 @@ app.post('/refresh', authHandler.refresh);
 app.post('/logout', authHandler.logout);
 app.get('/me', authHandler.me);
 
-app.use('/myconfigs', authenticateJWT, require('./controllers/config/config.routes'));
+app.use('/configs', authenticateJWT, require('./controllers/config/config.routes'));
+// app.use('/myconfigs',  require('./controllers/config/config.routes'));
 app.use('/hardwares', require('./controllers/hardware/hardware.routes'));
 app.use('/users', require('./controllers/user/user.routes'));
 

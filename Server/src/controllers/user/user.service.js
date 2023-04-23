@@ -9,3 +9,7 @@ exports.create = user => {
 exports.findAll = () => User.find();
 
 exports.findById = id => User.findById(id);
+
+exports.updateUserConfigs = (id, configData) => User.findByIdAndUpdate(
+  { _id: id }, { $push: { configs: configData } }, { new: true }
+);

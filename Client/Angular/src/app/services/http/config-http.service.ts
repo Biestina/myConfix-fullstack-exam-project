@@ -9,6 +9,6 @@ import { ConfigModel } from 'src/app/models/config.model';
 export class ConfigHttpService extends BaseHttpService<ConfigModel> {
 
   constructor(http: HttpClient) {
-    super(http, 'myconfigs')
+    super(http, 'configs')
    }
 }

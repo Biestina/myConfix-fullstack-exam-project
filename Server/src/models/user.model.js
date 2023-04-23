@@ -1,10 +1,15 @@
 const mongoose = require('mongoose');
-const idValidator = require('mongoose-id-validator');
+// const idValidator = require('mongoose-id-validator');
 
 const UserSchema = mongoose.Schema({
-  // username: String,
-  email: String,
-  password: String,
+  email: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
   role: String,
   configs: [{
     type: mongoose.Schema.Types.ObjectId,
@@ -12,5 +17,5 @@ const UserSchema = mongoose.Schema({
   }]
 }, { timestamps: true }, {versionKey: false});
 
-UserSchema.plugin(idValidator);
+// UserSchema.plugin(idValidator);
 module.exports = mongoose.model('User', UserSchema);

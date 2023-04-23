@@ -7,6 +7,7 @@ import { CategoryService } from 'src/app/services/category.service';
 import { ConfigService } from 'src/app/services/config.service';
 import { ConfigHttpService } from 'src/app/services/http/config-http.service';
 import { HardwareHttpService } from 'src/app/services/http/hardware-http.service';
+import { UserHttpService } from 'src/app/services/http/user-http.service';
 
 @Component({
   selector: 'app-config-details',
@@ -14,7 +15,8 @@ import { HardwareHttpService } from 'src/app/services/http/hardware-http.service
   styleUrls: ['./config-details.component.scss'],
 })
 export class ConfigDetailsComponent implements OnInit {
-  _id!: any;
+  userId!: string | null;
+  configId!: string | null;
   currentConfig!: ConfigModel;
 
   detailsForm!: FormGroup;
@@ -26,7 +28,8 @@ export class ConfigDetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private categoryService: CategoryService,
     private hwService: HardwareHttpService,
-    private configService: ConfigHttpService
+    private configService: ConfigHttpService,
+    private userService: UserHttpService
   ) {}
 
   ngOnInit(): void {
@@ -41,7 +44,7 @@ export class ConfigDetailsComponent implements OnInit {
       storage: new FormControl(''),
     });
 
-    this._id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.configId = this.activatedRoute.snapshot.paramMap.get('configId');
     this.currentConfig = this.detailsForm.value;
     this.categories = this.categoryService.categories;
     this.hwService.findAll().subscribe((res) => {
@@ -49,25 +52,36 @@ export class ConfigDetailsComponent implements OnInit {
     });
 
     this.activatedRoute.paramMap.subscribe((params) => {
-      let readParam = params.get('id');
-      if (readParam) {
-        this._id = readParam;
-        this.configService.findById(this._id).subscribe({
+      let readUserId = params.get('userId');
+      if (readUserId) {
+        this.userId = readUserId;
+        this.userService.findById(this.userId).subscribe({
+          next: () => {
+            console.log(`User ID ${this.userId} found`);
+          },
+        });
+      };
+
+      let readConfigId = params.get('configId');
+      if (readConfigId) {
+        this.configId = readConfigId;
+        this.configService.findById(this.configId).subscribe({
           next: (config: ConfigModel) => {
             this.currentConfig = config;
             this.detailsForm.patchValue(this.currentConfig);
           },
         });
-      }
+      };
     });
   }
 
+  //TODO update / delete refact all layers (backend, service, component)
   //TODO update() debug (néha csak refresh után változik )
   update(id: any, config: ConfigModel) {
     this.configService.update(id, config).subscribe(() => {
         this.currentConfig = this.detailsForm.value
       })
-      console.log(`Config ID ${this._id} updated`);
+      console.log(`Config ID ${this.configId} updated`);
       this.router.navigate(['myconfigs'])
   };
 

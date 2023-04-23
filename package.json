@@ -9,6 +9,8 @@
     "test": "jest",
     "test-config": "jest config.controller.test.js",
     "test-hardware": "jest hardware.controller.test.js",
+    "docker:build": "docker build -t vizsgaremek-lb-myconfix:0.0.1 .",
+    "docker:run": "docker run -d -p 8080:3000 vizsgaremek-lb-myconfix:0.0.1",
     "deploy": "cd Client && ng build && cd Server && docker-compose up"
   },
   "keywords": [

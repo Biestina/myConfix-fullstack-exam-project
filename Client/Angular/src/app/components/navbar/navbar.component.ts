@@ -46,12 +46,8 @@ export class NavbarComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   logout() {
-    this.authService.logout().subscribe({
-      next: () => {
-        this.user = null;
-        console.log('logged out');
-        this.router.navigate(['']);
-      },
-    });
+    this.authService.logout();
+    this.user = null;
+    this.router.navigate(['']);
   }
 }

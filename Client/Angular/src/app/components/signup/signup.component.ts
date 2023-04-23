@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserModel } from 'src/app/models/user.model';
@@ -16,6 +16,7 @@ export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
   users!: UserModel[];
   sub!: Subscription;
+  emailInUse: boolean = false;
 
   constructor(
     private router: Router, 
@@ -27,7 +28,8 @@ export class SignupComponent implements OnInit {
     this.signupForm = new FormGroup({
       email: new FormControl('', [
         Validators.required,
-        Validators.email
+        Validators.email,
+        this.emailInUseValidator()
       ]),
       password: new FormControl('', [
         Validators.required,
@@ -50,7 +52,6 @@ export class SignupComponent implements OnInit {
   get password() { return this.signupForm.get('password')};
   get rules() { return this.signupForm.get('rules')};
 
-  //TODO custom validator -> email in use
   onSubmit(){
     const userLog = this.signupForm.value;
     console.log(userLog);
@@ -61,11 +62,23 @@ export class SignupComponent implements OnInit {
       this.userService.create(userLog).subscribe({
         next: (user) => {
           console.log(user);
-          this.router.navigate([''])
+          this.router.navigate(['login'])
         }
       });
     }
-    
+  };
+
+  emailInUseValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const email = control.value;
+      let isInUse = this.users?.map(user => user.email).includes(email);
+      if(isInUse){
+        this.emailInUse = true;
+        return {emailInUse: {value: control.value}};
+      }
+      this.emailInUse = false;
+      return null;
+    }
   }
 
 }

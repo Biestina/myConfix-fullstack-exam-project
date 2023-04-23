@@ -1,32 +1,35 @@
-
 <div class="form-wrapper d-flex container justify-content-center align-items-center">
-  
+
   <form *ngIf="signupForm" [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="p-5 text-yellow opacity-75">
     <h3 class="text-yellow text-center mb-5">Sign up</h3>
 
     <div *ngIf="email" class="mb-3">
-      <label for="email" class="form-label">Email address</label>
+      <label for="email" class="form-label">Email</label>
       <input type="email" class="form-control" id="email" formControlName="email">
-      <div *ngIf="email.invalid && email.touched" class="text-danger fw-bold">A valid email is required.</div>
+      <div *ngIf="email.invalid && email.touched && email.errors && !emailInUse" class="text-danger fw-bold">
+        A valid email is required.
+      </div>
+      <div *ngIf="email.invalid && email.touched && email.errors && emailInUse" class="text-danger fw-bold">
+        Email is already in use.
+      </div>
     </div>
+
     <div *ngIf="password" class="mb-3">
       <label for="password" class="form-label">Password</label>
       <input type="password" class="form-control" id="password" formControlName="password">
       <div *ngIf="password.invalid && password.touched" class="text-danger fw-bold">A valid password is required.</div>
     </div>
 
-
-
     <div *ngIf="rules" class="mb-3 form-check">
       <input type="checkbox" class="form-check-input" id="rules" formControlName="rules">
       <label class="form-check-label" for="rules">I accept the rules</label>
-      <div *ngIf="(email?.valid && password?.valid && rules.invalid) || rules.invalid && rules.touched" class="text-warning fw-bold">You must accept the rules.</div>
+      <div *ngIf="(email?.valid && password?.valid && rules.invalid) || rules.invalid && rules.touched"
+        class="text-warning fw-bold">You must accept the rules.</div>
     </div>
-    
+
     <button [disabled]="signupForm.invalid" type="submit" class="btn btn-outline-warning">
       Sign Up
     </button>
-
 
   </form>
 

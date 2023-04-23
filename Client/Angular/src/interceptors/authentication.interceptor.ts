@@ -10,10 +10,8 @@ export class AuthenticationInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService){}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('HTTP intercept');
 
     const token = localStorage.getItem('accessToken');
-    console.log(token);
     let request = req;
     
     if(token){
@@ -22,14 +20,12 @@ export class AuthenticationInterceptor implements HttpInterceptor {
       })
     }
     return next.handle(request).pipe(
-      // switchMap(data => {}),
       catchError(err => {
         console.log(err.status, 'ERROR');
       if(err.status === 401){
         return throwError(()=> new Error('Bejelentkezés szükséges'))
       } else if(err.status === 403){
-        return throwError(()=> new Error('Lejárt a munkamenet'))
-      //   return this.handle403Error(request, next)
+        return this.handle403Error(request, next)
       } 
       else if(err.status === 200) {
         return throwError(()=> {})
@@ -41,15 +37,15 @@ export class AuthenticationInterceptor implements HttpInterceptor {
   }
 
   //TODO refresh(?)
-  // handle403Error(req: HttpRequest<any>, next: HttpHandler): Observable<any>{
-  //    return this.authService.refresh().pipe(
-  //       switchMap((tokenData)=> {
-  //         const newRequest = req.clone({
-  //           headers: req.headers.set('Authorization', `Bearer ${tokenData.accessToken}`)
-  //         })
-  //         return next.handle(newRequest);
-  //       })
-  //     )
-  // }
+  handle403Error(req: HttpRequest<any>, next: HttpHandler): Observable<any>{
+     return this.authService.refresh().pipe(
+        switchMap((tokenData)=> {
+          const newRequest = req.clone({
+            headers: req.headers.set('Authorization', `Bearer ${tokenData.accessToken}`)
+          })
+          return next.handle(newRequest);
+        })
+      )
+  }
 
 }

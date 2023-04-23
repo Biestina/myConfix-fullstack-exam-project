@@ -15,16 +15,18 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'hardwares', component: HardwaresComponent },
-  { path: 'builder', component: BuilderComponent },
+  { path: ':userId/builder', component: BuilderComponent },
   { 
-    path: 'myconfigs', 
+    // path: 'myconfigs/user/:id', 
+    path: 'configs/:userId/myconfigs', 
     component: MyconfigsComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   { 
-    path: 'myconfigs/:id', 
+    // path: 'myconfigs/:id', 
+    path: 'configs/:userId/myconfigs/:configId', 
     component: ConfigDetailsComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   { 
     path: 'users', 

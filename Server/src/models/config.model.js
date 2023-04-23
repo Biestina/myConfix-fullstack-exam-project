@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const idValidator = require('mongoose-id-validator');
+// const idValidator = require('mongoose-id-validator');
 
-const ConfigSchema = mongoose.Schema({
+const ConfigSchema = new mongoose.Schema({
   case: String,
   cpu: String,
   gpu: String,
@@ -17,5 +17,5 @@ const ConfigSchema = mongoose.Schema({
   }
 }, { timestamps: true }, {versionKey: false});
 
-ConfigSchema.plugin(idValidator);
+// ConfigSchema.plugin(idValidator);
 module.exports = mongoose.model('Config', ConfigSchema);

@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
 import { ConfigModel } from 'src/app/models/config.model';
 import { Category, HardwareModel } from 'src/app/models/hardware.model';
 import { UserModel } from 'src/app/models/user.model';
@@ -20,28 +20,35 @@ export class BuilderComponent implements OnInit, OnDestroy {
   configForm!: FormGroup;
   sub?: Subscription;
   hardwares!: HardwareModel[];
-  user!: UserModel | null;
-
   categories!: string[];
-  myCategories!: Category[];
-
+  
   newConfig: ConfigModel | any = {};
   ckeys: any;
   cvalues: any;
+  
+  user!: UserModel | null;
+  userId!: string
+  // myConfigs!: Observable<ConfigModel[]>;
 
   constructor(
-    // private hwService: HardwareService,
-    // private configService: ConfigService, próba subclass
     private hwService: HardwareHttpService,
     private configService: ConfigHttpService,
     private categoryService: CategoryService,
-    private authService: AuthService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private auth: AuthService
+  ) {
+    this.auth.me().subscribe();
+      this.activatedRoute.paramMap.subscribe({
+        next: params => {
+          this.userId = params.get('userId')!;
+        }
+      })
+  }
 
   ngOnInit(): void {
     this.configForm = new FormGroup({
-      case: new FormControl(),
+      case: new FormControl(''),
       cpu: new FormControl(''),
       gpu: new FormControl(''),
       motherboard: new FormControl(''),
@@ -51,75 +58,61 @@ export class BuilderComponent implements OnInit, OnDestroy {
       storage: new FormControl(''),
     });
 
-    this.sub = this.authService.userObject.subscribe((user) => {
+    this.getMe();
+    this.sub = this.auth.userObject.subscribe((user) => {
       this.user = user;
     });
 
     this.categories = this.categoryService.categories;
-
-    // this.subscription = this.hwService.getHardwares().subscribe((res) => {
+    // this.myConfigs = this.configService.getUserConfigs(this.user?._id!);
     this.hwService.findAll().subscribe((res) => {
       this.hardwares = Object.values(res);
-      // console.log(this.hardwares);
     });
 
-    // console.log(this.configService.findCat().subscribe((res) => {
-    //   this.myCategories = Object.values(res);
-    //   // console.log(Object.keys(res[0]));
-    // }))
-  }
+  };
 
   ngOnDestroy(): void {
     this.sub?.unsubscribe();
-  }
+  };
 
-  //* előző commit
-  // create(){
-  //   const configLog = this.configForm.value;
-  //   // this.configService.create(this.newConfig).subscribe({
-  //   this.configService.create(configLog).subscribe({
-  //     next: (savedConfig: ConfigModel) => {
-  //       console.log('new config created');
-  //       this.router.navigate(['myconfigs'])
-  //     },
-  //     error: (err) => console.log(err)
-  //   })
-  // };
   //TODO debug
   create() {
     const configLog = this.configForm.value;
-    // const configLog = {
-      // ...this.configForm.value
-      // related_user: this.user?._id,       //*létrejön a konfig, de hiba(gondolom az id bekavar)
-    // };
-    // this.configService.create(this.newConfig).subscribe({
-    this.configService.create(configLog).subscribe(
-      // next:
-      () => {
-        console.log('new config created');
-        this.router.navigate(['myconfigs']);
+    this.configService.create(configLog).subscribe(() => {
+        this.router.navigate(['myconfigs', 'user', this.user?._id]);
       }
     );
-    // error: (err) => console.log(err)
   }
 
+  createConfigToUser() {
+    const configLog = this.configForm.value;
+    console.log('configlog: ', configLog);
+    this.configService.createConfigToUser(configLog, this.user?._id!).subscribe({
+    // this.configService.createConfigToUser(configLog, this.userId).subscribe({
+      next: (savedConfig: ConfigModel) => {
+        console.log('new config created');
+        console.log(savedConfig);
+        this.router.navigate(['configs', this.user?._id, 'myconfigs']);
+      },
+      error: (err) => console.log(err)
+    })
+  };
+
   onChange($event: any, category: string) {
-    // console.log($event.target.name);
-    // console.log($event.target.value);
     if (this.newConfig.hasOwnProperty(category)) {
       this.newConfig[category] = $event.target.value as string;
     }
     this.newConfig[$event.target.name] = $event.target.value;
-    // console.log(this.newConfig);
 
     this.ckeys = Object.keys(this.newConfig);
     this.cvalues = Object.values(this.newConfig);
-    // console.log(this.cvalues);
   }
 
-  // filtered(category: string): HardwareModel[] {
-  //     return this.hardwares.filter(hw => hw.category === category.toLowerCase)
-  // }
+  getMe() {
+    if (localStorage.getItem('accessToken')) {
+      this.sub = this.auth.me().subscribe();
+    }
+  }
 
 
 

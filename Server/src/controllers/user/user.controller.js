@@ -51,7 +51,6 @@ exports.findById = async (req, res, next) => {
   try {
     const user = await userService.findById(userId);
     logger.info(user);
-    // user ? user : {};
     if (!user) return next(new createError.NotFound(`User with id ${userId} not found!`))
     res.json(user);
   } catch (error) {

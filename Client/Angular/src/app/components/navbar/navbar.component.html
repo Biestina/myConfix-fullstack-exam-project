@@ -16,10 +16,10 @@
           <a class="nav-link text-yellow" routerLink="/hardwares">Hardwares</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-yellow" routerLink="/builder">Builder</a>
+          <a class="nav-link text-yellow" [routerLink]="[user?._id?.toString(), 'builder']">Builder</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-yellow" routerLink="/myconfigs">My configs</a>
+        <li *ngIf="user" class="nav-item">
+          <a class="nav-link text-yellow" [routerLink]="['/configs', user._id?.toString(), 'myconfigs']">My configs</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-yellow" routerLink="/users">Users</a>
@@ -30,7 +30,7 @@
     <div *ngIf="!user" class="nav-item float-end">
       <a class="nav-link text-yellow" routerLink="/login">Login</a>
     </div>
-    <div *ngIf="user">
+    <div *ngIf="user && user !== null">
       <a class="nav-link d-inline" *ngIf="user && user.email">{{user.email}}</a>
       <a class="nav-link text-yellow" *ngIf="user" (click)="logout()" routerLink="/">Logout</a>
     </div>

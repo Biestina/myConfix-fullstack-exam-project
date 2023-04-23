@@ -3,7 +3,6 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { UserModel } from '../models/user.model';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Router } from 'express';
 
 export interface userLogModel {
   accessToken: string;
@@ -64,7 +63,6 @@ export class AuthService {
   me(): Observable<{user: UserModel}>{
     return this.http.get<{user: UserModel}>(`${this.BASE_URL}me`).pipe(
       tap(user => {
-        console.log(user);
         this._userObject.next(user.user);
       })
     )
