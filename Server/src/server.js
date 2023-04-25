@@ -4,9 +4,7 @@ const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./docs/swagger.yaml');
 
-//TODO auth
 const authenticateJWT = require('./auth/authenticate');
-// const adminAuth = require('./auth/adminOnly');
 const authHandler = require('./auth/authHandler');
 
 const logger = require('./config/logger');
@@ -14,8 +12,6 @@ const {join} = require('path');
 const express = require('express');
 
 const angularAppPath = join(__dirname, '..', 'public', 'angular');
-
-//TODO proxy
 
 const app = express();
 const apiWrapper = express();
@@ -31,7 +27,6 @@ app.post('/logout', authHandler.logout);
 app.get('/me', authHandler.me);
 
 app.use('/configs', authenticateJWT, require('./controllers/config/config.routes'));
-// app.use('/myconfigs',  require('./controllers/config/config.routes'));
 app.use('/hardwares', require('./controllers/hardware/hardware.routes'));
 app.use('/users', require('./controllers/user/user.routes'));
 
