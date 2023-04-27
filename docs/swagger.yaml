@@ -72,8 +72,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /configs:
+  /configs/:userId/myconfigs:
     get:
+      params:
+        userId:
+          type: string
+          description: The user ID
       tags:
         - Configs
       description: Returns all registered configurations
@@ -95,6 +99,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
+      params:
+        userId:
+          type: string
+          description: The user ID
       tags:
         - Configs
       description: Creates a new configuration
@@ -125,8 +133,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /configs/{_id}:
+  /configs/:userId/myconfigs:configId:
     get:
+      params:
+        userId:
+          type: string
+          description: The user ID
+        configId:
+          type: string
+          description: The config ID
       description: Get a configuration by ID
       security:
         - authorization: []
