@@ -14,11 +14,6 @@ A projekt klónozásához a következő parancsot adja ki a terminálban:
 git clone https://github.com/Strukturavaltas-FullstackAPI-2023/fsapi-remek-assignment-Biestina.git
 ```
 
-
-
-
-
-
 ## 1. Telepítés Docker segítségével
 
 ### 1.1. Docker telepítése
