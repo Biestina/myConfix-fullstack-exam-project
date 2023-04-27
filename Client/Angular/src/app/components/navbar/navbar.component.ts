@@ -21,7 +21,6 @@ export class NavbarComponent implements OnInit, OnDestroy, OnChanges {
     this.sub2 = this.authService.userObject.subscribe((user) => {
       this.user = user;
     });
-    console.log(this.user);
   }
 
   ngOnChanges(changes: SimpleChanges): void {

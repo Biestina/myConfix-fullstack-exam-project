@@ -96,7 +96,6 @@ exports.logout = (req, res, next) => {
 exports.me = (req, res, next) => {
   if(req.headers.authorization){
     const token = req.headers.authorization.split(' ')[1];
-    console.log(token);
     
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET_KEY, (err, user) => {
       if (!err) {

@@ -3,7 +3,6 @@ const createError = require('http-errors');
 const User = require('../../models/user.model');
 const userService = require('./user.service');
 
-//* create / register
 exports.create = async (req, res, next) => {
 
   const validationErrors = new User(req.body).validateSync();
@@ -28,8 +27,6 @@ exports.create = async (req, res, next) => {
   };
 };
 
-
-//* findAll
 exports.findAll = async (req, res, next) => {
   logger.debug(`${new Date().toUTCString()}, METHOD: ${req.method}, path: ${req.originalUrl}`);
   try {
@@ -41,8 +38,6 @@ exports.findAll = async (req, res, next) => {
   };
 };
 
-
-//* findById
 exports.findById = async (req, res, next) => {
   const userId = req.params.id;
   logger.debug(`${new Date().toUTCString()}, METHOD: ${req.method}, path: ${req.originalUrl}` + ` Get one user with id: ${userId}`);

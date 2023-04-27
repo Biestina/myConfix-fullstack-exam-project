@@ -8,13 +8,8 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class UserHttpService extends BaseHttpService<UserModel> {
-  // private _userList = new BehaviorSubject<UserModel[] | null>(null);
 
   constructor(http: HttpClient) {
     super(http, 'users');
   }
-
-  // get userList(): BehaviorSubject<UserModel[] | null> {
-  //   return this._userList;
-  // }
 }

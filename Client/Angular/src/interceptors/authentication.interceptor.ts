@@ -27,7 +27,6 @@ export class AuthenticationInterceptor implements HttpInterceptor {
     }
     return next.handle(request).pipe(
       catchError((err) => {
-        console.log(err.status, 'ERROR');
         if (err.status === 401) {
           return throwError(() => new Error('Bejelentkezés szükséges'));
         } else if (err.status === 403) {
@@ -37,7 +36,6 @@ export class AuthenticationInterceptor implements HttpInterceptor {
         }
       })
     );
-    // return next.handle(request);
   };
 
   handle403Error(req: HttpRequest<any>, next: HttpHandler): Observable<any> {

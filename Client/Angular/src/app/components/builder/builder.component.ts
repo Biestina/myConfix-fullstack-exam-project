@@ -21,14 +21,13 @@ export class BuilderComponent implements OnInit, OnDestroy {
   sub?: Subscription;
   hardwares!: HardwareModel[];
   categories!: string[];
-  
+
   newConfig: ConfigModel | any = {};
   ckeys: any;
   cvalues: any;
-  
+
   user!: UserModel | null;
-  userId!: string
-  // myConfigs!: Observable<ConfigModel[]>;
+  userId!: string;
 
   constructor(
     private hwService: HardwareHttpService,
@@ -39,11 +38,11 @@ export class BuilderComponent implements OnInit, OnDestroy {
     private auth: AuthService
   ) {
     this.auth.me().subscribe();
-      this.activatedRoute.paramMap.subscribe({
-        next: params => {
-          this.userId = params.get('userId')!;
-        }
-      })
+    this.activatedRoute.paramMap.subscribe({
+      next: (params) => {
+        this.userId = params.get('userId')!;
+      },
+    });
   }
 
   ngOnInit(): void {
@@ -67,20 +66,17 @@ export class BuilderComponent implements OnInit, OnDestroy {
     this.hwService.findAll().subscribe((res) => {
       this.hardwares = Object.values(res);
     });
-
-  };
+  }
 
   ngOnDestroy(): void {
     this.sub?.unsubscribe();
-  };
+  }
 
-  //TODO debug
   create() {
     const configLog = this.configForm.value;
     this.configService.create(configLog).subscribe(() => {
-        this.router.navigate(['myconfigs', 'user', this.user?._id]);
-      }
-    );
+      this.router.navigate(['myconfigs', 'user', this.user?._id]);
+    });
   }
 
   addItemToMyList() {
@@ -89,9 +85,9 @@ export class BuilderComponent implements OnInit, OnDestroy {
       next: (savedConfig: ConfigModel) => {
         this.router.navigate(['configs', this.user?._id, 'myconfigs']);
       },
-      error: (err) => console.log(err)
-    })
-  };
+      error: (err) => console.log(err),
+    });
+  }
 
   onChange($event: any, category: string) {
     if (this.newConfig.hasOwnProperty(category)) {
@@ -108,7 +104,4 @@ export class BuilderComponent implements OnInit, OnDestroy {
       this.sub = this.auth.me().subscribe();
     }
   }
-
-
-
 }

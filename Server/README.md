@@ -14,6 +14,18 @@ A projekt klónozásához a következő parancsot adja ki a terminálban:
 git clone https://github.com/Strukturavaltas-FullstackAPI-2023/fsapi-remek-assignment-Biestina.git
 ```
 
+Lépjen be a projekt gyökérkönyvtárába:
+
+```bash
+cd fsapi-remek-assignment-Biestina
+```
+
+A projekt függőségeinek telepítéséhez adja ki a következő parancsot:
+
+```bash
+cd Client\Angular && npm i && ng build && cd ../.. && npm i
+```
+
 ## 1. Telepítés Docker segítségével
 
 ### 1.1. Docker telepítése
@@ -30,34 +42,18 @@ A Docker Compose futtatásához a projekt gyökérkönyvtárában adja ki a köv
 npm run docker-compose
 ```
 
-## 2. Telepítés Docker nélkül
+## 2. Alkalmazás tesztelése
 
-### 2.1. NodeJS telepítése
+### 2.1. Alkalmazás megnyitása
+Az alkalmazás megnyitásához a következő linket kell megnyitni a böngészőben: [http://localhost:3000/login](http://localhost:3000/login)
 
-A NodeJS telepítéséhez kövesse a hivatalos dokumentációt: [NodeJS](https://nodejs.org/en/download/)
-### 2.2. MongoDB telepítése
-
-A MongoDB telepítéséhez kövesse a hivatalos dokumentációt: [MongoDB](https://docs.mongodb.com/manual/installation/)
-### 2.3. Projekt függőségeinek telepítése
-
-A projekt függőségeinek telepítéséhez a projekt gyökérkönyvtárában adja ki a következő parancsot:
+### 2.2. Bejelentkezés
+Hozzon létre egy új felhasználót a "Sign up now!" linkre kattintva, vagy használja a következő adatokat:
 
 ```bash
-cd Client\Angular && npm i && cd ../.. && npm i
+email: t@ester.com
+password: test
 ```
-
-
-### 2.4. Projekt futtatása
-
-A projekt futtatásához a projekt gyökérkönyvtárában adja ki a következő parancsot:
-
-```bash
-npm run start:nodemon
-```
-
-### 2.5. Alkalmazás megnyitása
-
-Az alkalmazás megnyitásához a következő linket kell megnyitni a böngészőben: [http://localhost:3000](http://localhost:3000)
 
 # 📎 Technikai háttér
 

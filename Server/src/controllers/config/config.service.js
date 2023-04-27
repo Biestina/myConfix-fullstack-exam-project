@@ -18,7 +18,6 @@ exports.findById = configId => Config.findById(configId);
 exports.update = async (id, configData) => {
   const config = await Config.findByIdAndUpdate(id, configData, { new: true });
   const user = await User.findById(config.related_user);
-  console.log(user.configs)
   const configs = user.configs.map(config => config._id.toString());
   if (configs.includes(config._id.toString())) {
     user.configs.splice(configs.indexOf(config._id.toString()), 1, config._id);

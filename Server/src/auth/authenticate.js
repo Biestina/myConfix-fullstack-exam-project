@@ -1,7 +1,5 @@
 const jwt = require('jsonwebtoken');
 
-//TODO http-errors
-
 module.exports = (req, res, next) => {
 
   const authHeader = req.headers.authorization;
@@ -16,8 +14,6 @@ module.exports = (req, res, next) => {
     if(err){
       return res.sendStatus(403);
     };
-
-    // console.table(payLoad);
     req.user = payLoad;
     next()
   })

@@ -13,14 +13,12 @@ import { UserHttpService } from 'src/app/services/http/user-http.service';
   styleUrls: ['./myconfigs.component.scss'],
 })
 export class MyconfigsComponent implements OnInit {
-  // configs!: Observable<ConfigModel[]>;  //*async...
   configs!: ConfigModel[];
   user!: UserModel | null;
   userId!: string;
 
   constructor(
     private configService: ConfigHttpService,
-    // private userService: UserHttpService,
     private auth: AuthService,
     private activatedRoute: ActivatedRoute
   ) {
@@ -36,15 +34,9 @@ export class MyconfigsComponent implements OnInit {
     this.auth.userObject.subscribe((user) => {
       this.user = user;
     });
-
-    // this.configs = this.configService.getUserConfigs(this.userId); //*async...
     this.configService.getMyList(this.userId).subscribe((res) => {
       this.configs = res;
     });
   };
-
-  // ngOnDestroy(): void {
-  //   this.auth.userObject.unsubscribe();
-  // };  //! ettől becrashel a builder
 
 }

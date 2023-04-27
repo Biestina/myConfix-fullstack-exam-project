@@ -21,7 +21,6 @@ exports.findById = async (req, res, next) => {
   logger.debug(`${new Date().toUTCString()}, METHOD: ${req.method}, path: ${req.originalUrl}` + ` Get one hardware with id: ${hardwareId}`);
   try {
     const hardware = await hardwareService.findById(hardwareId);
-    // logger.info(hardware);
     res.json(hardware);
   } catch (error) {
     logger.error(error);

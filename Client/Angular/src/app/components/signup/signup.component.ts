@@ -54,14 +54,12 @@ export class SignupComponent implements OnInit {
 
   onSubmit(){
     const userLog = this.signupForm.value;
-    console.log(userLog);
     if(this.users.map(user => user.email).includes(userLog.email)){
       alert('This email has been already registered');
       this.signupForm.reset();
     } else {
       this.userService.create(userLog).subscribe({
         next: (user) => {
-          console.log(user);
           this.router.navigate(['login'])
         }
       });

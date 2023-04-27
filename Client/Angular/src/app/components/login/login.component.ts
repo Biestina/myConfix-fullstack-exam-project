@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserModel } from 'src/app/models/user.model';
@@ -9,32 +16,29 @@ import { UserHttpService } from 'src/app/services/http/user-http.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
   loginForm!: FormGroup;
   users!: UserModel[];
   sub!: Subscription;
   emailNotFound: boolean = false;
-  
+
   constructor(
-    private auth: AuthService, 
-    private router: Router, 
+    private auth: AuthService,
+    private router: Router,
     private userService: UserHttpService
-    ) { }
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       email: new FormControl('', [
         Validators.required,
-        // Validators.pattern('^[\w-]@([\w-]+\.)+[\w-]{2,4}$'),
-        // Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'),
-        this.emailNotFoundValidator()
+        this.emailNotFoundValidator(),
       ]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(4)
+        Validators.minLength(4),
       ]),
     });
 
@@ -42,41 +46,42 @@ export class LoginComponent implements OnInit {
       next: (res) => {
         this.users = res;
       },
-      error: err => console.log(err)
+      error: (err) => console.log(err),
     });
   }
 
-  get email() { return this.loginForm.get('email')};
-  get password() { return this.loginForm.get('password')};
+  get email() {
+    return this.loginForm.get('email');
+  }
+  get password() {
+    return this.loginForm.get('password');
+  }
 
-  //TODO custom validator -> email not found
-  onSubmit(){
+  onSubmit() {
     const userLog = this.loginForm.value;
-    if(!this.users.map(user => user.email).includes(userLog.email)){
+    if (!this.users.map((user) => user.email).includes(userLog.email)) {
       alert('Account with this email not found');
       this.loginForm.reset();
     } else {
       this.auth.login(userLog).subscribe({
         next: (user) => {
-          console.log(user);
-          this.router.navigate([''])
-        }
-      })
+          this.router.navigate(['']);
+        },
+      });
     }
-  };
+  }
 
   emailNotFoundValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const email = control.value;
-      let isInDb = this.users?.map(user => user.email).includes(email);
-      if(!isInDb){
+      let isInDb = this.users?.map((user) => user.email).includes(email);
+      if (!isInDb) {
         this.emailNotFound = true;
-        return {emailNotFound: {value: control.value}};
+        return { emailNotFound: { value: control.value } };
       } else {
         this.emailNotFound = false;
         return null;
-      };
-    }
-  };
-
+      }
+    };
+  }
 }
