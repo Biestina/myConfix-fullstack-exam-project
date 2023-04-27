@@ -11,7 +11,7 @@ Felhasználóként regisztrációt követően egyedi számítógép-konfiguráci
 A projekt klónozásához a következő parancsot adja ki a terminálban:
 
 ```bash
-git clone
+git clone https://github.com/Strukturavaltas-FullstackAPI-2023/fsapi-remek-assignment-Biestina.git
 ```
 
 
