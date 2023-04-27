@@ -173,6 +173,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     put:
+      params:
+        userId:
+          type: string
+          description: The user ID
+        configId:
+          type: string
+          description: The config ID
       description: Updates a configuration
       security:
         - authorization: []
@@ -210,6 +217,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
+      params:
+        userId:
+          type: string
+          description: The user ID
+        configId:
+          type: string
+          description: The config ID
       description: Deletes a configuration
       security:
         - authorization: []
