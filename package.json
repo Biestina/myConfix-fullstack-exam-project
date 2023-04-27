@@ -7,11 +7,16 @@
     "start": "node Server/src/index.js",
     "start:nodemon": "nodemon Server/src/index.js",
     "test": "jest",
-    "test-config": "jest config.controller.test.js",
     "test-hardware": "jest hardware.controller.test.js",
+    "test-config": "jest config.controller.test.js",
+    "test-user": "jest user.controller.test.js",
+    "test-entities": "jest hardware.controller.test.js config.controller.test.js user.controller.test.js",
+    "supertest": "jest server.test.js",
+    "test-controllers": "jest hardware.controller.test.js && jest config.controller.test.js && jest user.controller.test.js",
     "docker:build": "docker build -t vizsgaremek-lb-myconfix:0.0.1 .",
     "docker:run": "docker run -d -p 8080:3000 vizsgaremek-lb-myconfix:0.0.1",
-    "deploy": "cd Client && ng build && cd Server && docker-compose up"
+    "deploy": "cd Client && ng build && cd Server && docker-compose up",
+    "docker-compose": "docker-compose up -d"
   },
   "keywords": [
     "myConfix",

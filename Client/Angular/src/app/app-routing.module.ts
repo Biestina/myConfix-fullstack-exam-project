@@ -8,36 +8,34 @@ import { SignupComponent } from './components/signup/signup.component';
 import { MyconfigsComponent } from './components/myconfigs/myconfigs.component';
 import { AuthGuard } from './services/guard/auth.guard';
 import { ConfigDetailsComponent } from './components/myconfigs/config-details/config-details.component';
-import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'hardwares', component: HardwaresComponent },
-  { path: ':userId/builder', component: BuilderComponent },
-  { 
-    // path: 'myconfigs/user/:id', 
-    path: 'configs/:userId/myconfigs', 
+  {
+    path: ':userId/builder',
+    component: BuilderComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'configs/:userId/myconfigs',
     component: MyconfigsComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
-  { 
-    // path: 'myconfigs/:id', 
-    path: 'configs/:userId/myconfigs/:configId', 
+  {
+    path: 'configs/:userId/myconfigs/:configId',
     component: ConfigDetailsComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
-  { 
-    path: 'users', 
-    component: UsersComponent,
-    // canActivate: [AuthGuard]
-  },
-  { path: '**', component: HomeComponent }
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

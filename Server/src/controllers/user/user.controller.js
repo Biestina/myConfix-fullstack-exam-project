@@ -6,7 +6,6 @@ const userService = require('./user.service');
 //* create / register
 exports.create = async (req, res, next) => {
 
-  //* MONGO Validation
   const validationErrors = new User(req.body).validateSync();
   if(validationErrors) {
     return next(new createError.BadRequest(validationErrors))
@@ -51,7 +50,7 @@ exports.findById = async (req, res, next) => {
   try {
     const user = await userService.findById(userId);
     logger.info(user);
-    if (!user) return next(new createError.NotFound(`User with id ${userId} not found!`))
+    if (!user) return next(new createError.NotFound(`User with id ${userId} not found`))
     res.json(user);
   } catch (error) {
     logger.error(error);

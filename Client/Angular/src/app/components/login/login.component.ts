@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserModel } from 'src/app/models/user.model';
@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   users!: UserModel[];
   sub!: Subscription;
+  emailNotFound: boolean = false;
   
   constructor(
     private auth: AuthService, 
@@ -27,11 +28,13 @@ export class LoginComponent implements OnInit {
     this.loginForm = new FormGroup({
       email: new FormControl('', [
         Validators.required,
-        Validators.email
+        // Validators.pattern('^[\w-]@([\w-]+\.)+[\w-]{2,4}$'),
+        // Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'),
+        this.emailNotFoundValidator()
       ]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(3)
+        Validators.minLength(4)
       ]),
     });
 
@@ -60,6 +63,20 @@ export class LoginComponent implements OnInit {
         }
       })
     }
-  }
+  };
+
+  emailNotFoundValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const email = control.value;
+      let isInDb = this.users?.map(user => user.email).includes(email);
+      if(!isInDb){
+        this.emailNotFound = true;
+        return {emailNotFound: {value: control.value}};
+      } else {
+        this.emailNotFound = false;
+        return null;
+      };
+    }
+  };
 
 }

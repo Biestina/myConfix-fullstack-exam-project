@@ -2,26 +2,29 @@
 
 
 <div class="container d-grid">
-  <div class="row">
-    <div class="col">
-      <div class="p-4 form-wrapper  justify-content-center align-items-center">
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-md-12 col-lg-5">
+      <div class="p-4 form-wrapper justify-content-center align-items-center">
 
-        <!-- <form *ngIf="configForm" [formGroup]="configForm" (ngSubmit)="create()" class=" text-yellow opacity-75"> -->
-        <form *ngIf="configForm" [formGroup]="configForm" (ngSubmit)="createConfigToUser()" class=" text-yellow opacity-75">
+        <form *ngIf="configForm" [formGroup]="configForm" (ngSubmit)="addItemToMyList()" class=" text-yellow opacity-75">
           <div class="mb-2 form-group-row" *ngFor="let category of categories; index as i">
-            <label [for]="category.toLowerCase()" class="col-form-label me-2">
+            <label [for]="category.toLowerCase()" class="col-form-label me-2 d-block">
               {{category}}
-              <select class="form-control-sm form-select" [id]="category.toLowerCase()" [formControlName]="category.toLowerCase()" [name]="category" [value]="category"
+
+              <select class="form-control-sm form-select" [id]="category.toLowerCase()" [formControlName]="category.toLowerCase()" [name]="category"
                 (change)="onChange($event, category.toLowerCase())">
-                <option [disabled]="true" [selected]="true" [hidden]="true" [defaultSelected]="true">
+
+                <option [disabled]="true" [selected]="true" [hidden]="true" [ngValue]="'default'">
                   Select a {{category}}
                 </option>
+
                 <ng-container *ngFor="let hardware of hardwares; index as j">
                   <option *ngIf="hardware.category === categories[i]" [value]="hardware.name">
                     {{hardware.name}}
                   </option>
                 </ng-container>
               </select>
+
             </label>
           </div>
           <button type="submit" class="btn btn-outline-info d-block mx-auto">Build a new PC</button>
@@ -30,7 +33,7 @@
       </div>
     </div>
 
-    <div class="p-5 col text-yellow">
+    <div class="p-5 col-lg-5 text-yellow">
       <h3 *ngIf="ckeys" class="pb-5">Added to Configuration:</h3>
       <div *ngFor="let c of ckeys; index as i">
         <span class="fw-bold">{{c}}: </span>

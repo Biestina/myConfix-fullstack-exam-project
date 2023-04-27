@@ -21,6 +21,7 @@ export class NavbarComponent implements OnInit, OnDestroy, OnChanges {
     this.sub2 = this.authService.userObject.subscribe((user) => {
       this.user = user;
     });
+    console.log(this.user);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -48,6 +49,7 @@ export class NavbarComponent implements OnInit, OnDestroy, OnChanges {
   logout() {
     this.authService.logout();
     this.user = null;
+    this.authService.userObject.next(null);
     this.router.navigate(['']);
   }
 }

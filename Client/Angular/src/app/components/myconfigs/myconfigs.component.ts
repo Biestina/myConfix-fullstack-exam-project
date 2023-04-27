@@ -2,10 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ConfigModel } from 'src/app/models/config.model';
-// import { Category } from 'src/app/models/hardware.model';
 import { UserModel } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
-// import { CategoryService } from 'src/app/services/category.service';
 import { ConfigHttpService } from 'src/app/services/http/config-http.service';
 import { UserHttpService } from 'src/app/services/http/user-http.service';
 
@@ -22,7 +20,7 @@ export class MyconfigsComponent implements OnInit {
 
   constructor(
     private configService: ConfigHttpService,
-    private userService: UserHttpService,
+    // private userService: UserHttpService,
     private auth: AuthService,
     private activatedRoute: ActivatedRoute
   ) {
@@ -39,11 +37,9 @@ export class MyconfigsComponent implements OnInit {
       this.user = user;
     });
 
-    // this.configs = this.configService.getUserConfigs(this.user?._id!);
     // this.configs = this.configService.getUserConfigs(this.userId); //*async...
-    this.configService.getUserConfigs(this.userId).subscribe((res) => {
+    this.configService.getMyList(this.userId).subscribe((res) => {
       this.configs = res;
-      console.log(res);
     });
   };
 

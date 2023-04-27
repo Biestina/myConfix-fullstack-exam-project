@@ -10,36 +10,21 @@ export class AuthGuard implements CanActivate {
 
   constructor(private authService: AuthService, private router: Router){}
   
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const isLogged = this.authService.userObject.value !== null;
-    if(!isLogged){
-      alert('You have to sign in!');
-      this.router.navigate(['login']);
-      // return false
-    }
-    console.log('this.authService.userObject.value');
-    console.log(this.authService.userObject.value);
-    return isLogged;
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
 
-    return this.authService.userObject.value !== null ;
-    return this.authService.me().pipe(map(user => {
-      console.log(user);
-      console.log(user.user);
-        return user.user ? true : false;
-      }))
-
-      //TODO ?
-    // const userLoggedin = false;
-    // if(!userLoggedin){
-    //   alert('You have to sign in!');
-    //   this.router.navigate(['login']);
-    //   return false;
-    // } else {
-    //   return true;
-    // }
-
+    return this.authService.me().pipe(
+      map((user) => {
+        if (user.user) {
+          return true;
+        }
+        else {
+          alert('You have to sign in!');
+          this.router.navigate(['login']);
+          return false;
+        }
+      })
+    );
+    
   }
   
 }

@@ -19,7 +19,6 @@ paths:
               schema:
                 type: array
                 items:
-                  # $ref: '#/components/schemas/Hardware'
                   oneOf:
                     - $ref: '#/components/schemas/Case'
                     - $ref: '#/components/schemas/Cpu'
@@ -35,61 +34,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-    post:
-      tags:
-        - Hardwares
-      description: Creates a new hardware
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              # $ref: '#/components/schemas/Hardware'
-                anyOf:
-                  - $ref: '#/components/schemas/Case'
-                  - $ref: '#/components/schemas/Cpu'
-                  - $ref: '#/components/schemas/Gpu'
-                  - $ref: '#/components/schemas/Monitor'
-                  - $ref: '#/components/schemas/Motherboard'
-                  - $ref: '#/components/schemas/Ram'
-                  - $ref: '#/components/schemas/Psu'
-                  - $ref: '#/components/schemas/Storage'
-      security:
-        - bearerAuth: []
-      responses:
-        '201':
-          description: Successfully created a new hardware
-          content:
-            application/json:
-              schema:
-                # $ref: '#/components/schemas/Hardware'
-                anyOf:
-                  - $ref: '#/components/schemas/Case'
-                  - $ref: '#/components/schemas/Cpu'
-                  - $ref: '#/components/schemas/Gpu'
-                  - $ref: '#/components/schemas/Monitor'
-                  - $ref: '#/components/schemas/Motherboard'
-                  - $ref: '#/components/schemas/Ram'
-                  - $ref: '#/components/schemas/Psu'
-                  - $ref: '#/components/schemas/Storage'
-        '400':
-          description: Invalid request when the post data is invalid
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  
   /hardwares/{_id}:
     get:
       description: Get a hardware by ID
-      # security:
-      #   - bearerAuth: []
       tags:
         - Hardwares
       parameters:
@@ -104,8 +51,6 @@ paths:
           content:
             application/json:
               schema:
-                # type: object
-                # $ref: '#/components/schemas/Hardware'
                 anyOf:
                   - $ref: '#/components/schemas/Case'
                   - $ref: '#/components/schemas/Cpu'
@@ -127,105 +72,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      # x-swagger-router-controller: Hardwares
-    put:
-      description: Updates a hardware
-      security:
-        - bearerAuth: []
-      tags:
-        - Hardwares
-      parameters:
-        - in: path
-          name: _id
-          required: true
-          schema: 
-            type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              # $ref: '#/components/schemas/Hardware'
-              anyOf:
-                  - $ref: '#/components/schemas/Case'
-                  - $ref: '#/components/schemas/Cpu'
-                  - $ref: '#/components/schemas/Gpu'
-                  - $ref: '#/components/schemas/Monitor'
-                  - $ref: '#/components/schemas/Motherboard'
-                  - $ref: '#/components/schemas/Ram'
-                  - $ref: '#/components/schemas/Psu'
-                  - $ref: '#/components/schemas/Storage'
-      responses:
-        '200':
-          description: Hardware has been updated successfully
-          content:
-            application/json:
-              schema:
-                # $ref: '#/components/schemas/Hardware'
-                anyOf:
-                  - $ref: '#/components/schemas/Case'
-                  - $ref: '#/components/schemas/Cpu'
-                  - $ref: '#/components/schemas/Gpu'
-                  - $ref: '#/components/schemas/Monitor'
-                  - $ref: '#/components/schemas/Motherboard'
-                  - $ref: '#/components/schemas/Ram'
-                  - $ref: '#/components/schemas/Psu'
-                  - $ref: '#/components/schemas/Storage'
-        '400':
-          description: Invalid request when the post data is invalid
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-      # x-swagger-router-controller: Hardwares
-    delete:
-      description: Deletes a hardware
-      security:
-        - bearerAuth: []
-      tags:
-        - Hardwares
-      parameters:
-        - in: path
-          name: _id
-          required: true
-          schema: 
-            type: string
-      responses:
-        '200':
-          description: Hardware has been deleted successfully
-          content:
-            application/json:
-              schema:
-                # type: object
-                # example: {}
-                type: string
-                example: Deleted hardware with id 643ed51963caf2e1312a5d8c
-        '404':
-          description: Hardware with given ID is not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-      # x-swagger-router-controller: Hardwares
   /configs:
     get:
       tags:
         - Configs
       description: Returns all registered configurations
       security:
-        - bearerAuth: []
+        - authorization: []
       responses:
         '200':
           description: List of all configurations returned successfully
@@ -252,7 +105,7 @@ paths:
             schema:
               $ref: '#/components/schemas/Config'
       security:
-        - bearerAuth: []
+        - authorization: []
       responses:
         '201':
           description: Successfully created a new configuration
@@ -276,7 +129,7 @@ paths:
     get:
       description: Get a configuration by ID
       security:
-        - bearerAuth: []
+        - authorization: []
       tags:
         - Configs
       parameters:
@@ -307,7 +160,7 @@ paths:
     put:
       description: Updates a configuration
       security:
-        - bearerAuth: []
+        - authorization: []
       tags:
         - Configs
       parameters:
@@ -344,7 +197,7 @@ paths:
     delete:
       description: Deletes a configuration
       security:
-        - bearerAuth: []
+        - authorization: []
       tags:
         - Configs
       parameters:
@@ -377,7 +230,7 @@ paths:
     get:
       description: Returns a list of users
       security:
-        - bearerAuth: []
+        - authorization: []
       tags:
         - Users
       responses:
@@ -398,7 +251,7 @@ paths:
     post:
       description: Creates a new user
       security:
-        - bearerAuth: []
+        - authorization: []
       tags:
         - Users
       requestBody:
@@ -430,7 +283,7 @@ paths:
     get:
       description: Get a user
       security:
-        - bearerAuth: []
+        - authorization: []
       tags:
         - Users
       parameters:
@@ -445,7 +298,6 @@ paths:
           content:
             application/json:
               schema:
-                # type: object
                 $ref: '#/components/schemas/User'
         '404':
           description: User with this ID is not found
@@ -459,96 +311,100 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-    put:
-      description: Updates a user
-      security:
-        - bearerAuth: []
+  /login:
+    post:
+      description: Logs in a registered user
       tags:
-        - Users
-      parameters:
-        - in: path
-          name: _id
-          required: true
-          schema: 
-            type: string
+        - Authorization
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+            $ref: '#/components/schemas/LoginRequest'
       responses:
         '200':
-          description: User has been updated successfully
+          description: Successfully logged in
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
-        '400':
-          description: Invalid request when the post data is invalid
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    delete:
-      description: Deletes a user
-      security:
-        - bearerAuth: []
+              $ref: '#/components/schemas/LoginResponse'
+  /logout:
+    post:
+      description: Logs out the user
       tags:
-        - Users
-      parameters:
-        - in: path
-          name: _id
-          required: true
-          schema: 
-            type: string
+        - Authorization
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                refreshToken:
+                  type: string
+                  description: The user's refresh token
+              required:
+                - refreshToken
       responses:
         '200':
-          description: User has been deleted successfully
+          description: Successfully logged out
+  /me:
+    get:
+      description: Returns logged in user's information
+      tags:
+        - Authorization
+      security:
+        - authorization: []
+      responses:
+        '200':
+          description: Successfully returned user data
           content:
             application/json:
               schema:
                 type: object
-                example: {}
-        '404':
-          description: User with this ID is not found
+                properties:
+                  email:
+                    type: string
+                  role:
+                    type: string
+                  _id:
+                    type: string
+  /refresh:
+    post:
+      tags:
+        - Authorization
+      description: Refreshes the JWT accesstoken
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                refreshToken:
+                  type: string
+                  description: The user's JWT refreshtoken
+              required:
+                - refreshToken
+      responses:
+        '200':
+          description: Accesstoken refreshed successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  
+                type: object
+                properties:
+                  accessToken:
+                    type: string
+                    description: New accesstoken
 components:
   securitySchemes:
-    bearerAuth:            
+    authorization:            
       type: http
       scheme: bearer
       bearerFormat: JWT
   schemas:
-    # Hardware:
-    #   type: object
-    #   required:
-    #     - name
-    #     - category
-    #     - price
-    #   properties:
-    #     name:
-    #       type: string
-    #     category:
-    #       type: string
-    #     price:
-    #       type: number
     Config:
       type: object
       required: 
@@ -563,7 +419,6 @@ components:
         - storage
       properties:
         related_user:
-          # type: string
           $ref: '#/components/schemas/User'
         case:
           $ref: '#/components/schemas/Case'
@@ -758,6 +613,38 @@ components:
           type: number
         accessToken:
           type: string
+    LoginRequest:
+      type: object
+      required: 
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+    LoginResponse:
+      type: object
+      required:
+        - accessToken
+        - refreshToken
+        - user
+      properties:
+        accessToken:
+          type: string
+        refreshToken:
+          type: string
+        user:
+          type: object
+          properties:
+            _id:
+              type: string
+            role:
+              type: string
+              default: USER
+            email:
+              type: string
     Error:
       type: object
       required:

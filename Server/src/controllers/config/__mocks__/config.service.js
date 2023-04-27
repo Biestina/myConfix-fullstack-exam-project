@@ -1,27 +1,28 @@
-const configService = jest.mock('./config.service');
+const configService = jest.mock('./config.service.js');
 
-let mockData;
+let mockData = [];
+let mockDataUser = [];
 
-//* CREATE
-configService.create = jest.fn(config => {
+configService.create = jest.fn((configData, userId) => {
   const savedConfig = {
-    ...config,
+    ...configData,
     id: mockData[mockData.length - 1].id + 1
   };
+  const user = mockDataUser.find(u => u.id === userId);
+  user.configs.push(savedConfig);
+
   mockData.push(savedConfig);
   return Promise.resolve(savedConfig);
 });
 
-
-//* FINDBYID
-configService.findById = jest.fn(id => {
-  return Promise.resolve(mockData.find(c => c.id === id));
+configService.findAll = jest.fn(userId => {
+  return Promise.resolve(mockDataUser.find(u => u.id === userId).configs);
 });
 
+configService.findById = jest.fn(configId => {
+  return Promise.resolve(mockData.find(c => c.id === configId));
+});
 
-//TODO refact
-//* UPDATE
-// write a mock for the update method
 configService.update = jest.fn((id, configData) => {
   const configToUpdate = mockData.find(c => c.id === id);
   const updatedConfig = {
@@ -32,31 +33,16 @@ configService.update = jest.fn((id, configData) => {
   return Promise.resolve(modifiedArr);
 });
 
-// configService.update = jest.fn((id, configData) => {
-//   return Promise.resolve(mockData.find(c => c.id === id).map(c => c = {...c, configData}))
-// });
-
-//TODO refact
-//* DELETE
-// write a mock for the delete method
 configService.delete = jest.fn(id => {
-  const dataToDelete = mockData.find(c => c.id === id);
-  const modifiedArr = mockData.splice(indexOf(dataToDelete), 1);
+  const configToDelete = mockData.find(c => c.id === id);
+  const user = mockDataUser.find(u => u.id === configToDelete.related_user);
+  user.configs.splice(indexOf(configToDelete), 1);
+  const modifiedArr = mockData.splice(indexOf(configToDelete), 1);
   return Promise.resolve(modifiedArr);
 });
 
 
-// configService.delete = jest.fn(id => {
-//   const dataToDelete = mockData.find(c => c.id === id);
-//   const modifiedArr = mockData.splice(indexOf(dataToDelete), 1);
-//   console.log(modifiedArr);
-//   console.log('modifiedArr');
-//   return Promise.resolve(`Deleted config with id ${id}`)
-// });
-
-
-configService.__setMockData = data => {
-  mockData = data;
-}
+configService.__setMockData = data => mockData = data;
+configService.__setMockDataUser = data => mockDataUser = data;
 
 module.exports = configService;

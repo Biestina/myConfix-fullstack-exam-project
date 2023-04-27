@@ -6,6 +6,6 @@ exports.create = user => {
   return newUser.save()
 };
 
-exports.findAll = () => User.find().populate('configs');
+exports.findAll = () => User.find();
 
 exports.findById = id => User.findById(id);

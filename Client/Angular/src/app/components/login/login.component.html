@@ -8,7 +8,17 @@
     <div *ngIf="email" class="mb-3">
       <label for="email" class="form-label">Email address</label>
       <input type="email" class="form-control" id="email" formControlName="email">
-      <div *ngIf="email.invalid && email.touched" class="text-danger fw-bold">A valid email is required.</div>
+      <div *ngIf="email.invalid && email.touched && email.errors
+      && !email.errors['emailNotFoundValidator']" 
+      class="text-danger fw-bold">
+        A valid email is required.
+      </div>
+      <div *ngIf="email.touched && email.dirty && emailNotFound 
+      && email.errors !== null"
+      class="text-danger fw-bold">
+        This email is not registered.
+      </div>
+      
     </div>
     <div *ngIf="password" class="mb-3">
       <label for="password" class="form-label">Password</label>

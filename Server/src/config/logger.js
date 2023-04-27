@@ -4,7 +4,6 @@ const config = require('config');
 
 const options = {
   console: {
-    // level: 'debug',
     level: config.log_level_console,
     format: winston.format.combine(
       winston.format.colorize(),
@@ -12,7 +11,6 @@ const options = {
     )
   },
   file: {
-    // level: 'info',
     level: config.log_level_file,
     filename: path.join(__dirname, '..', '..', 'app.log'),
     format: winston.format.json()

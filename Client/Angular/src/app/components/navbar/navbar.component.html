@@ -15,14 +15,11 @@
         <li class="nav-item">
           <a class="nav-link text-yellow" routerLink="/hardwares">Hardwares</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-yellow" [routerLink]="[user?._id?.toString(), 'builder']">Builder</a>
+        <li *ngIf="user" class="nav-item">
+          <a class="nav-link text-yellow" [routerLink]="[user._id?.toString(), 'builder']">Builder</a>
         </li>
         <li *ngIf="user" class="nav-item">
           <a class="nav-link text-yellow" [routerLink]="['/configs', user._id?.toString(), 'myconfigs']">My configs</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-yellow" routerLink="/users">Users</a>
         </li>
       </ul>
     </div>

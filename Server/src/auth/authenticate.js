@@ -17,7 +17,7 @@ module.exports = (req, res, next) => {
       return res.sendStatus(403);
     };
 
-    console.table(payLoad);
+    // console.table(payLoad);
     req.user = payLoad;
     next()
   })

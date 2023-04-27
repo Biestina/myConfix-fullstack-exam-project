@@ -64,7 +64,6 @@ export class BuilderComponent implements OnInit, OnDestroy {
     });
 
     this.categories = this.categoryService.categories;
-    // this.myConfigs = this.configService.getUserConfigs(this.user?._id!);
     this.hwService.findAll().subscribe((res) => {
       this.hardwares = Object.values(res);
     });
@@ -84,14 +83,10 @@ export class BuilderComponent implements OnInit, OnDestroy {
     );
   }
 
-  createConfigToUser() {
+  addItemToMyList() {
     const configLog = this.configForm.value;
-    console.log('configlog: ', configLog);
-    this.configService.createConfigToUser(configLog, this.user?._id!).subscribe({
-    // this.configService.createConfigToUser(configLog, this.userId).subscribe({
+    this.configService.addItemToMyList(configLog, this.user?._id!).subscribe({
       next: (savedConfig: ConfigModel) => {
-        console.log('new config created');
-        console.log(savedConfig);
         this.router.navigate(['configs', this.user?._id, 'myconfigs']);
       },
       error: (err) => console.log(err)

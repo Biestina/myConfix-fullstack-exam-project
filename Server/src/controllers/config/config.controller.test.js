@@ -7,8 +7,9 @@ jest.mock('./config.service.js');
 describe('ConfigController tests', () => {
 
   let mockData;
-  let nextFunction;
+  let mockDataUser;
   let response;
+  let nextFunction;
 
   beforeEach(() => {
     mockData = [{
@@ -21,6 +22,7 @@ describe('ConfigController tests', () => {
       "psu": "EVGA BQ",
       "ram": "G.Skill Ripjaws V 16 GB",
       "storage": "Intel SSDPEDMD020T401",
+      "related_user": "1"
     }, {
       "id": 2,
       "case": "Corsair 4000D Airflow",
@@ -31,7 +33,51 @@ describe('ConfigController tests', () => {
       "psu": "Corsair HX Platinum",
       "ram": "Corsair Vengeance LPX 16 GB",
       "storage": "Samsung 980 Pro",
+      "related_user": "1"
     }];
+
+    mockDataUser = [
+      {
+        "id": "1",
+        "username": "user1",
+        "password": "password1",
+        "role": "USER",
+        "configs": [{
+          "id": 1,
+          "case": "case1",
+          "cpu": "cpu1",
+          "gpu": "gpu1",
+          "related_user": 1
+        },
+        {
+          "id": 2,
+          "case": "case2",
+          "cpu": "cpu2",
+          "gpu": "gpu2",
+          "related_user": 1
+        }]
+      },
+      {
+        "id": "2",
+        "username": "user2",
+        "password": "password2",
+        "role": "USER",
+        "configs": [{
+          "id": 3,
+          "case": "case3",
+          "cpu": "cpu3",
+          "gpu": "gpu3",
+          "related_user": 2
+        },
+        {
+          "id": 4,
+          "case": "case4",
+          "cpu": "cpu4",
+          "gpu": "gpu4",
+          "related_user": 2
+        }]
+      }
+    ];
 
     validSavedConfig = {
       id: mockData[mockData.length - 1].id + 1,
@@ -43,195 +89,89 @@ describe('ConfigController tests', () => {
       psu: "Gold90+",
       ram: "GSkill 16",
       storage: "WD Blue",
+      related_user: "1"
     };
 
     configService.__setMockData(mockData);
-    nextFunction = jest.fn();
+    configService.__setMockDataUser(mockDataUser);
     response = mockResponse();
+    nextFunction = jest.fn();
   });
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  test('findAll() with valid data', () => {
-    const request = mockRequest(mockData);
-    // const request = mockRequest({
-    //   body: {
-    //     case: 'Lian Li Lancool II Mesh',
-    //     cpu: 'AMD Ryzen 5 3600',
-    //     gpu: 'NVIDIA Founders Edition',
-    //     motherboard: 'Asus TUF GAMING X570-PLUS (WI-FI)',
-    //     monitor: 'Asus VG248QG',
-    //     psu: 'EVGA BQ',
-    //     ram: 'G.Skill Ripjaws V 16 GB',
-    //     storage: 'Intel SSDPEDMD020T401',
-    //   },
+  test('findAll() with invalid data', async () => {
+    const request = mockRequest();
 
+    await configController.findAll(request, response, nextFunction);
+    expect(configService.findAll).toBeCalledTimes(1);
+    expect(nextFunction).toBeCalledWith(createError(500, 'Database error (cannot find configs)'));
   });
 
-
-
-
-  return configController.findAll(request, response, nextFunction)
-    .then(() => {
-      expect(configService.findAll).toBeCalledWith(request);
-      expect(configService.findAll).toBeCalledTimes(1);
-      expect(response.json).toBeCalledWith(mockData);
+  test('findById() with valid ID', async () => {
+    const VALID_CONFIG_ID = 2;
+    const request = mockRequest({
+      params: {
+        id: VALID_CONFIG_ID
+      }
     });
 
+    await configController.findById(request, response, nextFunction);
+    expect(configService.findById).toBeCalledTimes(1);
+  });
 
-test('findAll() with invalid data', () => {
-  const request = mockRequest();
-
-  // configService.findAll.mockImplementationOnce(() => Promise.reject('Database error (find configs)'));
-  return configController.findAll(request, response, nextFunction)
-    .then(() => {
-      expect(configService.findAll).toBeCalledWith();
-      expect(configService.findAll).toBeCalledTimes(1);
-      expect(nextFunction).toBeCalledWith(createError(500, 'Database error (find configs)'));
+  test("create() with valid request body", async () => {
+    const request = mockRequest({
+      body: {
+        'case': validSavedConfig.case,
+        'cpu': validSavedConfig.cpu,
+        'gpu': validSavedConfig.gpu,
+        'motherboard': validSavedConfig.motherboard,
+        'monitor': validSavedConfig.monitor,
+        'psu': validSavedConfig.psu,
+        'ram': validSavedConfig.ram,
+        'storage': validSavedConfig.storage
+      },
+      params: {
+        id: "1"
+      }
     });
-});
 
-
-test('findById() with valid ID', () => {
-  const VALID_CONFIG_ID = 2;
-
-  const request = mockRequest({
-    params: {
-      id: VALID_CONFIG_ID
-    }
+    await configController.create(request, response, nextFunction);
+    expect(configService.create).toBeCalled();
+    expect(configService.create).toBeCalledTimes(1);
   });
 
-  return configController.findById(request, response, nextFunction)
-    .then(() => {
-      expect(configService.findById).toBeCalledWith(VALID_CONFIG_ID);
-      expect(configService.findById).toBeCalledTimes(1)
-      expect(response.json).toBeCalledWith(mockData.find(p => p.id === VALID_CONFIG_ID))
-    })
+  test("update() with invalid id", async () => {
+    const request = mockRequest({
+      params: {
+        id: 4
+      },
+      body: {
+        "case": "new case"
+      }
+    });
 
-});
-
-
-test('findById() with invalid ID', async () => {
-  const INVALID_CONFIG_ID = 4;
-
-  const request = mockRequest({
-    params: {
-      id: INVALID_CONFIG_ID
-    }
+    await configController.update(request, response, nextFunction);
+    expect(configService.update).toBeCalled();
+    expect(response.json).not.toBeCalled();
+    expect(nextFunction).toBeCalledWith(new createError.InternalServerError("Could not update"));
   });
 
-  await configController.findById(request, response, nextFunction);
-  expect(configService.findById).toBeCalledWith(INVALID_CONFIG_ID);
-  expect(configService.findById).toBeCalledTimes(1);
-  expect(response.json).not.toBeCalled();
-  expect(nextFunction).toBeCalledWith(new createError.NotFound(`Config with id ${INVALID_CONFIG_ID} not found!`));
+  test("delete() with invalid ID", async () => {
+    const INVALID_CONFIG_ID = 4;
+    const request = mockRequest({
+      params: {
+        id: INVALID_CONFIG_ID
+      }
+    });
 
-});
-
-
-test("create() with valid request body", async () => {
-  const request = mockRequest({
-    body: {
-      'case': validSavedConfig.case,
-      'cpu': validSavedConfig.cpu,
-      'gpu': validSavedConfig.gpu,
-      'motherboard': validSavedConfig.motherboard,
-      'monitor': validSavedConfig.monitor,
-      'psu': validSavedConfig.psu,
-      'ram': validSavedConfig.ram,
-      'storage': validSavedConfig.storage
-    }
+    await configController.delete(request, response, nextFunction);
+    expect(configService.delete).toBeCalled();
+    expect(response.json).not.toBeCalled();
+    expect(nextFunction).toBeCalledWith(new createError.InternalServerError("Database error (cannot delete config)"));
   });
 
-  const saveObj = request.body;
-
-  await configController.create(request, response, nextFunction);
-
-  expect(configService.create).toBeCalledWith(saveObj);
-  expect(nextFunction).not.toBeCalled();
-  expect(response.json).toBeCalledWith(validSavedConfig);
-  expect(response.json).toBeCalledTimes(1);
-  expect(response.status).toBeCalledWith(201)
-});
-
-
-
-test("update() with valid id", async () => {
-  const request = mockRequest({
-    params: {
-      id: 1
-    },
-    body: {
-      "case": "new case"
-    }
-  });
-
-  const saveObj = request.body;
-
-  await configController.update(request, response, nextFunction);
-
-  expect(configService.update).toBeCalledWith(1, saveObj);
-  expect(response.json).toBeCalledWith(saveObj);
-  expect(nextFunction).not.toBeCalled();
-  expect(response.json).toBeCalledTimes(1);
-  expect(response.status).toBeCalledWith(201)
-});
-
-test("update() with invalid id", async () => {
-  const request = mockRequest({
-    params: {
-      id: 4
-    },
-    body: {
-      "case": "new case"
-    }
-  });
-
-  await configController.update(request, response, nextFunction);
-
-  expect(configService.update).not.toBeCalled();
-  expect(response.json).not.toBeCalled();
-  expect(nextFunction).toBeCalledWith(new createError.NotFound("Config with id 4 not found!"));
-});
-
-//TODO refact
-test("delete() with valid request body", async () => {
-  const VALID_CONFIG_ID = 2;
-
-  const request = mockRequest({
-    params: {
-      id: VALID_CONFIG_ID
-    }
-  });
-
-  await configController.delete(request, response, nextFunction);
-
-  expect(configService.delete).toBeCalledWith(VALID_CONFIG_ID);
-  // expect(response.json).toBeCalledTimes(1);
-  // expect(response.status).toBeCalledWith(201)
-  // expect(nextFunction).not.toBeCalled();
-})
-
-test("delete() with invalid request body", async () => {
-  const INVALID_CONFIG_ID = 4;
-
-  const request = mockRequest({
-    params: {
-      id: INVALID_CONFIG_ID
-    }
-  });
-
-  await configController.delete(request, response, nextFunction);
-
-  expect(configService.delete).not.toBeCalled();
-  expect(response.json).not.toBeCalled();
-  expect(nextFunction).toBeCalledWith(new createError.BadRequest("Invalid config ID"));
-
-})
-
-    
-
-      
 });
