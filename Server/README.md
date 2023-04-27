@@ -43,16 +43,21 @@ A MongoDB telepítéséhez kövesse a hivatalos dokumentációt: [MongoDB](https
 A projekt függőségeinek telepítéséhez a projekt gyökérkönyvtárában adja ki a következő parancsot:
 
 ```bash
-npm install
+cd Client\Angular && npm i && cd ../.. && npm i
 ```
+
+
 ### 2.4. Projekt futtatása
 
 A projekt futtatásához a projekt gyökérkönyvtárában adja ki a következő parancsot:
 
 ```bash
-npm run start
+npm run start:nodemon
 ```
 
+### 2.5. Alkalmazás megnyitása
+
+Az alkalmazás megnyitásához a következő linket kell megnyitni a böngészőben: [http://localhost:3000](http://localhost:3000)
 
 # 📎 Technikai háttér
 
