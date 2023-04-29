@@ -11,7 +11,7 @@ exports.findAll = async (req, res, next) => {
     res.json(hardwareList);
   } catch (error) {
     logger.error(error);
-    return next(new createError.InternalServerError('Database error (find hardwares)'));
+    return next(new createError.InternalServerError('Database error (cannot find hardwares)'));
   };
 };
 

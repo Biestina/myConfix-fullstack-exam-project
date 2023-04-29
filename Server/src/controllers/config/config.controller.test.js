@@ -157,7 +157,7 @@ describe('ConfigController tests', () => {
     await configController.update(request, response, nextFunction);
     expect(configService.update).toBeCalled();
     expect(response.json).not.toBeCalled();
-    expect(nextFunction).toBeCalledWith(new createError.InternalServerError("Could not update"));
+    expect(nextFunction).toBeCalledWith(new createError.InternalServerError("Database error (could not update the config)"));
   });
 
   test("delete() with invalid ID", async () => {

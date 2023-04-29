@@ -2,7 +2,7 @@ openapi: 3.0.0
 servers:
   - url: http://localhost:3000/api
 info:
-  version: 1.0.1
+  version: 1.0.2-oas3
   title: myConfix API
   description: Reference documentation for the myConfix API project.
 paths:
@@ -29,7 +29,7 @@ paths:
                     - $ref: '#/components/schemas/Psu'
                     - $ref: '#/components/schemas/Storage'
         '500':
-          description: Internal server error
+          description: Database error (cannot find hardwares)
           content:
             application/json:
               schema:
@@ -43,7 +43,7 @@ paths:
         - in: path
           name: _id
           required: true
-          schema: 
+          schema:
             type: string
       responses:
         '200':
@@ -61,31 +61,27 @@ paths:
                   - $ref: '#/components/schemas/Psu'
                   - $ref: '#/components/schemas/Storage'
         '404':
-          description: Hardware with given ID is not found
+          description: Hardware with id {_id} not found!
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /configs/:userId/myconfigs:
+  /configs/{userId}/myconfigs:
     get:
-      params:
-        userId:
-          type: string
-          description: The user ID
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
       tags:
         - Configs
-      description: Returns all registered configurations
+      description: Returns all registered configurations of the user
       security:
         - authorization: []
       responses:
         '200':
-          description: List of all configurations returned successfully
+          description: List of user's configurations returned successfully
           content:
             application/json:
               schema:
@@ -93,19 +89,21 @@ paths:
                 items:
                   $ref: '#/components/schemas/Config'
         '500':
-          description: Internal server error
+          description: Database error (cannot find configs)
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      params:
-        userId:
-          type: string
-          description: The user ID
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
       tags:
         - Configs
-      description: Creates a new configuration
+      description: Creates a new configuration to the user
       requestBody:
         required: true
         content:
@@ -121,38 +119,30 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Config'
-        '400':
-          description: Invalid request when the post data is invalid
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
         '500':
-          description: Internal server error
+          description: Configuration could not be saved to the user
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /configs/:userId/myconfigs:configId:
+  /configs/{userId}/myconfigs/{configId}:
     get:
-      params:
-        userId:
-          type: string
-          description: The user ID
-        configId:
-          type: string
-          description: The config ID
-      description: Get a configuration by ID
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: configId
+          required: true
+          schema:
+            type: string
+      description: Get a configuration by config ID
       security:
         - authorization: []
       tags:
         - Configs
-      parameters:
-        - in: path
-          name: _id
-          required: true
-          schema: 
-            type: string
       responses:
         '200':
           description: Returns a specific configuration
@@ -160,37 +150,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Config'
-        '404':
-          description: Config with given ID is not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
         '500':
-          description: Internal server error
+          description: Database error (cannot find one config)
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
     put:
-      params:
-        userId:
-          type: string
-          description: The user ID
-        configId:
-          type: string
-          description: The config ID
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: configId
+          required: true
+          schema:
+            type: string
       description: Updates a configuration
       security:
         - authorization: []
       tags:
         - Configs
-      parameters:
-        - in: path
-          name: _id
-          required: true
-          schema: 
-            type: string
       requestBody:
         required: true
         content:
@@ -204,37 +186,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Config'
-        '400':
-          description: Invalid request when the post data is invalid
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
         '500':
-          description: Internal server error
+          description: Database error (could not update the config)
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
-      params:
-        userId:
-          type: string
-          description: The user ID
-        configId:
-          type: string
-          description: The config ID
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: configId
+          required: true
+          schema:
+            type: string
       description: Deletes a configuration
       security:
         - authorization: []
       tags:
         - Configs
-      parameters:
-        - in: path
-          name: _id
-          required: true
-          schema: 
-            type: string
       responses:
         '200':
           description: Config has been deleted successfully
@@ -243,14 +217,8 @@ paths:
               schema:
                 type: object
                 example: {}
-        '404':
-          description: Config with given ID is not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
         '500':
-          description: Internal server error
+          description: Database error (cannot delete config)
           content:
             application/json:
               schema:
@@ -272,7 +240,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/User'
         '500':
-          description: Internal server error
+          description: Database error (cannot find users)
           content:
             application/json:
               schema:
@@ -291,19 +259,13 @@ paths:
               $ref: '#/components/schemas/User'
       responses:
         '201':
-          description: User has been created successfully
+          description: User registration has been created successfully
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
-        '400':
-          description: Invalid request when the post data is invalid
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
         '500':
-          description: Internal server error
+          description: User registration failed
           content:
             application/json:
               schema:
@@ -319,7 +281,7 @@ paths:
         - in: path
           name: _id
           required: true
-          schema: 
+          schema:
             type: string
       responses:
         '200':
@@ -328,14 +290,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid ObjectID ({_id})
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '404':
-          description: User with this ID is not found
+          description: User with id {_id} not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
         '500':
-          description: Internal server error
+          description: Database error (cannot find one user)
           content:
             application/json:
               schema:
@@ -350,14 +318,26 @@ paths:
         content:
           application/json:
             schema:
-            $ref: '#/components/schemas/LoginRequest'
+              $ref: '#/components/schemas/LoginRequest'
       responses:
         '200':
           description: Successfully logged in
           content:
             application/json:
               schema:
-              $ref: '#/components/schemas/LoginResponse'
+                $ref: '#/components/schemas/LoginResponse'
+        '400':
+          description: Invalid email or password
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Missing email or password
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /logout:
     post:
       description: Logs out the user
@@ -378,6 +358,8 @@ paths:
       responses:
         '200':
           description: Successfully logged out
+        '403':
+          description: Forbidden request, cannot find refreshtoken
   /me:
     get:
       description: Returns logged in user's information
@@ -427,16 +409,20 @@ paths:
                   accessToken:
                     type: string
                     description: New accesstoken
+        '403':
+          description: Forbidden request, cannot find refreshtoken
+        '404':
+          description: Cannot find and refresh accesstoken
 components:
   securitySchemes:
-    authorization:            
+    authorization:
       type: http
       scheme: bearer
       bearerFormat: JWT
   schemas:
     Config:
       type: object
-      required: 
+      required:
         - related_user
         - case
         - cpu
@@ -465,7 +451,6 @@ components:
           $ref: '#/components/schemas/Psu'
         storage:
           $ref: '#/components/schemas/Storage'
-          
     Case:
       type: object
       required:
@@ -473,17 +458,17 @@ components:
         - category
         - price_usd
       properties:
-        name: 
+        name:
           type: string
-        category: 
+        category:
           type: string
-        price_usd: 
+        price_usd:
           type: number
-        type: 
+        type:
           type: string
-        side_panel_window: 
+        side_panel_window:
           type: string
-        internal_3_5_bays: 
+        internal_3_5_bays:
           type: string
     Cpu:
       type: object
@@ -492,19 +477,19 @@ components:
         - category
         - price_usd
       properties:
-        name: 
+        name:
           type: string
-        category: 
+        category:
           type: string
-        price_usd: 
+        price_usd:
           type: number
-        core_clock: 
+        core_clock:
           type: string
-        boost_clock: 
+        boost_clock:
           type: string
-        tdp: 
+        tdp:
           type: string
-        integrated_graphics: 
+        integrated_graphics:
           nullable: true
           type: string
     Gpu:
@@ -514,19 +499,19 @@ components:
         - category
         - price_usd
       properties:
-        name: 
+        name:
           type: string
-        category: 
+        category:
           type: string
-        price_usd: 
+        price_usd:
           type: number
-        core_clock: 
+        core_clock:
           type: string
-        boost_clock: 
+        boost_clock:
           type: string
-        tdp: 
+        tdp:
           type: string
-        chipset: 
+        chipset:
           type: string
     Monitor:
       type: object
@@ -535,15 +520,15 @@ components:
         - category
         - price_usd
       properties:
-        name: 
+        name:
           type: string
-        category: 
+        category:
           type: string
-        price_usd: 
+        price_usd:
           type: number
-        resolution: 
+        resolution:
           type: string
-        refresh_rate: 
+        refresh_rate:
           type: string
     Motherboard:
       type: object
@@ -552,19 +537,19 @@ components:
         - category
         - price_usd
       properties:
-        name: 
+        name:
           type: string
-        category: 
+        category:
           type: string
-        price_usd: 
+        price_usd:
           type: number
-        cpu_socket: 
+        cpu_socket:
           type: string
-        form_factor: 
+        form_factor:
           type: string
-        memory_max: 
+        memory_max:
           type: string
-        memory_slots: 
+        memory_slots:
           type: string
     Psu:
       type: object
@@ -573,19 +558,19 @@ components:
         - category
         - price_usd
       properties:
-        name: 
+        name:
           type: string
-        category: 
+        category:
           type: string
-        price_usd: 
+        price_usd:
           type: number
-        form_factor: 
+        form_factor:
           type: string
-        efficency_rating: 
+        efficency_rating:
           type: string
-        wattage: 
+        wattage:
           type: string
-        modular: 
+        modular:
           type: string
     Ram:
       type: object
@@ -594,15 +579,15 @@ components:
         - category
         - price_usd
       properties:
-        name: 
+        name:
           type: string
-        category: 
+        category:
           type: string
-        price_usd: 
+        price_usd:
           type: number
-        Speed: 
+        Speed:
           type: string
-        Modules: 
+        Modules:
           type: string
     Storage:
       type: object
@@ -611,24 +596,23 @@ components:
         - category
         - price_usd
       properties:
-        name: 
+        name:
           type: string
-        category: 
+        category:
           type: string
-        price_usd: 
+        price_usd:
           type: number
-        capacity: 
+        capacity:
           type: string
-        type: 
+        type:
           type: string
-        form_factor: 
+        form_factor:
           type: string
-        interface: 
+        interface:
           type: string
-          
     User:
       type: object
-      required: 
+      required:
         - email
       properties:
         username:
@@ -639,12 +623,13 @@ components:
         password:
           type: string
         role:
-          type: number
+          type: string
+          default: USER
         accessToken:
           type: string
     LoginRequest:
       type: object
-      required: 
+      required:
         - email
         - password
       properties:

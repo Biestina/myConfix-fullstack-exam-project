@@ -31,8 +31,7 @@
           <p class="card-text">There are endless variations for building a strong, unique desktop PC based on your needs.</p>
         </div>
         <div class="card-footer p-0">
-          <a routerLink="/builder" class="btn btn-dark">Build a PC</a>
-
+          <a [routerLink]="userId !== null ? [userId, '/builder'] : ['login']" class="btn btn-dark">Build a PC</a>
         </div>
       </div>
     </div>

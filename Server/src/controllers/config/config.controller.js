@@ -32,7 +32,7 @@ exports.create = async (req, res, next) => {
     res.status(201).send(util.inspect(savedConfig));
   } catch (error) {
     logger.error(error);
-    return next(new createError.InternalServerError('Configuration could not be saved to user'));
+    return next(new createError.InternalServerError('Configuration could not be saved to the user'));
   };
 };
 
@@ -75,7 +75,7 @@ exports.update = async (req, res, next) => {
     res.json(config);
   } catch (error) {
     logger.error(error);
-    return next(new createError.InternalServerError('Could not update'));
+    return next(new createError.InternalServerError('Database error (could not update the config)'));
   };
 };
 
@@ -83,7 +83,7 @@ exports.delete = async (req, res, next) => {
   const configId = req.params.configId;
   try {
     await configService.delete(configId);
-    res.send(`Deleted config with id ${configId}`);
+    res.json({});
   } catch (error) {
     logger.error(error);
     return next(new createError.InternalServerError('Database error (cannot delete config)'));

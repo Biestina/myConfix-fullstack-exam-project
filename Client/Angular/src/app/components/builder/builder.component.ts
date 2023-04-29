@@ -18,7 +18,8 @@ import { HardwareHttpService } from 'src/app/services/http/hardware-http.service
 })
 export class BuilderComponent implements OnInit, OnDestroy {
   configForm!: FormGroup;
-  sub?: Subscription;
+  sub!: Subscription;
+  sub2!: Subscription;
   hardwares!: HardwareModel[];
   categories!: string[];
 
@@ -38,7 +39,7 @@ export class BuilderComponent implements OnInit, OnDestroy {
     private auth: AuthService
   ) {
     this.auth.me().subscribe();
-    this.activatedRoute.paramMap.subscribe({
+    this.sub2 = this.activatedRoute.paramMap.subscribe({
       next: (params) => {
         this.userId = params.get('userId')!;
       },
@@ -69,7 +70,8 @@ export class BuilderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub?.unsubscribe();
+    this.sub.unsubscribe();
+    this.sub2.unsubscribe();
   }
 
   create() {

@@ -4,7 +4,7 @@
 Az myConfix egy asztali PC konfigurátor, amivel saját igényeinknek megfelelően állíthatjuk össze leendő számítógépünket. 
 Felhasználóként regisztrációt követően egyedi számítógép-konfigurációkat állíthatunk össze a rendelkezésre álló hardverlista alapján. A kész összeállításokat elmenthetjük a fiókjukba, illetve megtekinthetjük, szerkeszthetjük és törölhetjük is őket.
 
-# Alkalmazás telepítése
+# 📎 Alkalmazás telepítése
 
 ## 0. GitHub repository klónozása
 
@@ -81,9 +81,7 @@ Az alkalmazás 8-féle hardvertípust különböztet meg kategória alapján.
 (Gépház, Processzor, Videókártya, Alaplap, Monitor, Memória, Tápegység, Háttértár).
 Ezek alapján tudunk egyedi konfigurációt beállítani.
 
-<!-- # -->
-📎
-#  User story lista, feladatok
+# 📎 User story lista, feladatok
 
 A felhasználó megnyitja az alkalmazást
 - **GET **/api** végpont implementálása a főoldal megjelenítéséhez

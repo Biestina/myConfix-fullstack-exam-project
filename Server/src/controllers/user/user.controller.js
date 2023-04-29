@@ -50,7 +50,7 @@ exports.findById = async (req, res, next) => {
   } catch (error) {
     logger.error(error);
     if (error.kind === "ObjectId") {
-      return next(new createError.BadRequest(`Invalid ObjectID: ${userId}`));
+      return next(new createError.BadRequest(`Invalid ObjectID (${userId})`));
     } else {
       logger.error(Object.entries(error))
       return next(new createError.InternalServerError('Database error (cannot find one user)'))

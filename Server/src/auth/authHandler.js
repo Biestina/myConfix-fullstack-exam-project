@@ -7,12 +7,12 @@ const refreshDB = [];
 
 exports.login = async (req, res, next) => {
   if (!req.body['email'] || !req.body['password']) {
-    res.status(400).send('Missing email or password');
+    res.status(404).send('Missing email or password');
   };
 
   const user = await User.findOne({ email: req.body['email'], password: req.body['password'] });
   if (!user) {
-    return res.status(404).send('Invalid email or password')
+    return res.status(400).send('Invalid email or password')
   };
 
   const accessToken = jwt.sign({

@@ -53,13 +53,13 @@ describe('HardwareController tests', () => {
   test('findAll() with invalid data', async () => {
     const request = mockRequest();
 
-    hardwareService.findAll.mockRejectedValueOnce('Database error (find hardwares)');
+    hardwareService.findAll.mockRejectedValueOnce('Database error (cannot find hardwares)');
 
     await hardwareController.findAll(request, response, nextFunction)
     expect(hardwareService.findAll).toBeCalled();
     expect(hardwareService.findAll).toBeCalledTimes(1);
     expect(response.json).not.toBeCalled();
-    expect(nextFunction).toBeCalledWith(createError(500, 'Database error (find hardwares)'));
+    expect(nextFunction).toBeCalledWith(createError(500, 'Database error (cannot find hardwares)'));
   });
 
 
