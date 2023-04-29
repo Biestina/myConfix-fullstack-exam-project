@@ -504,13 +504,14 @@ class BuilderComponent {
     }
     addItemToMyList() {
         const configLog = this.configForm.value;
-        this.configService.addItemToMyList(configLog, this.user?._id).subscribe({
+        this.configService.addItemToMyList(configLog, this.userId).subscribe({
             next: (savedConfig) => {
-                this.router.navigate(['configs', this.user?._id, 'myconfigs']);
+                this.router.navigate(['configs', this.userId, 'myconfigs']);
             },
-            error: (err) => console.log(err),
+            error: (err) => console.error(err),
         });
     }
+    ;
     onChange($event, category) {
         if (this.newConfig.hasOwnProperty(category)) {
             this.newConfig[category] = $event.target.value;
@@ -519,6 +520,7 @@ class BuilderComponent {
         this.ckeys = Object.keys(this.newConfig);
         this.cvalues = Object.values(this.newConfig);
     }
+    ;
     getMe() {
         if (localStorage.getItem('accessToken')) {
             this.sub = this.auth.me().subscribe();
@@ -1795,11 +1797,10 @@ class AuthenticationInterceptor {
                 return this.handle403Error(request, next);
             }
             else {
-                return (0,rxjs__WEBPACK_IMPORTED_MODULE_2__.throwError)(() => new Error('Oops something happened'));
+                return (0,rxjs__WEBPACK_IMPORTED_MODULE_2__.throwError)(() => new Error('Oops, something happened'));
             }
         }));
     }
-    ;
     handle403Error(req, next) {
         return this.authService.refresh().pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_3__.switchMap)((tokenData) => {
             const newRequest = req.clone({
@@ -1808,7 +1809,6 @@ class AuthenticationInterceptor {
             return next.handle(newRequest);
         }));
     }
-    ;
 }
 AuthenticationInterceptor.ɵfac = function AuthenticationInterceptor_Factory(t) { return new (t || AuthenticationInterceptor)(_angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵinject"](_app_services_auth_service__WEBPACK_IMPORTED_MODULE_0__.AuthService)); };
 AuthenticationInterceptor.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineInjectable"]({ token: AuthenticationInterceptor, factory: AuthenticationInterceptor.ɵfac });

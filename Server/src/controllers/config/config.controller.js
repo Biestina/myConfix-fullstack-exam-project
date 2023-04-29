@@ -29,7 +29,8 @@ exports.create = async (req, res, next) => {
   try {
     const savedConfig = await configService.create(newConfig, userId);
     logger.info(`New configuration saved`);
-    res.status(201).send(util.inspect(savedConfig));
+    // res.status(201).json(savedConfig);
+    res.status(201).json(savedConfig);
   } catch (error) {
     logger.error(error);
     return next(new createError.InternalServerError('Configuration could not be saved to the user'));

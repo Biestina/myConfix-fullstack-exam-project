@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
@@ -83,13 +83,13 @@ export class BuilderComponent implements OnInit, OnDestroy {
 
   addItemToMyList() {
     const configLog = this.configForm.value;
-    this.configService.addItemToMyList(configLog, this.user?._id!).subscribe({
+    this.configService.addItemToMyList(configLog, this.userId).subscribe({
       next: (savedConfig: ConfigModel) => {
-        this.router.navigate(['configs', this.user?._id, 'myconfigs']);
+        this.router.navigate(['configs', this.userId, 'myconfigs']);
       },
-      error: (err) => console.log(err),
+      error: (err) => console.error(err),
     });
-  }
+  };
 
   onChange($event: any, category: string) {
     if (this.newConfig.hasOwnProperty(category)) {
@@ -99,7 +99,7 @@ export class BuilderComponent implements OnInit, OnDestroy {
 
     this.ckeys = Object.keys(this.newConfig);
     this.cvalues = Object.values(this.newConfig);
-  }
+  };
 
   getMe() {
     if (localStorage.getItem('accessToken')) {

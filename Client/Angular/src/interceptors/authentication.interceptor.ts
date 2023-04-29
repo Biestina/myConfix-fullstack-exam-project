@@ -32,11 +32,11 @@ export class AuthenticationInterceptor implements HttpInterceptor {
         } else if (err.status === 403) {
           return this.handle403Error(request, next);
         } else {
-          return throwError(() => new Error('Oops something happened'));
+          return throwError(() => new Error('Oops, something happened'));
         }
       })
     );
-  };
+  }
 
   handle403Error(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
     return this.authService.refresh().pipe(
@@ -50,5 +50,5 @@ export class AuthenticationInterceptor implements HttpInterceptor {
         return next.handle(newRequest);
       })
     );
-  };
+  }
 }
