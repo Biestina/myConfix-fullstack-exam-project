@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HwDetailsComponent } from './hw-details/hw-details.component';
-import { HardwareModel } from '../../../models/hardware.model';
+import { HardwareModel } from '../../models/hardware.model';
 import { Observable, Subscription } from 'rxjs';
 import { HardwareHttpService } from 'src/app/services/http/hardware-http.service';
 

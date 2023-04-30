@@ -1,39 +1,40 @@
-<div class="container w-50 justify-content-center align-items-center">
+<div class="container d-grid">
   <h2>Update config {{currentConfig._id}}</h2>
 
-  <div class="p-4 form-wrapper ">
-    <!-- <form *ngIf="detailsForm" [formGroup]="detailsForm" (ngSubmit)="update(configId, currentConfig)" class=" text-yellow opacity-75"> -->
-    <form *ngIf="detailsForm && userId && configId" [formGroup]="detailsForm" (ngSubmit)="updateMyConfig(userId, configId, detailsForm.value)" class=" text-yellow opacity-75">
-      
-      <div class="mb-2 form-group-row" *ngFor="let category of categories; index as i">
-        
-        <label [for]="category.toLowerCase()" class="col-form-label me-2">
-          {{category}}
-          <select class="form-control-sm form-select" 
-          [id]="category.toLowerCase()" [formControlName]="category.toLowerCase()" [name]="category" [value]="category"
-          >
-          <option [value]="category | titlecase" [disabled]="true" [selected]="true" [hidden]="true">
-            Select a {{category}}
-          </option>
-          
-          <ng-container *ngFor="let hardware of hardwares; index as j">
-            <option *ngIf="hardware.category === categories[i]" [value]="hardware.name">
-              {{hardware.name}}
-            </option>
-          </ng-container>
-          
-        </select>
-      </label>
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="p-4 form-wrapper justify-content-center align-items-center">
+          <form *ngIf="detailsForm && userId && configId" [formGroup]="detailsForm"
+            (ngSubmit)="updateMyConfig(userId, configId, detailsForm.value)" class=" text-yellow opacity-75">
 
+            <div class="mb-2 form-group-row" *ngFor="let category of categories; index as i">
+
+              <label [for]="category.toLowerCase()" class="col-form-label me-2 d-block">
+                {{category}}
+                <select class="form-control-sm form-select" [id]="category.toLowerCase()"
+                  [formControlName]="category.toLowerCase()" [name]="category" [value]="category">
+                  <option [value]="category | titlecase" [disabled]="true" [selected]="true" [hidden]="true">
+                    Select a {{category}}
+                  </option>
+
+                  <ng-container *ngFor="let hardware of hardwares; index as j">
+                    <option *ngIf="hardware.category === categories[i]" [value]="hardware.name">
+                      {{hardware.name}}
+                    </option>
+                  </ng-container>
+
+                </select>
+              </label>
+
+            </div>
+
+            <button type="submit" class="btn btn-outline-info">Update</button>
+            <button type="button" *ngIf="userId && configId" (click)="deleteMyConfig(userId, configId)"
+              class="btn btn-outline-danger ms-2">
+              Delete
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
-    
-    <button type="submit" class="btn btn-outline-info">Update</button>
-    <!-- <button type="button" *ngIf="userId && configId" (click)="delete(configId)" class="btn btn-outline-danger ms-2"> -->
-    <button type="button" *ngIf="userId && configId" (click)="deleteMyConfig(userId, configId)" class="btn btn-outline-danger ms-2">
-      Delete
-    </button>
-  </form>
-</div>
-
-
-</div>
+  </div>

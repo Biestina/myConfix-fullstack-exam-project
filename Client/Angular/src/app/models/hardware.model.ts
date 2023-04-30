@@ -2,7 +2,7 @@ export const categories = ['Case', 'CPU', 'GPU', 'Motherboard', 'Monitor', 'PSU'
 export type Category = typeof categories[number];
 
 export interface HardwareModel {
-    id?: string;
+    _id?: string;
     name: string;
     category: Category;
     price_usd: number | null;

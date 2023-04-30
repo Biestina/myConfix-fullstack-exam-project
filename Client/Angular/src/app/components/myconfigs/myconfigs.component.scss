@@ -1,18 +1,25 @@
-.card {
+.row {
 
-  &-header {
-    position: relative;
-    padding: 0;
-    margin: auto -0.8em;
-    
-    a {
-      position: absolute;
+  max-width: 98vw;
+  margin: 0 auto;
+
+  .card {
+
+    &-header {
+      position: relative;
+      padding: 0;
+      margin: auto -0.8em;
+
+      a {
+        position: absolute;
+      }
+    }
+
+    ul {
+      li {
+        list-style-type: none;
+      }
     }
   }
 
-  ul {
-    li {
-      list-style-type: none;
-    }
-  }
 }
