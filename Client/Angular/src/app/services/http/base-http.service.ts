@@ -22,20 +22,6 @@ export class BaseHttpService<T> {
     return this.http.get<T[]>(`${this.BASE_URL}`);
   };
 
-  findById(id: any): Observable<T> {
-    return this.http.get<T>(`${this.BASE_URL}/${id}`);
-  };
-
-  update(id: any, entityObj: T): Observable<T> {
-    return this.http.put<T>(`${this.BASE_URL}/${id}`, entityObj);
-  };
-
-  delete(id: any): Observable<any>{
-    return this.http.delete(`${this.BASE_URL}/${id}`)
-  };
-
-
-
   addItemToMyList(entityObj: T, userId: string): Observable<T>{
     return this.http.post<T>(`${this.BASE_URL}/${userId}/myconfigs`, entityObj)
   };

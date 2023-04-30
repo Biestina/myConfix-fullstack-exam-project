@@ -92,20 +92,22 @@ export class ConfigDetailsComponent implements OnInit, OnDestroy {
         .subscribe({
           next: () => {
             this.currentConfig = this.detailsForm.value;
+            this.router.navigate(['configs', this.userId, 'myconfigs']);
           },
         });
-      this.router.navigate(['configs', this.userId, 'myconfigs']);
     }
   }
 
   deleteMyConfig(userId: string, configId: string) {
     if (userId) {
       if (configId && confirm('Are you sure you want to delete your config?')) {
-        this.sub3 = this.configService
-          .deleteMyItem(userId, configId)
-          .subscribe();
+        this.sub3 = this.configService.deleteMyItem(userId, configId)
+          .subscribe({
+            next: () => {
+              this.router.navigate(['configs', this.userId, 'myconfigs']);
+            }
+          });
       }
-      this.router.navigate(['configs', this.userId, 'myconfigs']);
     }
   }
 }

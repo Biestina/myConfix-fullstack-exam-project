@@ -4,10 +4,10 @@ const User = require('../../models/user.model');
 exports.create = async (configData, userId) => {
   const user = await User.findById(userId);
   const newConfig = new Config(configData);
-  newConfig.related_user = user;
+  newConfig.related_user = user._id;
   user.configs.push(newConfig);
-  await newConfig.save();
   await user.save();
+  await newConfig.save();
   return newConfig;
 };
 

@@ -1,8 +1,8 @@
 <div class="container d-grid">
-  <h2>Update config {{currentConfig._id}}</h2>
+  <h2 class="text-center text-yellow">Update config {{currentConfig._id}}</h2>
 
     <div class="row justify-content-center">
-      <div class="col-12">
+      <div class="col-12 col-lg-6">
         <div class="p-4 form-wrapper justify-content-center align-items-center">
           <form *ngIf="detailsForm && userId && configId" [formGroup]="detailsForm"
             (ngSubmit)="updateMyConfig(userId, configId, detailsForm.value)" class=" text-yellow opacity-75">

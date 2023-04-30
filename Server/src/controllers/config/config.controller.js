@@ -29,7 +29,6 @@ exports.create = async (req, res, next) => {
   try {
     const savedConfig = await configService.create(newConfig, userId);
     logger.info(`New configuration saved`);
-    // res.status(201).json(savedConfig);
     res.status(201).json(savedConfig);
   } catch (error) {
     logger.error(error);

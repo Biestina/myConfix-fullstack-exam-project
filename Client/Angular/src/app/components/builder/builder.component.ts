@@ -18,8 +18,9 @@ import { HardwareHttpService } from 'src/app/services/http/hardware-http.service
 })
 export class BuilderComponent implements OnInit, OnDestroy {
   configForm!: FormGroup;
-  sub!: Subscription;
-  sub2!: Subscription;
+  subUser!: Subscription;
+  subRoute!: Subscription;
+  subMe!: Subscription;
   hardwares!: HardwareModel[];
   categories!: string[];
 
@@ -39,7 +40,7 @@ export class BuilderComponent implements OnInit, OnDestroy {
     private auth: AuthService
   ) {
     this.auth.me().subscribe();
-    this.sub2 = this.activatedRoute.paramMap.subscribe({
+    this.subRoute = this.activatedRoute.paramMap.subscribe({
       next: (params) => {
         this.userId = params.get('userId')!;
       },
@@ -59,7 +60,7 @@ export class BuilderComponent implements OnInit, OnDestroy {
     });
 
     this.getMe();
-    this.sub = this.auth.userObject.subscribe((user) => {
+    this.subUser = this.auth.userObject.subscribe((user) => {
       this.user = user;
     });
 
@@ -70,25 +71,20 @@ export class BuilderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
-    this.sub2.unsubscribe();
-  }
-
-  create() {
-    const configLog = this.configForm.value;
-    this.configService.create(configLog).subscribe(() => {
-      this.router.navigate(['myconfigs', 'user', this.user?._id]);
-    });
+    this.subUser.unsubscribe();
+    this.subRoute.unsubscribe();
+    this.subMe.unsubscribe();
   }
 
   addItemToMyList() {
-    const configLog = this.configForm.value;
-    this.configService.addItemToMyList(configLog, this.userId).subscribe({
-      next: (savedConfig: ConfigModel) => {
-        this.router.navigate(['configs', this.userId, 'myconfigs']);
-      },
-      error: (err) => console.error(err),
-    });
+    if(this.userId){
+      const configLog = this.configForm.value;
+      this.configService.addItemToMyList(configLog, this.userId).subscribe({
+        next: () => {
+          this.router.navigate(['/configs', this.userId, 'myconfigs']);
+        },
+      });
+    }
   };
 
   onChange($event: any, category: string) {
@@ -99,11 +95,11 @@ export class BuilderComponent implements OnInit, OnDestroy {
 
     this.ckeys = Object.keys(this.newConfig);
     this.cvalues = Object.values(this.newConfig);
-  };
+  }
 
   getMe() {
     if (localStorage.getItem('accessToken')) {
-      this.sub = this.auth.me().subscribe();
+      this.subMe = this.auth.me().subscribe();
     }
   }
 }

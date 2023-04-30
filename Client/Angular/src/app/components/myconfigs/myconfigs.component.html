@@ -1,25 +1,30 @@
+<div class="mt-5 pt-5 justify-content-center" *ngIf="!configs || configs.length < 1">
+  <h3 class="text-center text-yellow my-5">You don't have any configurations</h3>
+</div>
+
 <div *ngIf="configs" class="container">
   <div class="row row-cols-md-3 row-cols-lg-4 grid gap-3 justify-content-evenly">
 
-      <div *ngFor="let config of configs; index as i" class="card shadow">
-        <div class="card-header">
-          <img src="https://source.unsplash.com/random/800x600/?gaming+computer {{ [i] }}" class="card-img-top" alt="computer">
-          <a [routerLink]="[config._id]" class="btn btn-warning shadow">Update</a>
-        </div>
-          <div class="card-body mx-auto">
-              <ul class="mx-0 px-0">
-                <li>Config ID: <small>{{ config._id }}</small></li>
-                <li title="Case">{{ config.case }}</li>
-                <li title="CPU">{{ config.cpu }}</li>
-                <li title="GPU">{{ config.gpu }}</li>
-                <li title="Motherboard">{{ config.motherboard }}</li>
-                <li title="Monitor">{{ config.monitor }}</li>
-                <li title="PSU">{{ config.psu }}</li>
-                <li title="RAM">{{ config.ram }}</li>
-                <li title="Storage">{{ config.storage }}</li>
-              </ul>
-        </div>
+    <div *ngFor="let config of configs; index as i" class="card shadow">
+      <div class="card-header">
+        <img src="https://source.unsplash.com/random/800x600/?gaming+computer {{ [i] }}" class="card-img-top"
+          alt="computer">
+        <a [routerLink]="[config._id]" class="btn btn-warning shadow">Update</a>
       </div>
+      <div class="card-body mx-auto">
+        <ul class="mx-0 px-0">
+          <li>Config ID: <small>{{ config._id }}</small></li>
+          <li title="Case">{{ config.case }}</li>
+          <li title="CPU">{{ config.cpu }}</li>
+          <li title="GPU">{{ config.gpu }}</li>
+          <li title="Motherboard">{{ config.motherboard }}</li>
+          <li title="Monitor">{{ config.monitor }}</li>
+          <li title="PSU">{{ config.psu }}</li>
+          <li title="RAM">{{ config.ram }}</li>
+          <li title="Storage">{{ config.storage }}</li>
+        </ul>
+      </div>
+    </div>
 
   </div>
 </div>
